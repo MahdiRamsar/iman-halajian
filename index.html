@@ -1,509 +1,316 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- سئو و متا تگ‌ها -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  
+  <!-- ========== سئو ========== -->
   <title>استودیو طراحی داخلی ناژو | ایمان حلاجیان</title>
-  <meta name="description" content="استودیو طراحی داخلی ناژو به مدیریت ایمان حلاجیان، ارائه‌دهنده خدمات طراحی کلاسیک و مدرن در رامسر، تنکابن و چابکسر. برای خلق فضاهای لوکس و منحصر‌به‌فرد.">
-  <meta name="keywords" content="طراحی داخلی, دکوراسیون, ناژو, ایمان حلاجیان, رامسر, تنکابن, چابکسر, کلاسیک, مدرن">
-  <meta name="robots" content="index, follow">
-  <!-- Open Graph برای شبکه‌های اجتماعی -->
-  <meta property="og:title" content="استودیو طراحی داخلی ناژو | ایمان حلاجیان">
-  <meta property="og:description" content="طراحی داخلی لوکس و مدرن در رامسر، تنکابن و چابکسر. ترکیب هنر کلاسیک و مدرن.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://najou-studio.vercel.app">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200">
-  <!-- فونت‌های گوگل -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (رایگان) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="description" content="استودیو طراحی داخلی ناژو به مدیریت ایمان حلاجیان، ارائه‌دهنده خدمات طراحی کلاسیک و مدرن در رامسر، تنکابن و چابکسر." />
+  <meta name="keywords" content="طراحی داخلی, دکوراسیون, ناژو, ایمان حلاجیان, رامسر, تنکابن, چابکسر" />
+  <meta property="og:title" content="استودیو طراحی داخلی ناژو" />
+  <meta property="og:description" content="طراحی داخلی لوکس و مدرن در رامسر، تنکابن و چابکسر." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200" />
+  <meta property="og:url" content="https://najou-studio.vercel.app" />
+  
+  <!-- فونت‌ها -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
   <style>
-    /* ========== ریست و پایه ========== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* ========== مبانی ========== */
+    :root {
+      --bg: #0b0a08;
+      --fg: #f2ebe1;
+      --muted: #b5aea3;
+      --primary: #c9a87c;        /* طلایی */
+      --primary-light: #e4d4b0;
+      --zoom: 5;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background-color: #0b0a08;
-      color: #e5e0d8;
+      background: var(--bg);
+      color: var(--fg);
       font-family: 'Inter', sans-serif;
-      line-height: 1.7;
       direction: rtl;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* ========== رنگ‌های طلایی/برنزی ========== */
-    :root {
-      --gold: #c9a87c;
-      --gold-light: #e4d4b0;
-      --gold-dark: #a8875e;
-      --dark-bg: #0b0a08;
-      --card-bg: #1a1714;
-      --border-gold: rgba(201, 168, 124, 0.3);
-    }
-
-    h1, h2, h3, h4 {
+    h1, h2, h3, .logo-font {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      color: #f2ebe1;
-      letter-spacing: 0.5px;
     }
+    .text-gold { color: var(--primary); }
+    .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+    .section-padding { padding:80px 0; }
 
-    h2 {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      right: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      border-radius: 2px;
-    }
-    .text-gold {
-      color: var(--gold);
-    }
-    .text-center {
-      text-align: center;
-    }
-    .section-padding {
-      padding: 80px 0;
-    }
-
-    /* ========== هدر ========== */
+    /* ========== هدر (بالای صفحه) ========== */
     header {
-      background: rgba(11, 10, 8, 0.92);
-      backdrop-filter: blur(6px);
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border-gold);
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      position: fixed; top:0; left:0; right:0; z-index:999;
+      background: rgba(11,10,8,0.85); backdrop-filter:blur(8px);
+      padding:14px 0; border-bottom:1px solid rgba(201,168,124,0.2);
     }
     .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      display:flex; justify-content:space-between; align-items:center;
+      flex-wrap:wrap;
     }
     .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #f2ebe1;
-      letter-spacing: 1px;
+      font-size:1.6rem; letter-spacing:1px;
+      color:#f2ebe1;
     }
-    .logo span {
-      color: var(--gold);
-    }
+    .logo span { color:var(--primary); }
     nav ul {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      font-weight: 400;
+      display:flex; gap:28px; list-style:none;
     }
     nav a {
-      color: #d6d0c6;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-      position: relative;
+      color:#d6d0c6; text-decoration:none; font-weight:400;
+      transition:color 0.3s; position:relative;
     }
-    nav a:hover {
-      color: var(--gold-light);
-    }
+    nav a:hover { color:var(--primary-light); }
     nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      right: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: width 0.3s;
+      content:''; position:absolute; bottom:-4px; right:0;
+      width:0; height:2px; background:var(--primary);
+      transition:width 0.3s;
     }
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* دکمه همبرگر (موبایل) */
+    nav a:hover::after { width:100%; }
     .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #e5e0d8;
-      font-size: 1.8rem;
-      cursor: pointer;
+      display:none; background:none; border:none;
+      color:#e5e0d8; font-size:1.8rem; cursor:pointer;
     }
-
-    @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+    @media (max-width:768px) {
+      .hamburger { display:block; }
       nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(11, 10, 8, 0.98);
-        padding: 20px 0;
-        gap: 16px;
-        margin-top: 16px;
-        border-top: 1px solid var(--border-gold);
+        display:none; flex-direction:column; width:100%;
+        background:rgba(11,10,8,0.98); padding:20px 0; gap:16px;
+        margin-top:16px; border-top:1px solid rgba(201,168,124,0.2);
       }
-      nav ul.active {
-        display: flex;
-      }
-      nav ul li {
-        text-align: center;
-      }
-      .header-flex {
-        flex-wrap: wrap;
-      }
+      nav ul.active { display:flex; }
+      nav ul li { text-align:center; }
     }
 
-    /* ========== قهرمان (Hero) ========== */
-    .hero {
-      background: linear-gradient(135deg, #0b0a08 40%, #1a1714 100%);
-      padding: 60px 0 80px;
-      border-bottom: 1px solid var(--border-gold);
+    /* ========== بخش زوم ========== */
+    .zoom-section { position:relative; }
+    .zoom-stage {
+      position:sticky; top:0; height:100vh; width:100%;
+      overflow:hidden; background:var(--bg);
     }
-    .hero-grid {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
+    .scene {
+      position:absolute; inset:0;
+      display:none; will-change:transform,opacity;
     }
-    .hero-text {
-      flex: 1 1 45%;
+    .scene__img-wrap {
+      position:absolute; inset:0;
+      will-change:transform;
     }
-    .hero-text h1 {
-      font-size: 3.2rem;
-      line-height: 1.2;
-      margin-bottom: 20px;
+    .scene__img {
+      height:100%; width:100%; object-fit:cover;
+      filter:brightness(0.45) contrast(1.05) saturate(1.1);
+      user-select:none; -webkit-user-drag:none;
     }
-    .hero-text h1 .highlight {
-      color: var(--gold);
-      font-style: italic;
+    .scene__scrim-1 {
+      position:absolute; inset:0;
+      background:rgba(11,10,8,0.55);
     }
-    .hero-text p {
-      font-size: 1.15rem;
-      color: #b5aea3;
-      max-width: 500px;
-      margin-bottom: 30px;
+    .scene__scrim-2 {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, var(--bg), rgba(11,10,8,0.3) 40%, rgba(11,10,8,0.6));
     }
-    .hero-image {
-      flex: 1 1 45%;
+    .scene__scrim-3 {
+      position:absolute; inset:0;
+      background:linear-gradient(to left, rgba(11,10,8,0.85), rgba(11,10,8,0.2) 50%, transparent);
     }
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-      border: 1px solid var(--border-gold);
-      transition: transform 0.4s ease;
+    .scene__content {
+      position:absolute; inset:0;
+      display:flex; align-items:center;
+      will-change:opacity,transform;
     }
-    .hero-image img:hover {
-      transform: scale(1.02);
+    .scene__inner {
+      width:100%; max-width:72rem; margin:0 auto; padding:0 1.5rem;
     }
-    .btn-gold {
-      display: inline-block;
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      padding: 12px 32px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
+    .scene__tagline {
+      display:flex; align-items:center; gap:0.75rem;
     }
-    .btn-gold:hover {
-      background: var(--gold);
-      color: #0b0a08;
-      box-shadow: 0 0 20px rgba(201, 168, 124, 0.3);
+    .scene__line {
+      height:1px; width:2.5rem; background:var(--primary);
     }
-    @media (max-width: 768px) {
-      .hero-text h1 { font-size: 2.4rem; }
-      .hero-grid { flex-direction: column; text-align: center; }
-      .hero-text p { max-width: 100%; }
+    .scene__tag {
+      font-size:0.75rem; text-transform:uppercase;
+      letter-spacing:0.25em; color:var(--primary);
+      font-family:'Inter', sans-serif;
+    }
+    .scene__title {
+      margin-top:1.25rem;
+      font-size:clamp(2.75rem, 9vw, 5.5rem);
+      font-weight:700; line-height:1.05;
+      white-space:pre-line;
+    }
+    .scene__sub {
+      margin-top:1.5rem; max-width:28rem;
+      font-size:1.05rem; line-height:1.7; color:var(--muted);
+      font-family:'Inter', sans-serif;
     }
 
-    /* ========== درباره ما ========== */
-    .about {
-      background: #0f0d0a;
+    /* دکمه در صحنه */
+    .scene__btn {
+      margin-top:2rem;
+      display:inline-block;
+      padding:12px 32px;
+      border:2px solid var(--primary);
+      border-radius:40px;
+      color:var(--primary);
+      text-decoration:none;
+      font-weight:600;
+      transition:all 0.3s;
+      font-family:'Inter', sans-serif;
     }
-    .about-content {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .about-text {
-      flex: 2 1 55%;
-    }
-    .about-text p {
-      margin-bottom: 16px;
-      color: #d0c9be;
-    }
-    .about-text strong {
-      color: var(--gold-light);
-    }
-    .about-stats {
-      flex: 1 1 30%;
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 16px;
-      border: 1px solid var(--border-gold);
-    }
-    .about-stats .stat-item {
-      margin-bottom: 20px;
-    }
-    .about-stats .stat-item i {
-      color: var(--gold);
-      font-size: 1.8rem;
-      margin-left: 12px;
-    }
-    .about-stats .stat-item span {
-      font-weight: 700;
-      font-size: 1.2rem;
-      display: block;
-      margin-top: 6px;
-      color: #f2ebe1;
-    }
-    @media (max-width: 768px) {
-      .about-content { flex-direction: column; }
+    .scene__btn:hover {
+      background:var(--primary);
+      color:#0b0a08;
+      box-shadow:0 0 30px rgba(201,168,124,0.3);
     }
 
-    /* ========== پروژه‌ها (گالری با زوم) ========== */
-    .projects {
-      background: #0b0a08;
+    /* نقاط ناوبری */
+    .zoom-dots {
+      position:absolute; top:50%; transform:translateY(-50%);
+      left:1.25rem; z-index:30;
+      display:flex; flex-direction:column; gap:0.75rem;
+    }
+    .zoom-dot {
+      height:0.6rem; width:0.6rem; border-radius:999px;
+      border:1px solid rgba(201,168,124,0.6);
+      background:transparent; cursor:pointer;
+      transition:all .3s;
+    }
+    .zoom-dot.is-active {
+      background:var(--primary); transform:scale(1.3);
+    }
+    .zoom-hint {
+      position:absolute; inset-inline:0; bottom:2rem; z-index:30;
+      display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+      transition:opacity .5s; pointer-events:none;
+    }
+    .zoom-hint span {
+      font-size:0.7rem; text-transform:uppercase; letter-spacing:0.25em;
+      color:var(--muted); font-family:'Inter', sans-serif;
+    }
+    .zoom-hint .arrow {
+      color:var(--primary); font-size:1.1rem;
+      animation:bob 1.2s infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+    /* ========== بخش‌های ثابت پایین (پروژه‌ها، تماس، فوتر) ========== */
+    .fixed-section {
+      background:var(--bg);
+      border-top:1px solid rgba(201,168,124,0.2);
+      border-bottom:1px solid rgba(201,168,124,0.2);
+    }
+    .section-title {
+      font-size:2.4rem; margin-bottom:1rem;
+      position:relative; display:inline-block;
+    }
+    .section-title::after {
+      content:''; position:absolute; bottom:-8px; right:0;
+      width:60px; height:3px;
+      background:linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius:2px;
     }
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+      gap:30px; margin-top:40px;
     }
     .project-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border-gold);
-      transition: transform 0.3s ease, box-shadow 0.4s ease;
-      cursor: default;
+      background:#1a1714; border-radius:16px; overflow:hidden;
+      border:1px solid rgba(201,168,124,0.2);
+      transition:transform 0.3s ease, box-shadow 0.4s ease;
     }
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      transform:translateY(-8px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.6);
     }
     .project-img-wrapper {
-      overflow: hidden;
-      height: 250px;
-      position: relative;
+      overflow:hidden; height:250px; position:relative;
     }
     .project-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      display: block;
+      width:100%; height:100%; object-fit:cover;
+      transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+      display:block;
     }
     .project-card:hover .project-img-wrapper img {
-      transform: scale(1.15);
+      transform:scale(1.15);
     }
-    .project-info {
-      padding: 20px;
-    }
-    .project-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 6px;
-      color: #f2ebe1;
-    }
+    .project-info { padding:20px; }
+    .project-info h3 { font-size:1.3rem; margin-bottom:6px; }
     .project-info .tag {
-      display: inline-block;
-      background: rgba(201, 168, 124, 0.15);
-      color: var(--gold);
-      padding: 2px 16px;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-top: 6px;
-      border: 1px solid var(--border-gold);
+      display:inline-block;
+      background:rgba(201,168,124,0.15);
+      color:var(--primary); padding:2px 16px;
+      border-radius:30px; font-size:0.75rem; font-weight:600;
+      border:1px solid rgba(201,168,124,0.2);
     }
-    .project-info p {
-      font-size: 0.95rem;
-      color: #b5aea3;
-      margin-top: 8px;
-    }
+    .project-info p { font-size:0.95rem; color:var(--muted); margin-top:8px; }
 
-    /* ========== تماس با ما ========== */
-    .contact {
-      background: #0f0d0a;
-      border-top: 1px solid var(--border-gold);
-      border-bottom: 1px solid var(--border-gold);
-    }
+    /* تماس */
     .contact-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-top: 30px;
+      display:flex; flex-wrap:wrap; gap:40px; margin-top:30px;
     }
-    .contact-info {
-      flex: 1 1 40%;
-    }
+    .contact-info { flex:1 1 40%; }
     .contact-info .info-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
+      display:flex; align-items:center; gap:16px; margin-bottom:24px;
     }
     .contact-info .info-item i {
-      font-size: 1.6rem;
-      color: var(--gold);
-      width: 40px;
-      text-align: center;
+      font-size:1.6rem; color:var(--primary); width:40px; text-align:center;
     }
     .contact-info .info-item a {
-      color: #d0c9be;
-      text-decoration: none;
-      transition: color 0.3s;
+      color:#d0c9be; text-decoration:none; transition:color 0.3s;
     }
-    .contact-info .info-item a:hover {
-      color: var(--gold-light);
+    .contact-info .info-item a:hover { color:var(--primary-light); }
+    .contact-buttons { flex:1 1 40%; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+    .btn-social {
+      display:flex; align-items:center; justify-content:center; gap:12px;
+      padding:16px; border-radius:60px; font-weight:600;
+      text-decoration:none; transition:all 0.3s;
+      border:1px solid rgba(201,168,124,0.2);
+      background:transparent; color:#e5e0d8;
     }
-    .contact-buttons {
-      flex: 1 1 40%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      justify-content: center;
-    }
-    .contact-buttons .btn-social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 16px;
-      border-radius: 60px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-      border: 1px solid var(--border-gold);
-      background: transparent;
-      color: #e5e0d8;
-    }
-    .btn-social i {
-      font-size: 1.8rem;
-    }
-    .btn-whatsapp {
-      border-color: #25D366;
-      color: #25D366;
-    }
-    .btn-whatsapp:hover {
-      background: #25D366;
-      color: #0b0a08;
-      box-shadow: 0 0 30px rgba(37, 211, 102, 0.3);
-    }
-    .btn-instagram {
-      border-color: #E1306C;
-      color: #E1306C;
-    }
-    .btn-instagram:hover {
-      background: #E1306C;
-      color: #0b0a08;
-      box-shadow: 0 0 30px rgba(225, 48, 108, 0.3);
-    }
-    .btn-social span {
-      font-size: 1.1rem;
-    }
+    .btn-social i { font-size:1.8rem; }
+    .btn-whatsapp { border-color:#25D366; color:#25D366; }
+    .btn-whatsapp:hover { background:#25D366; color:#0b0a08; box-shadow:0 0 30px rgba(37,211,102,0.3); }
+    .btn-instagram { border-color:#E1306C; color:#E1306C; }
+    .btn-instagram:hover { background:#E1306C; color:#0b0a08; box-shadow:0 0 30px rgba(225,48,108,0.3); }
 
-    /* ========== فوتر ========== */
     footer {
-      background: #0b0a08;
-      padding: 40px 0;
-      text-align: center;
-      border-top: 1px solid var(--border-gold);
+      background:#0b0a08; padding:40px 0; text-align:center;
+      border-top:1px solid rgba(201,168,124,0.2);
     }
     footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
+      display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-bottom:20px;
     }
     footer .footer-links a {
-      color: #b5aea3;
-      text-decoration: none;
-      transition: color 0.3s;
+      color:#b5aea3; text-decoration:none; transition:color 0.3s;
     }
-    footer .footer-links a:hover {
-      color: var(--gold-light);
-    }
-    footer .copy {
-      font-size: 0.9rem;
-      color: #7a756b;
-    }
+    footer .footer-links a:hover { color:var(--primary-light); }
+    footer .copy { font-size:0.9rem; color:#7a756b; }
 
-    /* ========== دکمه بازگشت به بالا ========== */
     .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      background: var(--gold);
-      color: #0b0a08;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(201, 168, 124, 0.3);
-      transition: all 0.3s;
-      opacity: 0;
-      visibility: hidden;
-      z-index: 999;
+      position:fixed; bottom:30px; left:30px; z-index:999;
+      background:var(--primary); color:#0b0a08;
+      width:48px; height:48px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.4rem; text-decoration:none;
+      box-shadow:0 4px 20px rgba(201,168,124,0.3);
+      transition:all 0.3s;
+      opacity:0; visibility:hidden;
     }
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    .back-to-top:hover {
-      transform: translateY(-4px);
-      background: var(--gold-light);
-    }
+    .back-to-top.show { opacity:1; visibility:visible; }
+    .back-to-top:hover { transform:translateY(-4px); background:var(--primary-light); }
 
-    /* ========== ریسپانسیو بیشتر ========== */
-    @media (max-width: 600px) {
-      h2 { font-size: 1.8rem; }
-      .hero-text h1 { font-size: 2rem; }
-      .container { padding: 0 16px; }
-      .section-padding { padding: 50px 0; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .contact-wrapper { flex-direction: column; }
+    @media (max-width:600px) {
+      .section-title { font-size:1.8rem; }
+      .projects-grid { grid-template-columns:1fr; }
+      .contact-wrapper { flex-direction:column; }
+      .scene__title { font-size:clamp(2rem, 12vw, 3.5rem); }
     }
   </style>
 </head>
@@ -518,103 +325,60 @@
     </button>
     <nav>
       <ul id="navMenu">
-        <li><a href="#hero">خانه</a></li>
+        <li><a href="#zoom">خانه</a></li>
         <li><a href="#projects">پروژه‌ها</a></li>
-        <li><a href="#about">درباره ما</a></li>
         <li><a href="#contact">تماس</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- ====== قهرمان ====== -->
-<section class="hero" id="hero">
-  <div class="container hero-grid">
-    <div class="hero-text">
-      <h1>
-        خلق فضاهای <br>
-        <span class="highlight">کلاسیک</span> و <span class="highlight">مدرن</span>
-      </h1>
-      <p>
-        استودیو طراحی داخلی ناژو به مدیریت ایمان حلاجیان، با الهام از هنر اصیل ایرانی و معماری روز دنیا، پروژه‌هایی ماندگار در رامسر، تنکابن و چابکسر خلق می‌کند.
-      </p>
-      <a href="#projects" class="btn-gold">مشاهده پروژه‌ها <i class="fas fa-arrow-left" style="margin-right:8px;"></i></a>
-    </div>
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200" alt="طراحی داخلی ناژو" loading="lazy">
+<!-- ====== بخش زوم (صحنه‌ها) ====== -->
+<section class="zoom-section" id="zoom" aria-label="استودیو ناژو">
+  <div class="zoom-stage">
+    <!-- صحنه‌ها توسط JS ساخته می‌شوند -->
+    <div class="zoom-dots" id="zoomDots"></div>
+    <div class="zoom-hint" id="zoomHint">
+      <span>برای ورود اسکرول کنید</span>
+      <span class="arrow">&#8595;</span>
     </div>
   </div>
 </section>
 
-<!-- ====== درباره ما ====== -->
-<section class="about section-padding" id="about">
+<!-- ====== بخش پروژه‌ها (ثابت) ====== -->
+<section class="fixed-section section-padding" id="projects">
   <div class="container">
-    <h2 class="text-center">درباره ما</h2>
-    <div class="about-content" style="margin-top:30px;">
-      <div class="about-text">
-        <p>
-          <strong>ایمان حلاجیان</strong>، بنیان‌گذار استودیو ناژو، با بیش از یک دهه تجربه در زمینه طراحی داخلی و دکوراسیون، همواره به دنبال تلفیق زیبایی‌های <strong>کلاسیک</strong> با کارآمدی <strong>مدرن</strong> بوده است. 
-        </p>
-        <p>
-          رویکرد ما در ناژو، خلق فضاهایی است که نه تنها چشم‌نواز باشند، بلکه با سبک زندگی و هویت کارفرما هماهنگ شوند. از ویلاهای لوکس رامسر گرفته تا آپارتمان‌های مدرن در تنکابن و چابکسر، هر پروژه روایتی منحصر‌به‌فرد دارد.
-        </p>
-        <p>
-          <i class="fas fa-map-pin" style="color:var(--gold); margin-left:6px;"></i>
-          شهرهای فعال: <strong>رامسر، تنکابن، چابکسر</strong>
-        </p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-item">
-          <i class="fas fa-pen-fancy"></i>
-          <span>۱۲+ سال تجربه</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-layer-group"></i>
-          <span>ترکیب کلاسیک و مدرن</span>
-        </div>
-        <div class="stat-item">
-          <i class="fas fa-home"></i>
-          <span>پروژه‌های موفق در شمال</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== پروژه‌ها (گالری با زوم) ====== -->
-<section class="projects section-padding" id="projects">
-  <div class="container">
-    <h2 class="text-center">پروژه‌های ما</h2>
-    <p class="text-center" style="color:#b5aea3; max-width:600px; margin:10px auto 0;">
-      ترکیبی از طرح‌های کلاسیک و مدرن – با هاور روی هر تصویر، افکت زوم را مشاهده کنید.
+    <h2 class="section-title">پروژه‌های ما</h2>
+    <p style="color:var(--muted); max-width:600px; margin:10px 0 0;">
+      ترکیبی از طرح‌های کلاسیک و مدرن – با هاور روی هر تصویر، افکت زوم را ببینید.
     </p>
     <div class="projects-grid">
-      <!-- ۱. کلاسیک -->
+      <!-- کلاسیک ۱ -->
       <div class="project-card">
         <div class="project-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=600" alt="پروژه کلاسیک ناژو - رامسر" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=600" alt="ویلا سلطنتی رامسر" loading="lazy" />
         </div>
         <div class="project-info">
           <h3>ویلا سلطنتی رامسر</h3>
           <span class="tag">کلاسیک</span>
-          <p>ترکیب گچ‌بری‌های دستی با مبلمان سلطنتی، فضایی شکوهمند و گرم.</p>
+          <p>گچ‌بری‌های دستی با مبلمان سلطنتی، فضایی شکوهمند و گرم.</p>
         </div>
       </div>
-      <!-- ۲. کلاسیک -->
+      <!-- کلاسیک ۲ -->
       <div class="project-card">
         <div class="project-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="پروژه کلاسیک تنکابن" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="آپارتمان پهلوی تنکابن" loading="lazy" />
         </div>
         <div class="project-info">
           <h3>آپارتمان پهلوی تنکابن</h3>
           <span class="tag">کلاسیک</span>
-          <p>بازسازی با المان‌های تاریخی و رنگ‌های گرم، حس اصالت و آرامش.</p>
+          <p>المان‌های تاریخی و رنگ‌های گرم، حس اصالت و آرامش.</p>
         </div>
       </div>
-      <!-- ۳. کلاسیک -->
+      <!-- کلاسیک ۳ -->
       <div class="project-card">
         <div class="project-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600" alt="پروژه کلاسیک چابکسر" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600" alt="سوییت اشرافی چابکسر" loading="lazy" />
         </div>
         <div class="project-info">
           <h3>سوییت اشرافی چابکسر</h3>
@@ -622,79 +386,79 @@
           <p>ستون‌های گچی و لوسترهای کریستالی در کنار پارکت چوبی.</p>
         </div>
       </div>
-      <!-- ۴. مدرن -->
+      <!-- مدرن ۱ -->
       <div class="project-card">
         <div class="project-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=600" alt="پروژه مدرن رامسر" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=600" alt="پنت‌هاوس مدرن رامسر" loading="lazy" />
         </div>
         <div class="project-info">
           <h3>پنت‌هاوس مدرن رامسر</h3>
           <span class="tag">مدرن</span>
-          <p>فضای باز با خطوط ساده، نورپردازی مخفی و مبلمان مینیمال.</p>
+          <p>خطوط ساده، نورپردازی مخفی و مبلمان مینیمال.</p>
         </div>
       </div>
-      <!-- ۵. مدرن -->
+      <!-- مدرن ۲ -->
       <div class="project-card">
         <div class="project-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="پروژه مدرن تنکابن" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="آپارتمان نئوکلاسیک تنکابن" loading="lazy" />
         </div>
         <div class="project-info">
-          <h3>آپارتمان نئوکلاسیک تنکابن</h3>
+          <h3>نئوکلاسیک تنکابن</h3>
           <span class="tag">مدرن</span>
           <p>ترکیب مدرن با المان‌های کلاسیک، کاربری و زیبایی همزمان.</p>
         </div>
       </div>
-      <!-- ۶. مدرن -->
+      <!-- مدرن ۳ -->
       <div class="project-card">
         <div class="project-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1618219740975-d0e7e1db4e3d?w=600" alt="پروژه مدرن چابکسر" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1618219740975-d0e7e1db4e3d?w=600" alt="کافه‌دیزاین چابکسر" loading="lazy" />
         </div>
         <div class="project-info">
           <h3>کافه‌دیزاین چابکسر</h3>
           <span class="tag">مدرن</span>
-          <p>فضای تجاری با دیوارهای سیمانی، مبلمان آکاردئونی و رنگ‌های خنثی.</p>
+          <p>دیوارهای سیمانی، مبلمان آکاردئونی و رنگ‌های خنثی.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== تماس با ما ====== -->
-<section class="contact section-padding" id="contact">
+<!-- ====== بخش تماس ====== -->
+<section class="fixed-section section-padding" id="contact" style="border-bottom:none;">
   <div class="container">
-    <h2 class="text-center">تماس با ما</h2>
+    <h2 class="section-title">تماس با ما</h2>
     <div class="contact-wrapper">
       <div class="contact-info">
         <div class="info-item">
           <i class="fas fa-map-marker-alt"></i>
           <div>
-            <strong>آدرس:</strong><br>
+            <strong>آدرس:</strong><br />
             رامسر، تنکابن، چابکسر – ارائه خدمات در سراسر این شهرها
           </div>
         </div>
         <div class="info-item">
           <i class="fas fa-phone"></i>
           <div>
-            <strong>تلفن:</strong><br>
+            <strong>تلفن:</strong><br />
             <a href="tel:09113548593">۰۹۱۱ ۳۵۴ ۸۵۹۳</a>
           </div>
         </div>
         <div class="info-item">
-          <i class="fas fa-globe"></i>
+          <i class="fas fa-user-tie"></i>
           <div>
-            <strong>وب‌سایت:</strong><br>
-            <a href="#">najou-studio.ir</a>
+            <strong>مدیر:</strong><br />
+            ایمان حلاجیان
           </div>
         </div>
       </div>
       <div class="contact-buttons">
-        <a href="https://wa.me/989113548593?text=سلام%20من%20از%20سایت%20ناژو%20پیام%20میدم%20،%20مشتاق%20همکاری%20هستم" target="_blank" class="btn-social btn-whatsapp">
+        <a href="https://wa.me/989113548593?text=سلام%20من%20از%20سایت%20ناژو%20پیام%20میدم" target="_blank" class="btn-social btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
           <span>ارسال پیام در واتساپ</span>
         </a>
         <a href="https://instagram.com/decorator.halajian" target="_blank" class="btn-social btn-instagram">
           <i class="fab fa-instagram"></i>
-          <span>پیج اینستاگرام @decorator.halajian</span>
+          <span>اینستاگرام @decorator.halajian</span>
         </a>
       </div>
     </div>
@@ -705,13 +469,12 @@
 <footer>
   <div class="container">
     <div class="footer-links">
-      <a href="#hero">خانه</a>
+      <a href="#zoom">خانه</a>
       <a href="#projects">پروژه‌ها</a>
-      <a href="#about">درباره ما</a>
       <a href="#contact">تماس</a>
     </div>
     <div class="copy">
-      &copy; ۱۴۰۴ استودیو طراحی داخلی ناژو | طراحی و اجرا توسط ایمان حلاجیان
+      &copy; ۱۴۰۴ استودیو طراحی داخلی ناژو | طراحی و اجرا: ایمان حلاجیان
     </div>
   </div>
 </footer>
@@ -721,23 +484,148 @@
   <i class="fas fa-chevron-up"></i>
 </a>
 
-<!-- ====== جاوااسکریپت ====== -->
+<!-- ================================================== -->
+<!-- ====== جاوااسکریپت (همان منطق زوم) ====== -->
 <script>
-  // ---- همبرگر ----
+(function () {
+  // ---- داده‌های صحنه‌ها (هر کدوم یک بخش از برند ناژو) ----
+  const SCENES = [
+    {
+      img: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200",
+      focal: "50% 42%",
+      tag: "ناژو",
+      title: "طراحی داخلی\nبا هویت",
+      sub: "استودیو ناژو به مدیریت ایمان حلاجیان، تلفیقی از هنر کلاسیک و مدرن در رامسر، تنکابن و چابکسر."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200",
+      focal: "50% 55%",
+      tag: "کلاسیک",
+      title: "زیبایی‌های\nجاودانه",
+      sub: "طرح‌های کلاسیک با گچ‌بری‌های ظریف، لوسترهای کریستالی و رنگ‌های گرم و اصیل."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=1200",
+      focal: "48% 50%",
+      tag: "مدرن",
+      title: "مینیمال\nو کارآمد",
+      sub: "فضاهای مدرن با خطوط ساده، نورپردازی هوشمند و مبلمان مینیمال برای زندگی امروز."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1618219740975-d0e7e1db4e3d?w=1200",
+      focal: "50% 46%",
+      tag: "پروژه‌ها",
+      title: "از رامسر تا\nچابکسر",
+      sub: "پروژه‌های موفق در شهرهای شمالی – هر فضا روایتی منحصربه‌فرد از سلیقه و هنر."
+    }
+  ];
+
+  const ZOOM = 5;
+  const stage   = document.querySelector(".zoom-stage");
+  const section = document.getElementById("zoom");
+  const dotsBox = document.getElementById("zoomDots");
+  const hint    = document.getElementById("zoomHint");
+  const n = SCENES.length;
+
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  // ارتفاع سکشن
+  section.style.height = (n * 120) + "vh";
+
+  // ---- ساخت صحنه‌ها ----
+  const sceneEls = SCENES.map((s, j) => {
+    const el = document.createElement("div");
+    el.className = "scene";
+    el.innerHTML = `
+      <div class="scene__img-wrap" style="transform-origin:${s.focal}">
+        <img class="scene__img" src="${s.img}" alt="" draggable="false" loading="${j===0?'eager':'lazy'}" />
+        <div class="scene__scrim-1"></div>
+        <div class="scene__scrim-2"></div>
+        <div class="scene__scrim-3"></div>
+      </div>
+      <div class="scene__content">
+        <div class="scene__inner">
+          <div class="scene__tagline"><span class="scene__line"></span><span class="scene__tag">${s.tag}</span></div>
+          <h2 class="scene__title">${s.title}</h2>
+          <p class="scene__sub">${s.sub}</p>
+          ${j === 0 ? `<a href="#projects" class="scene__btn">مشاهده پروژه‌ها <i class="fas fa-arrow-left" style="margin-right:8px;"></i></a>` : ''}
+        </div>
+      </div>`;
+    stage.insertBefore(el, dotsBox);
+    return el;
+  });
+
+  // ---- نقاط ناوبری ----
+  const dotEls = SCENES.map((s, i) => {
+    const b = document.createElement("button");
+    b.className = "zoom-dot";
+    b.setAttribute("aria-label", s.tag);
+    b.addEventListener("click", () => {
+      const scrollable = section.offsetHeight - window.innerHeight;
+      const top = section.offsetTop + (i / (n - 1)) * scrollable;
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+    dotsBox.appendChild(b);
+    return b;
+  });
+
+  // ---- محاسبه‌ی زوم ----
+  let zoom = 0, ticking = false;
+
+  function update() {
+    ticking = false;
+    const rect = section.getBoundingClientRect();
+    const scrollable = rect.height - window.innerHeight;
+    if (scrollable <= 0) return;
+    const progress = clamp(-rect.top / scrollable, 0, 1);
+    zoom = progress * (n - 1);
+    render();
+  }
+
+  function render() {
+    const activeIndex = clamp(Math.round(zoom), 0, n - 1);
+
+    sceneEls.forEach((el, j) => {
+      const rel = zoom - j;
+      const visible = rel > -1.05 && rel < 1.05;
+      el.style.display = visible ? "block" : "none";
+      if (!visible) return;
+
+      const scale = Math.pow(ZOOM, rel);
+      let opacity = rel >= 0
+        ? 1 - clamp((rel - 0.55) / 0.45, 0, 1)
+        : clamp((rel + 0.6) / 0.6, 0, 1);
+
+      el.style.opacity = opacity;
+      el.style.zIndex  = rel >= 0 ? 20 - Math.round(rel * 2) : 10 + Math.round(rel * 2);
+      el.querySelector(".scene__img-wrap").style.transform = `scale(${scale})`;
+
+      const textOpacity = clamp(1 - Math.abs(rel) / 0.5, 0, 1);
+      const content = el.querySelector(".scene__content");
+      content.style.opacity = textOpacity;
+      content.style.transform = `translateY(${(1 - textOpacity) * 24}px)`;
+    });
+
+    dotEls.forEach((d, i) => d.classList.toggle("is-active", i === activeIndex));
+    hint.style.opacity = zoom < 0.3 ? 1 : 0;
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+
+  // ---- منوی همبرگر ----
   const hamburger = document.getElementById('hamburgerBtn');
   const navMenu = document.getElementById('navMenu');
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('active');
-    // تغییر آیکون
     const icon = this.querySelector('i');
-    if (navMenu.classList.contains('active')) {
-      icon.className = 'fas fa-times';
-    } else {
-      icon.className = 'fas fa-bars';
-    }
+    icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
   });
-
-  // بستن منو با کلیک روی هر لینک (در موبایل)
   document.querySelectorAll('#navMenu a').forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
@@ -748,19 +636,14 @@
   // ---- دکمه بازگشت به بالا ----
   const backBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      backBtn.classList.add('show');
-    } else {
-      backBtn.classList.remove('show');
-    }
+    backBtn.classList.toggle('show', window.scrollY > 400);
   });
-
-  // جلوگیری از رفتن به بالای صفحه با # (برای دکمه)
   backBtn.addEventListener('click', function(e) {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-</script>
 
+})();
+</script>
 </body>
 </html>
