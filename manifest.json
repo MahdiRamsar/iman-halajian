@@ -1,0 +1,16 @@
+{
+  "name": "استودیو طراحی داخلی ناژو",
+  "short_name": "ناژو",
+  "description": "طراحی داخلی لوکس با چوب و ام‌دی‌اف در رامسر و حومه",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0a08",
+  "theme_color": "#0b0a08",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

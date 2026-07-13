@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://najou-studio.ir/sitemap.xml
