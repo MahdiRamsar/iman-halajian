@@ -55,8 +55,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   
-  <!-- ===== Font Awesome (آیکون‌ها) ===== -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- ===== فونت‌های زیبای فارسی (گوگل فونت) ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- ===== Font Awesome ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   
   <style>
     /* ========== تمام CSS در اینجا ========== */
@@ -96,42 +101,19 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== فونت محلی (fallback) ===== */
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: local('Vazirmatn'), local('Vazir'), local('Tahoma');
-      font-weight: 400;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: local('Vazirmatn Bold'), local('Vazir Bold');
+    /* ===== فونت تیترها ===== */
+    h1, h2, h3, .logo, .scene__title, .section__title, .project-card__title {
+      font-family: 'Playfair Display', 'Vazirmatn', serif;
       font-weight: 700;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: local('Vazirmatn ExtraBold'), local('Vazir ExtraBold');
-      font-weight: 800;
-      font-display: swap;
     }
 
-    h1,
-    h2,
-    h3 {
-      font-weight: 800;
-      line-height: 1.2;
+    h1 {
+      font-weight: 900;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+    .logo {
+      font-weight: 900;
+      font-style: italic;
     }
 
     /* ===== Container ===== */
@@ -163,10 +145,10 @@
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: 900;
+      font-size: 1.6rem;
       letter-spacing: 1px;
       color: var(--fg);
+      text-decoration: none;
     }
 
     .logo span {
@@ -186,6 +168,7 @@
       font-size: 0.95rem;
       transition: color 0.3s;
       position: relative;
+      text-decoration: none;
     }
 
     .nav__list a:hover {
@@ -324,6 +307,7 @@
       letter-spacing: 0.25em;
       color: var(--primary);
       font-weight: 700;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .scene__title {
@@ -332,6 +316,7 @@
       font-weight: 900;
       line-height: 1.05;
       white-space: pre-line;
+      font-family: 'Playfair Display', 'Vazirmatn', serif;
     }
 
     .scene__sub {
@@ -340,6 +325,7 @@
       font-size: 1.05rem;
       line-height: 1.7;
       color: var(--muted);
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .scene__btn {
@@ -351,6 +337,8 @@
       color: var(--primary);
       font-weight: 700;
       transition: all 0.3s;
+      font-family: 'Vazirmatn', sans-serif;
+      text-decoration: none;
     }
 
     .scene__btn:hover {
@@ -405,6 +393,7 @@
       text-transform: uppercase;
       letter-spacing: 0.25em;
       color: var(--muted);
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .zoom-hint__arrow {
@@ -433,10 +422,11 @@
 
     .section__title {
       font-size: 2.4rem;
-      font-weight: 800;
+      font-weight: 700;
       display: inline-block;
       position: relative;
       margin-bottom: 1rem;
+      font-family: 'Playfair Display', 'Vazirmatn', serif;
     }
 
     .section__title::after {
@@ -454,6 +444,7 @@
       color: var(--muted);
       max-width: 600px;
       margin: 10px 0 0;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     /* ===== درباره ما ===== */
@@ -462,6 +453,7 @@
       line-height: 2.2;
       color: var(--muted);
       font-size: 1.05rem;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .about__content p {
@@ -532,8 +524,9 @@
 
     .project-card__title {
       font-size: 1.3rem;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 6px;
+      font-family: 'Playfair Display', 'Vazirmatn', serif;
     }
 
     .project-card__tag {
@@ -545,6 +538,7 @@
       font-size: 0.75rem;
       font-weight: 700;
       border: 1px solid rgba(201, 168, 124, 0.15);
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .project-card__desc {
@@ -552,6 +546,7 @@
       color: var(--muted);
       margin-top: 8px;
       line-height: 1.7;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .project-card__readmore {
@@ -560,6 +555,8 @@
       color: var(--primary);
       font-weight: 700;
       transition: color 0.3s;
+      font-family: 'Vazirmatn', sans-serif;
+      text-decoration: none;
     }
 
     .project-card__readmore:hover {
@@ -583,6 +580,7 @@
       align-items: center;
       gap: 16px;
       margin-bottom: 24px;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .contact__icon {
@@ -594,58 +592,60 @@
     .contact__item a {
       color: #d0c9be;
       transition: color 0.3s;
+      text-decoration: none;
     }
 
     .contact__item a:hover {
       color: var(--primary-light);
     }
 
-    .contact__buttons {
-      flex: 1 1 40%;
+    /* ===== دکمه‌های شناور واتساپ و اینستاگرام ===== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      z-index: 999;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      justify-content: center;
+      gap: 12px;
     }
 
-    .btn {
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 16px 20px;
-      border-radius: 60px;
-      font-weight: 700;
-      transition: all 0.3s;
-      border: 1px solid rgba(201, 168, 124, 0.15);
-      background: transparent;
-      color: var(--fg);
-    }
-
-    .btn__icon {
       font-size: 1.8rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border: none;
+      cursor: pointer;
+      position: relative;
     }
 
-    .btn--whatsapp {
-      border-color: #25d366;
-      color: #25d366;
+    .floating-btn:hover {
+      transform: scale(1.1) translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .btn--whatsapp:hover {
+    .floating-btn--whatsapp {
       background: #25d366;
-      color: #0b0a08;
-      box-shadow: 0 0 30px rgba(37, 211, 102, 0.3);
     }
 
-    .btn--instagram {
-      border-color: #e1306c;
-      color: #e1306c;
+    .floating-btn--whatsapp:hover {
+      background: #20b85a;
     }
 
-    .btn--instagram:hover {
+    .floating-btn--instagram {
       background: #e1306c;
-      color: #0b0a08;
-      box-shadow: 0 0 30px rgba(225, 48, 108, 0.3);
+    }
+
+    .floating-btn--instagram:hover {
+      background: #c72a5f;
     }
 
     /* ===== فوتر ===== */
@@ -667,6 +667,8 @@
     .footer__links a {
       color: #b5aea3;
       transition: color 0.3s;
+      text-decoration: none;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     .footer__links a:hover {
@@ -676,6 +678,7 @@
     .footer__copy {
       font-size: 0.9rem;
       color: #7a756b;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
     /* ===== دکمه بازگشت به بالا ===== */
@@ -697,6 +700,7 @@
       transition: all 0.3s;
       opacity: 0;
       visibility: hidden;
+      text-decoration: none;
     }
 
     .back-to-top.show {
@@ -761,6 +765,17 @@
       .zoom-dots {
         left: 0.6rem;
       }
+
+      .floating-buttons {
+        right: 12px;
+        bottom: 80px;
+      }
+
+      .floating-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -777,9 +792,16 @@
         font-size: 0.9rem;
       }
 
-      .btn {
-        padding: 14px 16px;
-        font-size: 0.9rem;
+      .floating-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+      }
+
+      .floating-buttons {
+        right: 10px;
+        bottom: 70px;
+        gap: 10px;
       }
     }
   </style>
@@ -958,22 +980,6 @@
           </div>
         </div>
       </div>
-      <div class="contact__buttons">
-        <a href="https://wa.me/989113548593?text=سلام%20من%20از%20سایت%20ناژو%20پیام%20میدم" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="btn btn--whatsapp">
-          <span class="btn__icon" aria-hidden="true">💬</span>
-          <span>ارسال پیام در واتساپ</span>
-        </a>
-        <a href="https://instagram.com/decorator.halajian" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="btn btn--instagram">
-          <span class="btn__icon" aria-hidden="true">📸</span>
-          <span>اینستاگرام @decorator.halajian</span>
-        </a>
-      </div>
     </div>
   </div>
 </section>
@@ -997,6 +1003,24 @@
 <a href="#hero" class="back-to-top" id="backToTop" aria-label="بازگشت به بالا">
   <span aria-hidden="true">↑</span>
 </a>
+
+<!-- ===== دکمه‌های شناور واتساپ و اینستاگرام ===== -->
+<div class="floating-buttons">
+  <a href="https://wa.me/989113548593?text=سلام%20من%20از%20سایت%20ناژو%20پیام%20میدم" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="floating-btn floating-btn--whatsapp"
+     aria-label="ارسال پیام در واتساپ">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://instagram.com/decorator.halajian" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="floating-btn floating-btn--instagram"
+     aria-label="پیج اینستاگرام">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
 
 <!-- ===== تمام جاوااسکریپت در اینجا ===== -->
 <script>
