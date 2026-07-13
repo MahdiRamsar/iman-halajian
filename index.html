@@ -55,7 +55,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   
-  <!-- ===== فونت‌های زیبای فارسی (گوگل فونت) ===== -->
+  <!-- ===== فونت‌های زیبای فارسی ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -64,9 +64,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   
   <style>
-    /* ========== تمام CSS در اینجا ========== */
-    
-    /* ===== متغیرها ===== */
+    /* ========== تمام CSS ========== */
     :root {
       --bg: #0b0a08;
       --fg: #f2ebe1;
@@ -78,7 +76,6 @@
       --shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
 
-    /* ===== ریست ===== */
     *,
     *::before,
     *::after {
@@ -101,22 +98,14 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== فونت تیترها ===== */
     h1, h2, h3, .logo, .scene__title, .section__title, .project-card__title {
       font-family: 'Playfair Display', 'Vazirmatn', serif;
       font-weight: 700;
     }
 
-    h1 {
-      font-weight: 900;
-    }
+    h1 { font-weight: 900; }
+    .logo { font-weight: 900; font-style: italic; }
 
-    .logo {
-      font-weight: 900;
-      font-style: italic;
-    }
-
-    /* ===== Container ===== */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -150,12 +139,8 @@
       color: var(--fg);
       text-decoration: none;
     }
+    .logo span { color: var(--primary); }
 
-    .logo span {
-      color: var(--primary);
-    }
-
-    /* ===== منو ===== */
     .nav__list {
       display: flex;
       gap: 28px;
@@ -171,10 +156,7 @@
       text-decoration: none;
     }
 
-    .nav__list a:hover {
-      color: var(--primary-light);
-    }
-
+    .nav__list a:hover { color: var(--primary-light); }
     .nav__list a::after {
       content: '';
       position: absolute;
@@ -185,12 +167,8 @@
       background: var(--primary);
       transition: width 0.3s;
     }
+    .nav__list a:hover::after { width: 100%; }
 
-    .nav__list a:hover::after {
-      width: 100%;
-    }
-
-    /* ===== همبرگر ===== */
     .hamburger {
       display: none;
       background: none;
@@ -221,10 +199,7 @@
     }
 
     /* ===== بخش زوم ===== */
-    .zoom-section {
-      position: relative;
-    }
-
+    .zoom-section { position: relative; }
     .zoom-stage {
       position: sticky;
       top: 0;
@@ -261,13 +236,11 @@
       inset: 0;
       background: rgba(11, 10, 8, 0.55);
     }
-
     .scene__scrim-2 {
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, var(--bg), rgba(11, 10, 8, 0.3) 40%, rgba(11, 10, 8, 0.6));
     }
-
     .scene__scrim-3 {
       position: absolute;
       inset: 0;
@@ -294,13 +267,11 @@
       align-items: center;
       gap: 0.75rem;
     }
-
     .scene__line {
       height: 1px;
       width: 2.5rem;
       background: var(--primary);
     }
-
     .scene__tag {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -340,14 +311,12 @@
       font-family: 'Vazirmatn', sans-serif;
       text-decoration: none;
     }
-
     .scene__btn:hover {
       background: var(--primary);
       color: #0b0a08;
       box-shadow: 0 0 30px rgba(201, 168, 124, 0.3);
     }
 
-    /* ===== نقاط ناوبری ===== */
     .zoom-dots {
       position: absolute;
       top: 50%;
@@ -368,13 +337,11 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-
     .zoom-dot.is-active {
       background: var(--primary);
       transform: scale(1.3);
     }
 
-    /* ===== راهنما ===== */
     .zoom-hint {
       position: absolute;
       inset-inline: 0;
@@ -395,19 +362,11 @@
       color: var(--muted);
       font-family: 'Vazirmatn', sans-serif;
     }
-
-    .zoom-hint__arrow {
-      animation: bob 1.2s infinite;
-    }
+    .zoom-hint__arrow { animation: bob 1.2s infinite; }
 
     @keyframes bob {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(6px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
     }
 
     /* ===== بخش‌های عمومی ===== */
@@ -415,10 +374,7 @@
       padding: 80px 0;
       border-top: 1px solid rgba(201, 168, 124, 0.1);
     }
-
-    .section:last-of-type {
-      border-bottom: none;
-    }
+    .section:last-of-type { border-bottom: none; }
 
     .section__title {
       font-size: 2.4rem;
@@ -455,14 +411,8 @@
       font-size: 1.05rem;
       font-family: 'Vazirmatn', sans-serif;
     }
-
-    .about__content p {
-      margin-bottom: 16px;
-    }
-
-    .about__content strong {
-      color: var(--primary-light);
-    }
+    .about__content p { margin-bottom: 16px; }
+    .about__content strong { color: var(--primary-light); }
 
     .about__highlight {
       margin-top: 20px;
@@ -474,10 +424,7 @@
       align-items: center;
       gap: 12px;
     }
-
-    .about__icon {
-      font-size: 1.4rem;
-    }
+    .about__icon { font-size: 1.4rem; }
 
     /* ===== پروژه‌ها ===== */
     .projects__grid {
@@ -494,7 +441,6 @@
       border: 1px solid rgba(201, 168, 124, 0.15);
       transition: transform 0.3s ease, box-shadow 0.4s ease;
     }
-
     .project-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow);
@@ -505,7 +451,6 @@
       height: 250px;
       position: relative;
     }
-
     .project-card__image-wrap img {
       width: 100%;
       height: 100%;
@@ -513,15 +458,11 @@
       transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       display: block;
     }
-
     .project-card:hover .project-card__image-wrap img {
       transform: scale(1.15);
     }
 
-    .project-card__info {
-      padding: 20px;
-    }
-
+    .project-card__info { padding: 20px; }
     .project-card__title {
       font-size: 1.3rem;
       font-weight: 700;
@@ -558,10 +499,7 @@
       font-family: 'Vazirmatn', sans-serif;
       text-decoration: none;
     }
-
-    .project-card__readmore:hover {
-      color: var(--primary-light);
-    }
+    .project-card__readmore:hover { color: var(--primary-light); }
 
     /* ===== تماس ===== */
     .contact__wrapper {
@@ -570,11 +508,7 @@
       gap: 40px;
       margin-top: 30px;
     }
-
-    .contact__info {
-      flex: 1 1 40%;
-    }
-
+    .contact__info { flex: 1 1 40%; }
     .contact__item {
       display: flex;
       align-items: center;
@@ -582,24 +516,19 @@
       margin-bottom: 24px;
       font-family: 'Vazirmatn', sans-serif;
     }
-
     .contact__icon {
       font-size: 1.6rem;
       width: 40px;
       text-align: center;
     }
-
     .contact__item a {
       color: #d0c9be;
       transition: color 0.3s;
       text-decoration: none;
     }
+    .contact__item a:hover { color: var(--primary-light); }
 
-    .contact__item a:hover {
-      color: var(--primary-light);
-    }
-
-    /* ===== دکمه‌های شناور واتساپ و اینستاگرام ===== */
+    /* ===== دکمه‌های شناور ===== */
     .floating-buttons {
       position: fixed;
       bottom: 100px;
@@ -624,29 +553,15 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       border: none;
       cursor: pointer;
-      position: relative;
     }
-
     .floating-btn:hover {
       transform: scale(1.1) translateY(-3px);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     }
-
-    .floating-btn--whatsapp {
-      background: #25d366;
-    }
-
-    .floating-btn--whatsapp:hover {
-      background: #20b85a;
-    }
-
-    .floating-btn--instagram {
-      background: #e1306c;
-    }
-
-    .floating-btn--instagram:hover {
-      background: #c72a5f;
-    }
+    .floating-btn--whatsapp { background: #25d366; }
+    .floating-btn--whatsapp:hover { background: #20b85a; }
+    .floating-btn--instagram { background: #e1306c; }
+    .floating-btn--instagram:hover { background: #c72a5f; }
 
     /* ===== فوتر ===== */
     .footer {
@@ -655,7 +570,6 @@
       text-align: center;
       border-top: 1px solid rgba(201, 168, 124, 0.1);
     }
-
     .footer__links {
       display: flex;
       justify-content: center;
@@ -663,18 +577,13 @@
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
-
     .footer__links a {
       color: #b5aea3;
       transition: color 0.3s;
       text-decoration: none;
       font-family: 'Vazirmatn', sans-serif;
     }
-
-    .footer__links a:hover {
-      color: var(--primary-light);
-    }
-
+    .footer__links a:hover { color: var(--primary-light); }
     .footer__copy {
       font-size: 0.9rem;
       color: #7a756b;
@@ -702,12 +611,10 @@
       visibility: hidden;
       text-decoration: none;
     }
-
     .back-to-top.show {
       opacity: 1;
       visibility: visible;
     }
-
     .back-to-top:hover {
       transform: translateY(-4px);
       background: var(--primary-light);
@@ -715,10 +622,7 @@
 
     /* ===== ریسپانسیو ===== */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
+      .hamburger { display: flex; }
       .nav__list {
         display: none;
         flex-direction: column;
@@ -729,80 +633,25 @@
         margin-top: 16px;
         border-top: 1px solid rgba(201, 168, 124, 0.15);
       }
-
-      .nav__list.is-open {
-        display: flex;
-      }
-
-      .nav__list li {
-        text-align: center;
-      }
-
-      .section {
-        padding: 50px 0;
-      }
-
-      .section__title {
-        font-size: 1.8rem;
-      }
-
-      .scene__title {
-        font-size: clamp(2rem, 12vw, 3.5rem);
-      }
-
-      .projects__grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact__wrapper {
-        flex-direction: column;
-      }
-
-      .about__content {
-        font-size: 0.95rem;
-      }
-
-      .zoom-dots {
-        left: 0.6rem;
-      }
-
-      .floating-buttons {
-        right: 12px;
-        bottom: 80px;
-      }
-
-      .floating-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 1.4rem;
-      }
+      .nav__list.is-open { display: flex; }
+      .nav__list li { text-align: center; }
+      .section { padding: 50px 0; }
+      .section__title { font-size: 1.8rem; }
+      .scene__title { font-size: clamp(2rem, 12vw, 3.5rem); }
+      .projects__grid { grid-template-columns: 1fr; }
+      .contact__wrapper { flex-direction: column; }
+      .about__content { font-size: 0.95rem; }
+      .zoom-dots { left: 0.6rem; }
+      .floating-buttons { right: 12px; bottom: 80px; }
+      .floating-btn { width: 48px; height: 48px; font-size: 1.4rem; }
     }
 
     @media (max-width: 480px) {
-      .logo {
-        font-size: 1.2rem;
-      }
-
-      .scene__sub {
-        font-size: 0.9rem;
-      }
-
-      .scene__btn {
-        padding: 10px 24px;
-        font-size: 0.9rem;
-      }
-
-      .floating-btn {
-        width: 42px;
-        height: 42px;
-        font-size: 1.2rem;
-      }
-
-      .floating-buttons {
-        right: 10px;
-        bottom: 70px;
-        gap: 10px;
-      }
+      .logo { font-size: 1.2rem; }
+      .scene__sub { font-size: 0.9rem; }
+      .scene__btn { padding: 10px 24px; font-size: 0.9rem; }
+      .floating-btn { width: 42px; height: 42px; font-size: 1.2rem; }
+      .floating-buttons { right: 10px; bottom: 70px; gap: 10px; }
     }
   </style>
 </head>
@@ -1004,7 +853,7 @@
   <span aria-hidden="true">↑</span>
 </a>
 
-<!-- ===== دکمه‌های شناور واتساپ و اینستاگرام ===== -->
+<!-- ===== دکمه‌های شناور ===== -->
 <div class="floating-buttons">
   <a href="https://wa.me/989113548593?text=سلام%20من%20از%20سایت%20ناژو%20پیام%20میدم" 
      target="_blank" 
@@ -1022,36 +871,38 @@
   </a>
 </div>
 
-<!-- ===== تمام جاوااسکریپت در اینجا ===== -->
+<!-- ===== جاوااسکریپت ===== -->
 <script>
   (function () {
     'use strict';
 
-    // ===== داده‌های صحنه‌ها =====
+    // =====================================================
+    // 🔥 تغییر مهم: استفاده از عکس‌های محلی (همون ۶ تا پروژه)
+    // =====================================================
     const SCENES = [
       {
-        img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&fm=webp&q=80',
+        img: 'images/1.jpg',        // عکس پروژه شماره ۱
         focal: '50% 42%',
         tag: 'ناژو',
         title: 'طراحی داخلی\nبا اصالت',
         sub: 'استودیو ناژو به مدیریت ایمان حلاجیان، متخصص در دکوراسیون داخلی با چوب و ام‌دی‌اف در رامسر و حومه.',
       },
       {
-        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&fm=webp&q=80',
+        img: 'images/3.jpg',        // عکس پروژه شماره ۳ (سالن پذیرایی کلاسیک)
         focal: '50% 55%',
         tag: 'کلاسیک',
         title: 'گرمای چوب\nو اصالت',
         sub: 'طراحی آشپزخانه و اتاق خواب با چوب طبیعی و ام‌دی‌اف، فضایی گرم و ماندگار.',
       },
       {
-        img: 'https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=1200&fm=webp&q=80',
+        img: 'images/4.jpg',        // عکس پروژه شماره ۴ (آشپزخانه مدرن)
         focal: '48% 50%',
         tag: 'مدرن',
         title: 'مینیمال\nو کارآمد',
         sub: 'دکوراسیون مدرن با خطوط ساده، کابینت‌های هایگلاس و نورپردازی هوشمند.',
       },
       {
-        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&fm=webp&q=80',
+        img: 'images/2.jpg',        // عکس پروژه شماره ۲ (اتاق خواب مدرن)
         focal: '50% 46%',
         tag: 'حوزه فعالیت',
         title: 'متمرکز بر\nرامسر و حومه',
@@ -1067,7 +918,6 @@
     const n = SCENES.length;
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-    // ارتفاع سکشن
     section.style.height = n * 120 + 'vh';
 
     // ===== ساخت صحنه‌ها =====
