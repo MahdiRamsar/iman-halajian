@@ -48,15 +48,55 @@
     }
   </script>
   
-  <!-- ===== PWA Manifest ===== -->
+  <!-- ===== PWA ===== -->
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>" />
   <meta name="theme-color" content="#0b0a08" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   
-  <!-- ===== فونت محلی ===== -->
+  <!-- ===== Font Awesome (آیکون‌ها) ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  
   <style>
+    /* ========== تمام CSS در اینجا ========== */
+    
+    /* ===== متغیرها ===== */
+    :root {
+      --bg: #0b0a08;
+      --fg: #f2ebe1;
+      --muted: #b5aea3;
+      --primary: #c9a87c;
+      --primary-light: #e4d4b0;
+      --zoom: 5;
+      --radius: 16px;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ===== ریست ===== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+      direction: rtl;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== فونت محلی (fallback) ===== */
     @font-face {
       font-family: 'Vazirmatn';
       src: local('Vazirmatn'), local('Vazir'), local('Tahoma');
@@ -75,17 +115,674 @@
       font-weight: 800;
       font-display: swap;
     }
-    body {
-      font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== Container ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== هدر ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(11, 10, 8, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 168, 124, 0.15);
+      padding: 12px 0;
+    }
+
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: var(--fg);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    /* ===== منو ===== */
+    .nav__list {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav__list a {
+      color: #d6d0c6;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav__list a:hover {
+      color: var(--primary-light);
+    }
+
+    .nav__list a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav__list a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== همبرگر ===== */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hamburger__line {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--fg);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hamburger[aria-expanded="true"] .hamburger__line:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger[aria-expanded="true"] .hamburger__line:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger[aria-expanded="true"] .hamburger__line:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    /* ===== بخش زوم ===== */
+    .zoom-section {
+      position: relative;
+    }
+
+    .zoom-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: none;
+      will-change: transform, opacity;
+    }
+
+    .scene__img-wrap {
+      position: absolute;
+      inset: 0;
+      will-change: transform;
+    }
+
+    .scene__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45) contrast(1.05) saturate(1.1);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .scene__scrim-1 {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 10, 8, 0.55);
+    }
+
+    .scene__scrim-2 {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--bg), rgba(11, 10, 8, 0.3) 40%, rgba(11, 10, 8, 0.6));
+    }
+
+    .scene__scrim-3 {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, rgba(11, 10, 8, 0.85), rgba(11, 10, 8, 0.2) 50%, transparent);
+    }
+
+    .scene__content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      will-change: opacity, transform;
+    }
+
+    .scene__inner {
+      width: 100%;
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .scene__tagline {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .scene__line {
+      height: 1px;
+      width: 2.5rem;
+      background: var(--primary);
+    }
+
+    .scene__tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .scene__title {
+      margin-top: 1.25rem;
+      font-size: clamp(2.75rem, 9vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      white-space: pre-line;
+    }
+
+    .scene__sub {
+      margin-top: 1.5rem;
+      max-width: 28rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .scene__btn {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 12px 32px;
+      border: 2px solid var(--primary);
+      border-radius: 40px;
+      color: var(--primary);
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+
+    .scene__btn:hover {
+      background: var(--primary);
+      color: #0b0a08;
+      box-shadow: 0 0 30px rgba(201, 168, 124, 0.3);
+    }
+
+    /* ===== نقاط ناوبری ===== */
+    .zoom-dots {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1.25rem;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .zoom-dot {
+      height: 0.6rem;
+      width: 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 168, 124, 0.6);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .zoom-dot.is-active {
+      background: var(--primary);
+      transform: scale(1.3);
+    }
+
+    /* ===== راهنما ===== */
+    .zoom-hint {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 2rem;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .zoom-hint span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+    }
+
+    .zoom-hint__arrow {
+      animation: bob 1.2s infinite;
+    }
+
+    @keyframes bob {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* ===== بخش‌های عمومی ===== */
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid rgba(201, 168, 124, 0.1);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section__title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .section__title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 2px;
+    }
+
+    .section__subtitle {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 10px 0 0;
+    }
+
+    /* ===== درباره ما ===== */
+    .about__content {
+      max-width: 900px;
+      line-height: 2.2;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .about__content p {
+      margin-bottom: 16px;
+    }
+
+    .about__content strong {
+      color: var(--primary-light);
+    }
+
+    .about__highlight {
+      margin-top: 20px;
+      background: #1a1714;
+      padding: 20px 30px;
+      border-radius: var(--radius);
+      border-right: 4px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about__icon {
+      font-size: 1.4rem;
+    }
+
+    /* ===== پروژه‌ها ===== */
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: #1a1714;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 124, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card__image-wrap {
+      overflow: hidden;
+      height: 250px;
+      position: relative;
+    }
+
+    .project-card__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: block;
+    }
+
+    .project-card:hover .project-card__image-wrap img {
+      transform: scale(1.15);
+    }
+
+    .project-card__info {
+      padding: 20px;
+    }
+
+    .project-card__title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .project-card__tag {
+      display: inline-block;
+      background: rgba(201, 168, 124, 0.12);
+      color: var(--primary);
+      padding: 2px 16px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid rgba(201, 168, 124, 0.15);
+    }
+
+    .project-card__desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+
+    .project-card__readmore {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--primary);
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+
+    .project-card__readmore:hover {
+      color: var(--primary-light);
+    }
+
+    /* ===== تماس ===== */
+    .contact__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .contact__info {
+      flex: 1 1 40%;
+    }
+
+    .contact__item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .contact__icon {
+      font-size: 1.6rem;
+      width: 40px;
+      text-align: center;
+    }
+
+    .contact__item a {
+      color: #d0c9be;
+      transition: color 0.3s;
+    }
+
+    .contact__item a:hover {
+      color: var(--primary-light);
+    }
+
+    .contact__buttons {
+      flex: 1 1 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-radius: 60px;
+      font-weight: 700;
+      transition: all 0.3s;
+      border: 1px solid rgba(201, 168, 124, 0.15);
+      background: transparent;
+      color: var(--fg);
+    }
+
+    .btn__icon {
+      font-size: 1.8rem;
+    }
+
+    .btn--whatsapp {
+      border-color: #25d366;
+      color: #25d366;
+    }
+
+    .btn--whatsapp:hover {
+      background: #25d366;
+      color: #0b0a08;
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn--instagram {
+      border-color: #e1306c;
+      color: #e1306c;
+    }
+
+    .btn--instagram:hover {
+      background: #e1306c;
+      color: #0b0a08;
+      box-shadow: 0 0 30px rgba(225, 48, 108, 0.3);
+    }
+
+    /* ===== فوتر ===== */
+    .footer {
+      background: #0b0a08;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 124, 0.1);
+    }
+
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .footer__links a {
+      color: #b5aea3;
+      transition: color 0.3s;
+    }
+
+    .footer__links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer__copy {
+      font-size: 0.9rem;
+      color: #7a756b;
+    }
+
+    /* ===== دکمه بازگشت به بالا ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 999;
+      background: var(--primary);
+      color: #0b0a08;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 20px rgba(201, 168, 124, 0.3);
+      transition: all 0.3s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      background: var(--primary-light);
+    }
+
+    /* ===== ریسپانسیو ===== */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav__list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(11, 10, 8, 0.98);
+        padding: 20px 0;
+        gap: 16px;
+        margin-top: 16px;
+        border-top: 1px solid rgba(201, 168, 124, 0.15);
+      }
+
+      .nav__list.is-open {
+        display: flex;
+      }
+
+      .nav__list li {
+        text-align: center;
+      }
+
+      .section {
+        padding: 50px 0;
+      }
+
+      .section__title {
+        font-size: 1.8rem;
+      }
+
+      .scene__title {
+        font-size: clamp(2rem, 12vw, 3.5rem);
+      }
+
+      .projects__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact__wrapper {
+        flex-direction: column;
+      }
+
+      .about__content {
+        font-size: 0.95rem;
+      }
+
+      .zoom-dots {
+        left: 0.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      .scene__sub {
+        font-size: 0.9rem;
+      }
+
+      .scene__btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+      }
     }
   </style>
-  
-  <!-- ===== CSS ===== -->
-  <link rel="stylesheet" href="style.css" />
-  
-  <!-- ===== preconnect ===== -->
-  <link rel="preconnect" href="https://images.unsplash.com" />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
 </head>
 <body>
 
@@ -144,17 +841,17 @@
   <div class="container">
     <h2 class="section__title" id="projects-title">پروژه‌های ما</h2>
     <p class="section__subtitle">نمونه‌هایی از دکوراسیون داخلی با چوب و ام‌دی‌اف – هاور کنید تا زوم را ببینید.</p>
-    <div class="projects__grid" id="projectsGrid">
+    <div class="projects__grid">
       <!-- پروژه ۱ -->
       <div class="project-card">
         <div class="project-card__image-wrap">
-          <img src="images/1.jpg" alt="آشپزخانه کلاسیک ناژو - پروژه شماره ۱" loading="lazy" decoding="async" width="800" height="600" />
+          <img src="images/1.jpg" alt="آشپزخانه کلاسیک ناژو" loading="lazy" decoding="async" />
         </div>
         <div class="project-card__info">
           <h3 class="project-card__title">۱. آشپزخانه کلاسیک</h3>
           <span class="project-card__tag">چوب و ام‌دی‌اف</span>
           <p class="project-card__desc">
-            این آشپزخانه با الهام از سبک کلاسیک اروپایی و تلفیق آن با هنر اصیل ایرانی طراحی شده است. استفاده از چوب طبیعی گردو در کنار ام‌دی‌اف با روکش ممبران، فضایی گرم، صمیمی و در عین حال مجلل را به ارمغان آورده است.
+            این آشپزخانه با الهام از سبک کلاسیک اروپایی و تلفیق آن با هنر اصیل ایرانی طراحی شده است.
           </p>
           <a href="article/1.html" class="project-card__readmore">ادامه مطلب ←</a>
         </div>
@@ -162,13 +859,13 @@
       <!-- پروژه ۲ -->
       <div class="project-card">
         <div class="project-card__image-wrap">
-          <img src="images/2.jpg" alt="اتاق خواب مدرن ناژو - پروژه شماره ۲" loading="lazy" decoding="async" width="800" height="600" />
+          <img src="images/2.jpg" alt="اتاق خواب مدرن ناژو" loading="lazy" decoding="async" />
         </div>
         <div class="project-card__info">
           <h3 class="project-card__title">۲. اتاق خواب مدرن</h3>
           <span class="project-card__tag">مینیمال</span>
           <p class="project-card__desc">
-            اتاق خواب مدرن ناژو، پاسخی است به نیاز انسان امروز به سادگی، آرامش و دوری از هیاهو. این فضا با بهره‌گیری از اصول مینیمالیسم طراحی شده؛ جایی که «کمتر، واقعاً بیشتر است».
+            اتاق خواب مدرن ناژو، پاسخی است به نیاز انسان امروز به سادگی، آرامش و دوری از هیاهو.
           </p>
           <a href="article/2.html" class="project-card__readmore">ادامه مطلب ←</a>
         </div>
@@ -176,13 +873,13 @@
       <!-- پروژه ۳ -->
       <div class="project-card">
         <div class="project-card__image-wrap">
-          <img src="images/3.jpg" alt="سالن پذیرایی کلاسیک ناژو - پروژه شماره ۳" loading="lazy" decoding="async" width="800" height="600" />
+          <img src="images/3.jpg" alt="سالن پذیرایی کلاسیک ناژو" loading="lazy" decoding="async" />
         </div>
         <div class="project-card__info">
           <h3 class="project-card__title">۳. سالن پذیرایی کلاسیک</h3>
           <span class="project-card__tag">کلاسیک</span>
           <p class="project-card__desc">
-            سالن پذیرایی کلاسیک ناژو، نمادی از شکوه، اصالت و هنر ماندگار است. تلفیق گچ‌بری‌های ظریف، شومینه و لوسترهای کریستالی با متریال‌های مدرن، فضایی مجلل و دلنشین خلق کرده است.
+            سالن پذیرایی کلاسیک ناژو، نمادی از شکوه، اصالت و هنر ماندگار است.
           </p>
           <a href="article/3.html" class="project-card__readmore">ادامه مطلب ←</a>
         </div>
@@ -190,13 +887,13 @@
       <!-- پروژه ۴ -->
       <div class="project-card">
         <div class="project-card__image-wrap">
-          <img src="images/4.jpg" alt="آشپزخانه مدرن ناژو - پروژه شماره ۴" loading="lazy" decoding="async" width="800" height="600" />
+          <img src="images/4.jpg" alt="آشپزخانه مدرن ناژو" loading="lazy" decoding="async" />
         </div>
         <div class="project-card__info">
           <h3 class="project-card__title">۴. آشپزخانه مدرن</h3>
           <span class="project-card__tag">هایگلاس</span>
           <p class="project-card__desc">
-            آشپزخانه مدرن ناژو، نمونهای برجسته از طراحی مینیمال و کارآمد است که در آن زیبایی و عملکرد دست در دست هم داده‌اند. خطوط صاف، سطوح براق و نورپردازی هوشمند، فضایی مدرن خلق کرده است.
+            آشپزخانه مدرن ناژو، نمونهای برجسته از طراحی مینیمال و کارآمد است.
           </p>
           <a href="article/4.html" class="project-card__readmore">ادامه مطلب ←</a>
         </div>
@@ -204,13 +901,13 @@
       <!-- پروژه ۵ -->
       <div class="project-card">
         <div class="project-card__image-wrap">
-          <img src="images/5.jpg" alt="اتاق خواب نئوکلاسیک ناژو - پروژه شماره ۵" loading="lazy" decoding="async" width="800" height="600" />
+          <img src="images/5.jpg" alt="اتاق خواب نئوکلاسیک ناژو" loading="lazy" decoding="async" />
         </div>
         <div class="project-card__info">
           <h3 class="project-card__title">۵. اتاق خواب نئوکلاسیک</h3>
           <span class="project-card__tag">نئوکلاسیک</span>
           <p class="project-card__desc">
-            اتاق خواب نئوکلاسیک ناژو، پلی است میان شکوه و اصالت کلاسیک با سادگی و کارآمدی مدرن. ترکیب پنل‌های دیواری چوبی با پارچه‌های مخمل و رنگ‌های خنثی، فضایی لوکس و آرام خلق کرده است.
+            اتاق خواب نئوکلاسیک ناژو، پلی است میان شکوه و اصالت کلاسیک با سادگی و کارآمدی مدرن.
           </p>
           <a href="article/5.html" class="project-card__readmore">ادامه مطلب ←</a>
         </div>
@@ -218,13 +915,13 @@
       <!-- پروژه ۶ -->
       <div class="project-card">
         <div class="project-card__image-wrap">
-          <img src="images/6.jpg" alt="سالن تلویزیون و پذیرایی ناژو - پروژه شماره ۶" loading="lazy" decoding="async" width="800" height="600" />
+          <img src="images/6.jpg" alt="سالن تلویزیون و پذیرایی ناژو" loading="lazy" decoding="async" />
         </div>
         <div class="project-card__info">
           <h3 class="project-card__title">۶. سالن تلویزیون و پذیرایی</h3>
           <span class="project-card__tag">مدرن</span>
           <p class="project-card__desc">
-            سالن تلویزیون و پذیرایی ناژو، نمونهای از طراحی مدرن و کاربرپسند است که با تأکید بر گرما، صمیمیت و کارایی شکل گرفته است. ترکیب چوب طبیعی و مبلمان راحت، فضایی دلباز و دلنشین خلق کرده است.
+            سالن تلویزیون و پذیرایی ناژو، نمونهای از طراحی مدرن و کاربرپسند است.
           </p>
           <a href="article/6.html" class="project-card__readmore">ادامه مطلب ←</a>
         </div>
@@ -301,7 +998,172 @@
   <span aria-hidden="true">↑</span>
 </a>
 
-<!-- ===== جاوااسکریپت ===== -->
-<script src="script.js" defer></script>
+<!-- ===== تمام جاوااسکریپت در اینجا ===== -->
+<script>
+  (function () {
+    'use strict';
+
+    // ===== داده‌های صحنه‌ها =====
+    const SCENES = [
+      {
+        img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&fm=webp&q=80',
+        focal: '50% 42%',
+        tag: 'ناژو',
+        title: 'طراحی داخلی\nبا اصالت',
+        sub: 'استودیو ناژو به مدیریت ایمان حلاجیان، متخصص در دکوراسیون داخلی با چوب و ام‌دی‌اف در رامسر و حومه.',
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&fm=webp&q=80',
+        focal: '50% 55%',
+        tag: 'کلاسیک',
+        title: 'گرمای چوب\nو اصالت',
+        sub: 'طراحی آشپزخانه و اتاق خواب با چوب طبیعی و ام‌دی‌اف، فضایی گرم و ماندگار.',
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=1200&fm=webp&q=80',
+        focal: '48% 50%',
+        tag: 'مدرن',
+        title: 'مینیمال\nو کارآمد',
+        sub: 'دکوراسیون مدرن با خطوط ساده، کابینت‌های هایگلاس و نورپردازی هوشمند.',
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&fm=webp&q=80',
+        focal: '50% 46%',
+        tag: 'حوزه فعالیت',
+        title: 'متمرکز بر\nرامسر و حومه',
+        sub: 'ارائه خدمات طراحی داخلی در رامسر، تنکابن، چابکسر و مناطق اطراف.',
+      },
+    ];
+
+    const ZOOM = 5;
+    const stage = document.getElementById('zoomStage');
+    const section = stage.closest('.zoom-section');
+    const dotsBox = document.getElementById('zoomDots');
+    const hint = document.getElementById('zoomHint');
+    const n = SCENES.length;
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+    // ارتفاع سکشن
+    section.style.height = n * 120 + 'vh';
+
+    // ===== ساخت صحنه‌ها =====
+    const sceneEls = SCENES.map((s, j) => {
+      const el = document.createElement('div');
+      el.className = 'scene';
+      el.innerHTML = `
+        <div class="scene__img-wrap" style="transform-origin:${s.focal}">
+          <img class="scene__img" src="${s.img}" alt="" draggable="false" loading="${j === 0 ? 'eager' : 'lazy'}" />
+          <div class="scene__scrim-1"></div>
+          <div class="scene__scrim-2"></div>
+          <div class="scene__scrim-3"></div>
+        </div>
+        <div class="scene__content">
+          <div class="scene__inner">
+            <div class="scene__tagline"><span class="scene__line"></span><span class="scene__tag">${s.tag}</span></div>
+            <h1 class="scene__title">${s.title}</h1>
+            <p class="scene__sub">${s.sub}</p>
+            ${j === 0 ? `<a href="#projects" class="scene__btn">مشاهده پروژه‌ها ←</a>` : ''}
+          </div>
+        </div>`;
+      stage.insertBefore(el, dotsBox);
+      return el;
+    });
+
+    // ===== نقاط ناوبری =====
+    const dotEls = SCENES.map((s, i) => {
+      const b = document.createElement('button');
+      b.className = 'zoom-dot';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', s.tag);
+      b.addEventListener('click', () => {
+        const scrollable = section.offsetHeight - window.innerHeight;
+        const top = section.offsetTop + (i / (n - 1)) * scrollable;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+      dotsBox.appendChild(b);
+      return b;
+    });
+
+    // ===== منطق زوم =====
+    let zoom = 0,
+      ticking = false;
+
+    function update() {
+      ticking = false;
+      const rect = section.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      if (scrollable <= 0) return;
+      const progress = clamp(-rect.top / scrollable, 0, 1);
+      zoom = progress * (n - 1);
+      render();
+    }
+
+    function render() {
+      const activeIndex = clamp(Math.round(zoom), 0, n - 1);
+
+      sceneEls.forEach((el, j) => {
+        const rel = zoom - j;
+        const visible = rel > -1.05 && rel < 1.05;
+        el.style.display = visible ? 'block' : 'none';
+        if (!visible) return;
+
+        const scale = Math.pow(ZOOM, rel);
+        let opacity =
+          rel >= 0
+            ? 1 - clamp((rel - 0.55) / 0.45, 0, 1)
+            : clamp((rel + 0.6) / 0.6, 0, 1);
+
+        el.style.opacity = opacity;
+        el.style.zIndex = rel >= 0 ? 20 - Math.round(rel * 2) : 10 + Math.round(rel * 2);
+        el.querySelector('.scene__img-wrap').style.transform = `scale(${scale})`;
+
+        const textOpacity = clamp(1 - Math.abs(rel) / 0.5, 0, 1);
+        const content = el.querySelector('.scene__content');
+        content.style.opacity = textOpacity;
+        content.style.transform = `translateY(${(1 - textOpacity) * 24}px)`;
+      });
+
+      dotEls.forEach((d, i) => d.classList.toggle('is-active', i === activeIndex));
+      hint.style.opacity = zoom < 0.3 ? 1 : 0;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    // ===== منوی همبرگر =====
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.addEventListener('click', function () {
+      const isOpen = navMenu.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.querySelectorAll('.nav__list a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ===== دکمه بازگشت به بالا =====
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function () {
+      backBtn.classList.toggle('show', window.scrollY > 400);
+    });
+    backBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+  })();
+</script>
 </body>
 </html>
