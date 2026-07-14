@@ -68,10 +68,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <!-- ===== CSP (سیاست امنیتی محتوا) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://formspree.io;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.googleapis.com; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com; connect-src 'self' https://formspree.io https://maps.googleapis.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
+  
+  <!-- ===== Google Analytics ===== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   
   <style>
     /* ============================================
@@ -88,7 +98,7 @@
         line-height:1.8;
         -webkit-font-smoothing:antialiased;
         overflow-x:hidden;
-        background: #0b0a08; /* تضمین دارک بودن پس‌زمینه */
+        background: #0b0a08;
         color: #f2ebe1;
       }
       @media (prefers-reduced-motion: reduce) {
@@ -97,7 +107,6 @@
     }
 
     @layer theme {
-      /* ===== همیشه دارک (پیش‌فرض) ===== */
       :root {
         --bg: #0b0a08 !important;
         --fg: #f2ebe1 !important;
@@ -112,7 +121,6 @@
         --header-bg: rgba(11,10,8,0.7) !important;
       }
       
-      /* ===== تم روشن (فقط زمانی که کاربر دستی انتخاب کند) ===== */
       [data-theme="light"] {
         --bg: #f5f3f0 !important;
         --fg: #1a1714 !important;
@@ -122,9 +130,6 @@
         --shadow: 0 30px 60px rgba(0,0,0,0.1) !important;
         --header-bg: rgba(245,243,240,0.7) !important;
       }
-      
-      /* ===== غیرفعال کردن تشخیص خودکار تم سیستم ===== */
-      /* دیگر از prefers-color-scheme استفاده نمی‌شود */
     }
 
     @layer layout {
@@ -165,7 +170,7 @@
       .skip-link:focus { top:0; }
       
       .hero-wrapper { height:100vh; overflow-y:scroll; scroll-snap-type:y mandatory; position:relative; }
-      .hero-slide { height:100vh; width:100%; scroll-snap-align:start; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+      .hero-slide { height:100vh; width:100%; scroll-snap-align:start; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; will-change:transform; }
       .hero-slide .slide-bg { position:absolute; inset:0; overflow:hidden; }
       .hero-slide .slide-bg img { width:100%; height:100%; object-fit:cover; filter:brightness(0.6) contrast(1.05) saturate(1.1); transform:scale(1.15); will-change:transform; }
       .hero-slide .slide-scrim { position:absolute; inset:0; background:linear-gradient(to top, var(--bg), rgba(11,10,8,0.2) 40%, rgba(11,10,8,0.5)); }
@@ -192,7 +197,7 @@
       .hero-scroll-down:hover { background:var(--primary); color:#000; transform:translateX(-50%) scale(1.1); }
       
       .projects__grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:32px; margin-top:48px; grid-auto-flow:dense; }
-      .project-card { background:var(--glass-bg); backdrop-filter:blur(8px); border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); transition:all var(--transition); opacity:0; transform:translateY(30px); cursor:pointer; display:flex; flex-direction:column; }
+      .project-card { background:var(--glass-bg); backdrop-filter:blur(8px); border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); transition:all var(--transition); opacity:0; transform:translateY(30px); cursor:pointer; display:flex; flex-direction:column; will-change:transform, opacity; }
       .project-card.visible { opacity:1; transform:translateY(0); }
       .project-card:hover { transform:translateY(-10px); border-color:var(--primary); box-shadow:var(--shadow); }
       .project-card:nth-child(3n+1) { grid-column:span 2; }
@@ -200,7 +205,7 @@
       @media (max-width:768px) { .project-card:nth-child(3n+1), .project-card:nth-child(5n+2) { grid-column:span 1; grid-row:span 1; } }
       
       .project-card__img-wrap { position:relative; overflow:hidden; height:260px; flex-shrink:0; }
-      .project-card__img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.25,1,0.3,1); }
+      .project-card__img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.25,1,0.3,1); will-change:transform; }
       .project-card:hover .project-card__img { transform:scale(1.1); }
       .project-card__overlay { position:absolute; inset:0; background:rgba(11,10,8,0.4); backdrop-filter:blur(4px); opacity:0; transition:opacity var(--transition); display:flex; align-items:center; justify-content:center; }
       .project-card:hover .project-card__overlay { opacity:1; }
@@ -242,12 +247,26 @@
       .contact__item a:hover { color:var(--primary-light); }
       .contact__form { flex:1 1 50%; background:var(--glass-bg); backdrop-filter:blur(8px); padding:32px; border-radius:var(--radius); border:1px solid var(--glass-border); }
       .contact__form label { display:block; margin-top:16px; margin-bottom:4px; font-weight:600; color:var(--muted); }
-      .contact__form input, .contact__form textarea { width:100%; padding:12px 16px; border-radius:12px; border:1px solid var(--glass-border); background:rgba(11,10,8,0.4); color:var(--fg); font-family:inherit; font-size:1rem; transition:border-color var(--transition); }
-      .contact__form input:focus, .contact__form textarea:focus { outline:2px solid var(--primary); border-color:transparent; }
+      .contact__form input, .contact__form textarea { width:100%; padding:12px 16px; border-radius:12px; border:1px solid var(--glass-border); background:rgba(11,10,8,0.4); color:var(--fg); font-family:inherit; font-size:1rem; transition:border-color var(--transition), box-shadow var(--transition); }
+      .contact__form input:focus, .contact__form textarea:focus { outline:2px solid var(--primary); border-color:transparent; box-shadow:0 0 0 4px rgba(201,168,124,0.15); }
+      .contact__form input.error, .contact__form textarea.error { border-color:#e74c3c; outline-color:#e74c3c; }
+      .contact__form .field-error { color:#e74c3c; font-size:0.85rem; margin-top:4px; display:none; }
+      .contact__form .field-error.show { display:block; }
       .contact__form button { margin-top:24px; padding:14px 40px; background:var(--primary); color:#000; border:none; border-radius:40px; font-weight:700; font-size:1rem; cursor:pointer; transition:all var(--transition); }
       .contact__form button:hover { background:var(--primary-light); transform:translateY(-2px); box-shadow:0 10px 20px rgba(201,168,124,0.25); }
       .contact__form button:focus-visible { outline:2px solid var(--primary); outline-offset:4px; }
+      .contact__form button:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
       .form-status { margin-top:16px; font-weight:600; color:var(--primary-light); }
+      .form-status.error { color:#e74c3c; }
+      
+      /* نقشه */
+      .contact__map { flex:1 1 100%; margin-top:32px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); }
+      .contact__map iframe { width:100%; height:300px; border:0; display:block; }
+      
+      /* دکمه اشتراک‌گذاری */
+      .share-btn { display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:10px 24px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:40px; color:var(--muted); font-family:inherit; font-size:0.9rem; cursor:pointer; transition:all var(--transition); }
+      .share-btn:hover { background:var(--primary); color:#000; border-color:var(--primary); }
+      .share-btn:focus-visible { outline:2px solid var(--primary); outline-offset:4px; }
       
       .floating { position:fixed; bottom:100px; left:24px; z-index:999; display:flex; flex-direction:column; gap:14px; }
       .floating__btn { width:52px; height:52px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:#fff; text-decoration:none; backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.1); transition:all var(--transition); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
@@ -269,6 +288,9 @@
       .footer__links a:hover { color:var(--primary-light); }
       .footer__copy { font-size:0.9rem; color:var(--muted); opacity:0.6; }
       
+      /* Preload hint (برای لینک‌ها) */
+      .preload-hint { display:none; }
+      
       @media (max-width:768px) {
         .hamburger { display:flex; }
         .nav__list { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--bg); backdrop-filter:blur(20px); padding:24px; gap:20px; border-bottom:1px solid var(--glass-border); }
@@ -278,6 +300,7 @@
         .section__title { font-size:2rem; }
         .projects__grid { grid-template-columns:1fr; gap:24px; }
         .contact__wrapper { flex-direction:column; }
+        .contact__map iframe { height:200px; }
         .floating { left:16px; bottom:80px; }
         .back-top { left:16px; bottom:20px; }
         .hero-dots { left:1rem; gap:0.75rem; }
@@ -293,6 +316,7 @@
         .hero-slide .slide-title { font-size:2rem; }
         .floating__btn { width:44px; height:44px; font-size:1.3rem; border-radius:12px; }
         .back-top { width:40px; height:40px; font-size:1.2rem; }
+        .share-btn { font-size:0.8rem; padding:8px 16px; }
       }
     } /* end @layer layout */
   </style>
@@ -332,7 +356,6 @@
 
   <!-- ===== هیرو ===== -->
   <section class="hero-wrapper" id="hero" aria-label="اسلایدهای معرفی">
-    <!-- اسلاید ۱ -->
     <div class="hero-slide" data-index="0">
       <div class="slide-bg">
         <img src="images/1-large.jpg" alt="نمای اصلی استودیو طراحی داخلی ناژو" fetchpriority="high" />
@@ -345,7 +368,6 @@
         <a href="#projects" class="slide-btn">مشاهده پروژه‌ها</a>
       </div>
     </div>
-    <!-- اسلاید ۲ -->
     <div class="hero-slide" data-index="1">
       <div class="slide-bg">
         <img src="images/2-large.jpg" alt="طراحی کابینت مدرن با چوب و ام‌دی‌اف" loading="lazy" />
@@ -358,7 +380,6 @@
         <a href="#contact" class="slide-btn">مشاوره رایگان</a>
       </div>
     </div>
-    <!-- اسلاید ۳ -->
     <div class="hero-slide" data-index="2">
       <div class="slide-bg">
         <img src="images/3-large.jpg" alt="سالن پذیرایی رویایی با شومینه" loading="lazy" />
@@ -371,7 +392,6 @@
         <a href="#projects" class="slide-btn">نمونه‌کارها</a>
       </div>
     </div>
-    <!-- اسلاید ۴ -->
     <div class="hero-slide" data-index="3">
       <div class="slide-bg">
         <img src="images/4-large.jpg" alt="اتاق خواب مدرن با هدبورد چوبی" loading="lazy" />
@@ -384,11 +404,9 @@
         <a href="#contact" class="slide-btn">درخواست طراحی</a>
       </div>
     </div>
-    <!-- دکمه اسکرول به پایین -->
     <a href="#about" class="hero-scroll-down" aria-label="اسکرول به پایین">
       <i class="fa-solid fa-chevron-down"></i>
     </a>
-    <!-- نقاط -->
     <div class="hero-dots" id="heroDots" role="tablist"></div>
     <div class="hero-hint" id="heroHint" aria-hidden="true">
       <span>اسکرول کنید</span>
@@ -416,9 +434,7 @@
     <div class="container">
       <h2 class="section__title" id="projects-title">پروژه‌های اجرا شده</h2>
       <p class="section__sub">نمونه‌هایی از دکوراسیون داخلی با چوب و ام‌دی‌اف – هاور کنید تا زوم را ببینید.</p>
-      <div class="projects__grid" id="projectsGrid" role="list">
-        <!-- توسط جاوااسکریپت پر می‌شود -->
-      </div>
+      <div class="projects__grid" id="projectsGrid" role="list"></div>
     </div>
   </section>
 
@@ -449,17 +465,38 @@
               <span>ایمان حلاجیان</span>
             </div>
           </div>
+          <!-- ===== دکمه اشتراک‌گذاری ===== -->
+          <button class="share-btn" id="shareBtn" aria-label="اشتراک‌گذاری صفحه">
+            <i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری
+          </button>
         </div>
         <form class="contact__form" id="contactForm" novalidate>
           <label for="formName">نام شما</label>
           <input type="text" id="formName" name="name" placeholder="نام و نام خانوادگی" required />
+          <div class="field-error" id="formNameError">لطفاً نام خود را وارد کنید</div>
+          
           <label for="formEmail">ایمیل</label>
           <input type="email" id="formEmail" name="email" placeholder="example@domain.com" required />
+          <div class="field-error" id="formEmailError">لطفاً یک ایمیل معتبر وارد کنید</div>
+          
           <label for="formMessage">پیام</label>
           <textarea id="formMessage" name="message" rows="4" placeholder="توضیح درخواست شما..." required></textarea>
-          <button type="submit">ارسال پیام</button>
+          <div class="field-error" id="formMessageError">لطفاً پیام خود را وارد کنید (حداقل ۱۰ کاراکتر)</div>
+          
+          <button type="submit" id="formSubmit">ارسال پیام</button>
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
+        
+        <!-- ===== نقشه تعاملی ===== -->
+        <div class="contact__map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25911.682764240865!2d50.777456!3d36.897123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8a8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sRamsar%2C%20Mazandaran%20Province%2C%20Iran!5e0!3m2!1sen!2sus!4v1700000000000" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="نقشه محدوده فعالیت استودیو ناژو در رامسر"
+          ></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -504,11 +541,11 @@
   </div>
 
   <!-- ============================================
-  اسکریپت (ماژولار)
+  اسکریپت (نسخه ۶ با بهبودهای منتخب)
   ============================================ -->
   <script type="module">
     // ============================================
-    // داده‌های پروژه‌ها (با توضیحات کامل)
+    // داده‌های پروژه‌ها
     // ============================================
     const projectsData = [
       {
@@ -626,7 +663,7 @@
     ];
 
     // ============================================
-    // آبجکت اصلی برنامه
+    // آبجکت اصلی برنامه (نسخه ۶)
     // ============================================
     const App = {
       init() {
@@ -644,6 +681,9 @@
         this.setupScrollProgress();
         this.setupHeaderShadow();
         this.setupHeroHint();
+        this.setupLazyImages();
+        this.setupShareButton();
+        this.setupLinkPreload();
       },
 
       cacheDOM() {
@@ -663,10 +703,19 @@
         this.header = document.getElementById('header');
         this.form = document.getElementById('contactForm');
         this.formStatus = document.getElementById('formStatus');
+        this.formSubmit = document.getElementById('formSubmit');
         this.heroWrapper = document.querySelector('.hero-wrapper');
         this.slides = document.querySelectorAll('.hero-slide');
         this.dotsContainer = document.getElementById('heroDots');
         this.hint = document.getElementById('heroHint');
+        this.shareBtn = document.getElementById('shareBtn');
+        // فیلدهای فرم برای اعتبارسنجی
+        this.formName = document.getElementById('formName');
+        this.formEmail = document.getElementById('formEmail');
+        this.formMessage = document.getElementById('formMessage');
+        this.nameError = document.getElementById('formNameError');
+        this.emailError = document.getElementById('formEmailError');
+        this.messageError = document.getElementById('formMessageError');
       },
 
       buildProjects() {
@@ -676,7 +725,7 @@
           card.setAttribute('role', 'listitem');
           card.innerHTML = `
             <div class="project-card__img-wrap">
-              <img class="project-card__img" src="${p.img}" alt="${p.title}" loading="lazy" />
+              <img class="project-card__img" data-src="${p.img}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect fill='rgba(26,23,20,0.5)' width='100%25' height='100%25'/%3E%3C/svg%3E" alt="${p.title}" loading="lazy" />
               <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
             </div>
             <div class="project-card__info">
@@ -698,9 +747,27 @@
         });
       },
 
-      // ===== تم (همیشه دارک، مگر کاربر دستی عوض کند) =====
+      // ===== Lazy Load با Intersection Observer =====
+      setupLazyImages() {
+        const images = document.querySelectorAll('.project-card__img');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.dataset.src;
+              if (src) {
+                img.src = src;
+                img.removeAttribute('data-src');
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, { rootMargin: '100px' });
+        images.forEach(img => observer.observe(img));
+      },
+
+      // ===== Theme (همیشه دارک، مگر کاربر دستی عوض کند) =====
       setupTheme() {
-        // همیشه با دارک شروع کن
         const saved = localStorage.getItem('theme');
         const theme = saved || 'dark';
         this.setTheme(theme);
@@ -710,9 +777,6 @@
           const newTheme = current === 'dark' ? 'light' : 'dark';
           this.setTheme(newTheme);
         });
-
-        // ===== کاملاً غیرفعال کردن تشخیص خودکار =====
-        // هیچ گوش‌دهی به prefers-color-scheme نداریم
       },
 
       setTheme(theme) {
@@ -720,7 +784,6 @@
         localStorage.setItem('theme', theme);
         this.themeIcon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         document.getElementById('themeColor').content = theme === 'dark' ? '#080706' : '#f5f3f0';
-        // تغییر پس‌زمینه body به‌صورت مستقیم برای اطمینان
         document.body.style.backgroundColor = theme === 'dark' ? '#0b0a08' : '#f5f3f0';
         document.body.style.color = theme === 'dark' ? '#f2ebe1' : '#1a1714';
       },
@@ -861,13 +924,38 @@
         });
       },
 
+      // ===== اعتبارسنجی فرم با جزئیات بیشتر =====
       setupContactForm() {
+        // اعتبارسنجی لحظه‌ای (blur)
+        this.formName.addEventListener('blur', () => this.validateField('name'));
+        this.formEmail.addEventListener('blur', () => this.validateField('email'));
+        this.formMessage.addEventListener('blur', () => this.validateField('message'));
+
+        // اعتبارسنجی هنگام تایپ (برای پاک کردن خطا)
+        this.formName.addEventListener('input', () => this.clearFieldError('name'));
+        this.formEmail.addEventListener('input', () => this.clearFieldError('email'));
+        this.formMessage.addEventListener('input', () => this.clearFieldError('message'));
+
         this.form.addEventListener('submit', async (e) => {
           e.preventDefault();
+          
+          // اعتبارسنجی همه فیلدها
+          const isNameValid = this.validateField('name');
+          const isEmailValid = this.validateField('email');
+          const isMessageValid = this.validateField('message');
+          
+          if (!isNameValid || !isEmailValid || !isMessageValid) {
+            this.formStatus.textContent = '❌ لطفاً همه فیلدها را به‌درستی پر کنید.';
+            this.formStatus.className = 'form-status error';
+            return;
+          }
+
           const formData = new FormData(this.form);
           const data = Object.fromEntries(formData.entries());
+          
           this.formStatus.textContent = 'در حال ارسال...';
-          this.formStatus.style.color = 'var(--primary-light)';
+          this.formStatus.className = 'form-status';
+          this.formSubmit.disabled = true;
 
           try {
             const controller = new AbortController();
@@ -882,24 +970,153 @@
 
             if (response.ok) {
               this.formStatus.textContent = '✅ پیام شما با موفقیت ارسال شد! به زودی تماس می‌گیریم.';
+              this.formStatus.className = 'form-status';
               this.form.reset();
+              // پاک کردن کلاس‌های خطا
+              document.querySelectorAll('.contact__form input, .contact__form textarea').forEach(el => {
+                el.classList.remove('error');
+              });
             } else {
               this.formStatus.textContent = '❌ خطا در ارسال. لطفاً دوباره تلاش کنید.';
+              this.formStatus.className = 'form-status error';
             }
           } catch (err) {
             this.formStatus.textContent = '❌ خطای شبکه. لطفاً بعداً تلاش کنید.';
+            this.formStatus.className = 'form-status error';
           } finally {
-            setTimeout(() => { this.formStatus.textContent = ''; }, 6000);
+            this.formSubmit.disabled = false;
+            setTimeout(() => {
+              this.formStatus.textContent = '';
+              this.formStatus.className = 'form-status';
+            }, 6000);
           }
         });
       },
 
+      validateField(field) {
+        let isValid = true;
+        let errorEl = null;
+        let inputEl = null;
+
+        switch(field) {
+          case 'name':
+            inputEl = this.formName;
+            errorEl = this.nameError;
+            if (!inputEl.value.trim()) {
+              isValid = false;
+              errorEl.textContent = 'لطفاً نام خود را وارد کنید';
+            } else {
+              errorEl.textContent = '';
+            }
+            break;
+          case 'email':
+            inputEl = this.formEmail;
+            errorEl = this.emailError;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!inputEl.value.trim()) {
+              isValid = false;
+              errorEl.textContent = 'لطفاً ایمیل خود را وارد کنید';
+            } else if (!emailRegex.test(inputEl.value.trim())) {
+              isValid = false;
+              errorEl.textContent = 'لطفاً یک ایمیل معتبر وارد کنید (مثال: name@domain.com)';
+            } else {
+              errorEl.textContent = '';
+            }
+            break;
+          case 'message':
+            inputEl = this.formMessage;
+            errorEl = this.messageError;
+            if (!inputEl.value.trim()) {
+              isValid = false;
+              errorEl.textContent = 'لطفاً پیام خود را وارد کنید';
+            } else if (inputEl.value.trim().length < 10) {
+              isValid = false;
+              errorEl.textContent = 'پیام باید حداقل ۱۰ کاراکتر باشد';
+            } else {
+              errorEl.textContent = '';
+            }
+            break;
+        }
+
+        if (inputEl) {
+          inputEl.classList.toggle('error', !isValid);
+          errorEl.classList.toggle('show', !isValid);
+        }
+
+        return isValid;
+      },
+
+      clearFieldError(field) {
+        const map = {
+          name: { input: this.formName, error: this.nameError },
+          email: { input: this.formEmail, error: this.emailError },
+          message: { input: this.formMessage, error: this.messageError }
+        };
+        const item = map[field];
+        if (item) {
+          item.input.classList.remove('error');
+          item.error.classList.remove('show');
+          item.error.textContent = '';
+        }
+      },
+
+      // ===== Service Worker =====
       setupServiceWorker() {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/sw.js')
             .then(() => console.log('SW registered'))
             .catch(() => console.log('SW registration failed'));
         }
+      },
+
+      // ===== دکمه اشتراک‌گذاری (Web Share API) =====
+      setupShareButton() {
+        if (this.shareBtn) {
+          this.shareBtn.addEventListener('click', async () => {
+            try {
+              if (navigator.share) {
+                await navigator.share({
+                  title: 'استودیو طراحی داخلی ناژو | ایمان حلاجیان',
+                  text: 'طراحی داخلی لوکس با چوب و ام‌دی‌اف در رامسر و حومه.',
+                  url: window.location.href
+                });
+              } else {
+                // Fallback: کپی لینک در کلیپ‌بورد
+                await navigator.clipboard.writeText(window.location.href);
+                this.shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> لینک کپی شد!';
+                setTimeout(() => {
+                  this.shareBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری';
+                }, 3000);
+              }
+            } catch (err) {
+              // کاربر لغو کرده یا خطا
+              console.log('Share cancelled or error:', err);
+            }
+          });
+        }
+      },
+
+      // ===== پیش‌بارگذاری لینک‌ها با Intersection Observer =====
+      setupLinkPreload() {
+        const links = document.querySelectorAll('a[href]');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const link = entry.target;
+              const href = link.getAttribute('href');
+              // فقط لینک‌های داخلی و non-empty
+              if (href && !href.startsWith('http') && href !== '#') {
+                const preloadLink = document.createElement('link');
+                preloadLink.rel = 'prefetch';
+                preloadLink.href = href;
+                document.head.appendChild(preloadLink);
+              }
+              observer.unobserve(link);
+            }
+          });
+        }, { rootMargin: '200px' });
+
+        links.forEach(link => observer.observe(link));
       },
 
       setupScrollProgress() {
