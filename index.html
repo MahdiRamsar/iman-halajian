@@ -88,6 +88,8 @@
         line-height:1.8;
         -webkit-font-smoothing:antialiased;
         overflow-x:hidden;
+        background: #0b0a08; /* تضمین دارک بودن پس‌زمینه */
+        color: #f2ebe1;
       }
       @media (prefers-reduced-motion: reduce) {
         * { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
@@ -97,28 +99,28 @@
     @layer theme {
       /* ===== همیشه دارک (پیش‌فرض) ===== */
       :root {
-        --bg:#0b0a08;
-        --fg:#f2ebe1;
-        --muted:#b5aea3;
-        --primary:#c9a87c;
-        --primary-light:#e4d4b0;
-        --radius:20px;
-        --shadow:0 30px 60px rgba(0,0,0,0.6);
-        --transition:0.5s cubic-bezier(0.25,1,0.3,1);
-        --glass-bg:rgba(26,23,20,0.5);
-        --glass-border:rgba(201,168,124,0.12);
-        --header-bg:rgba(11,10,8,0.7);
+        --bg: #0b0a08 !important;
+        --fg: #f2ebe1 !important;
+        --muted: #b5aea3 !important;
+        --primary: #c9a87c !important;
+        --primary-light: #e4d4b0 !important;
+        --radius: 20px;
+        --shadow: 0 30px 60px rgba(0,0,0,0.6);
+        --transition: 0.5s cubic-bezier(0.25,1,0.3,1);
+        --glass-bg: rgba(26,23,20,0.5) !important;
+        --glass-border: rgba(201,168,124,0.12) !important;
+        --header-bg: rgba(11,10,8,0.7) !important;
       }
       
       /* ===== تم روشن (فقط زمانی که کاربر دستی انتخاب کند) ===== */
       [data-theme="light"] {
-        --bg:#f5f3f0;
-        --fg:#1a1714;
-        --muted:#5a5550;
-        --glass-bg:rgba(255,255,255,0.6);
-        --glass-border:rgba(0,0,0,0.08);
-        --shadow:0 30px 60px rgba(0,0,0,0.1);
-        --header-bg:rgba(245,243,240,0.7);
+        --bg: #f5f3f0 !important;
+        --fg: #1a1714 !important;
+        --muted: #5a5550 !important;
+        --glass-bg: rgba(255,255,255,0.6) !important;
+        --glass-border: rgba(0,0,0,0.08) !important;
+        --shadow: 0 30px 60px rgba(0,0,0,0.1) !important;
+        --header-bg: rgba(245,243,240,0.7) !important;
       }
       
       /* ===== غیرفعال کردن تشخیص خودکار تم سیستم ===== */
@@ -127,9 +129,9 @@
 
     @layer layout {
       .container { max-width:1200px; margin:0 auto; padding:0 24px; }
-      .section { padding:100px 0; border-top:1px solid var(--glass-border); opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease; }
+      .section { padding:100px 0; border-top:1px solid var(--glass-border); opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease; background:var(--bg); }
       .section.visible { opacity:1; transform:translateY(0); }
-      .section__title { font-size:2.5rem; font-weight:700; display:inline-block; position:relative; margin-bottom:1.5rem; }
+      .section__title { font-size:2.5rem; font-weight:700; display:inline-block; position:relative; margin-bottom:1.5rem; color:var(--fg); }
       .section__title::after { content:''; position:absolute; bottom:-10px; right:0; width:80px; height:3px; background:linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius:2px; }
       .section__sub { color:var(--muted); max-width:600px; margin-top:0.5rem; }
       
@@ -205,7 +207,7 @@
       .project-card__overlay span { color:#fff; font-size:1.1rem; font-weight:700; padding:8px 24px; border:2px solid var(--primary); border-radius:40px; background:rgba(0,0,0,0.3); backdrop-filter:blur(4px); }
       .project-card__info { padding:24px; flex:1; display:flex; flex-direction:column; }
       .project-card__tag { display:inline-block; background:rgba(201,168,124,0.12); color:var(--primary); padding:4px 16px; border-radius:30px; font-size:0.8rem; font-weight:700; border:1px solid var(--glass-border); align-self:flex-start; }
-      .project-card__title { font-size:1.4rem; font-weight:700; margin:10px 0 8px; }
+      .project-card__title { font-size:1.4rem; font-weight:700; margin:10px 0 8px; color:var(--fg); }
       .project-card__desc { color:var(--muted); font-size:0.95rem; line-height:1.8; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; flex:1; }
       .project-card__link { display:inline-flex; align-items:center; gap:8px; margin-top:16px; color:var(--primary); font-weight:700; text-decoration:none; transition:all var(--transition); cursor:pointer; background:none; border:none; font-size:inherit; font-family:inherit; align-self:flex-start; }
       .project-card__link:hover { color:var(--primary-light); transform:translateX(-4px); }
@@ -225,6 +227,12 @@
       .modal-box .modal-body p { margin-bottom:16px; }
       .modal-box .modal-body strong { color:var(--primary-light); }
       .modal-box .modal-body ul { padding-right:20px; margin:16px 0; }
+      
+      .about__text { max-width:900px; line-height:2.2; color:var(--muted); font-size:1.1rem; }
+      .about__text p { margin-bottom:20px; }
+      .about__text strong { color:var(--primary-light); }
+      .about__highlight { margin-top:32px; background:var(--glass-bg); backdrop-filter:blur(8px); padding:24px 32px; border-radius:var(--radius); border-right:4px solid var(--primary); display:flex; align-items:center; gap:16px; color:var(--muted); }
+      .about__highlight i { font-size:1.6rem; color:var(--primary); }
       
       .contact__wrapper { display:flex; flex-wrap:wrap; gap:48px; margin-top:40px; }
       .contact__info { flex:1 1 40%; }
@@ -395,8 +403,8 @@
       <div class="about__text">
         <p><strong>استودیو طراحی داخلی ناژو</strong> به مدیریت <strong>ایمان حلاجیان</strong>، با سال‌ها تجربه در زمینه <strong>دکوراسیون داخلی</strong> و طراحی فضاهای مسکونی و تجاری، فعالیت خود را متمرکز بر <strong>رامسر و حومه</strong> (تنکابن، چابکسر و شهرهای اطراف) کرده است.</p>
         <p>تخصص ما بر پایه تلفیق مهندسی معماری و متریال‌های اصیل استوار است. ما بر این باوریم که هر خانه داستانی برای گفتن دارد و وظیفه ما در ناژو، تصویرسازی این داستان در قالب طراحی‌های بی‌نقص و اجرای ماندگار است.</p>
-        <div class="about__highlight" style="margin-top:32px; background:var(--glass-bg); backdrop-filter:blur(8px); padding:24px 32px; border-radius:var(--radius); border-right:4px solid var(--primary); display:flex; align-items:center; gap:16px; color:var(--muted);">
-          <i class="fa-solid fa-gem" style="font-size:1.6rem; color:var(--primary);"></i>
+        <div class="about__highlight">
+          <i class="fa-solid fa-gem"></i>
           <span>استفاده از متریال با کیفیت عالی، اجرای دقیق با خطای صفر و گارانتی اصالت پروژه‌ها از اصول تخطی‌ناپذیر ماست.</span>
         </div>
       </div>
@@ -692,8 +700,8 @@
 
       // ===== تم (همیشه دارک، مگر کاربر دستی عوض کند) =====
       setupTheme() {
+        // همیشه با دارک شروع کن
         const saved = localStorage.getItem('theme');
-        // اگر کاربر قبلاً تمی را ذخیره کرده، از همان استفاده کن، در غیر این صورت دارک
         const theme = saved || 'dark';
         this.setTheme(theme);
 
@@ -703,8 +711,8 @@
           this.setTheme(newTheme);
         });
 
-        // ===== غیرفعال کردن تشخیص خودکار تم سیستم =====
-        // دیگر به prefers-color-scheme گوش نمی‌دهیم
+        // ===== کاملاً غیرفعال کردن تشخیص خودکار =====
+        // هیچ گوش‌دهی به prefers-color-scheme نداریم
       },
 
       setTheme(theme) {
@@ -712,6 +720,9 @@
         localStorage.setItem('theme', theme);
         this.themeIcon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         document.getElementById('themeColor').content = theme === 'dark' ? '#080706' : '#f5f3f0';
+        // تغییر پس‌زمینه body به‌صورت مستقیم برای اطمینان
+        document.body.style.backgroundColor = theme === 'dark' ? '#0b0a08' : '#f5f3f0';
+        document.body.style.color = theme === 'dark' ? '#f2ebe1' : '#1a1714';
       },
 
       setupMenu() {
