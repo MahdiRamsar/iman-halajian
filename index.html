@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   
-  <!-- ===== سئو ===== -->
   <title>استودیو طراحی داخلی ناژو | ایمان حلاجیان | رامسر</title>
   <meta name="description" content="استودیو طراحی داخلی ناژو به مدیریت ایمان حلاجیان، متخصص در دکوراسیون داخلی با چوب و ام‌دی‌اف در رامسر، تنکابن و چابکسر." />
   <meta name="keywords" content="طراحی داخلی, دکوراسیون, ناژو, ایمان حلاجیان, رامسر, چوب, ام دی اف, کابینت" />
@@ -12,18 +11,16 @@
   <meta name="author" content="ایمان حلاجیان" />
   <link rel="canonical" href="https://najou-studio.ir/" />
   
-  <!-- ===== Open Graph ===== -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="استودیو طراحی داخلی ناژو | ایمان حلاجیان" />
   <meta property="og:description" content="طراحی داخلی لوکس با چوب و ام‌دی‌اف در رامسر و حومه." />
   <meta property="og:url" content="https://najou-studio.ir/" />
-  <meta property="og:image" content="https://mahdiramsar.github.io/iman-halajian/images/1-large.jpg" />
+  <meta property="og:image" content="https://najou-studio.ir/images/1-large.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="fa_IR" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <!-- ===== Schema.org ===== -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -42,12 +39,10 @@
     }
   </script>
   
-  <!-- ===== PWA ===== -->
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>" />
   <meta name="theme-color" content="#080706" id="themeColor" />
   
-  <!-- ===== فونت‌ها ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -57,11 +52,8 @@
     /* ===== متغیرهای تم ===== */
     :root {
       --bg: #0b0a08;
-      --bg-light: #f5f3f0;
       --fg: #f2ebe1;
-      --fg-light: #1a1714;
       --muted: #b5aea3;
-      --muted-light: #5a5550;
       --primary: #c9a87c;
       --primary-light: #e4d4b0;
       --radius: 20px;
@@ -82,17 +74,8 @@
       --header-bg: rgba(245, 243, 240, 0.7);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
     body {
       background: var(--bg);
       color: var(--fg);
@@ -104,21 +87,14 @@
       overflow-x: hidden;
     }
 
-    h1,
-    h2,
-    h3,
-    .logo {
+    h1, h2, h3, .logo {
       font-family: 'Playfair Display', 'Vazirmatn', serif;
       font-weight: 700;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* ===== نوار پیشرفت اسکرول ===== */
+    /* ===== نوار پیشرفت ===== */
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -133,9 +109,7 @@
     /* ===== هدر ===== */
     .header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 999;
       background: var(--header-bg);
       backdrop-filter: blur(20px) saturate(180%);
@@ -144,39 +118,28 @@
       padding: 14px 0;
       transition: background var(--transition), box-shadow var(--transition);
     }
-
     .header.scrolled {
       background: var(--bg);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     }
-
     [data-theme="light"] .header.scrolled {
       background: var(--bg-light);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     }
-
     .header__inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .logo {
       font-size: 1.6rem;
       font-weight: 900;
       font-style: italic;
       color: var(--fg);
       text-decoration: none;
-      transition: color var(--transition);
     }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .logo:hover {
-      color: var(--primary);
-    }
+    .logo span { color: var(--primary); }
+    .logo:hover { color: var(--primary); }
 
     .nav__list {
       display: flex;
@@ -184,7 +147,6 @@
       list-style: none;
       align-items: center;
     }
-
     .nav__list a {
       color: var(--muted);
       font-weight: 600;
@@ -193,11 +155,7 @@
       position: relative;
       transition: color var(--transition);
     }
-
-    .nav__list a:hover {
-      color: var(--primary-light);
-    }
-
+    .nav__list a:hover { color: var(--primary-light); }
     .nav__list a::after {
       content: '';
       position: absolute;
@@ -208,10 +166,7 @@
       background: var(--primary);
       transition: width var(--transition);
     }
-
-    .nav__list a:hover::after {
-      width: 100%;
-    }
+    .nav__list a:hover::after { width: 100%; }
 
     .theme-toggle {
       background: none;
@@ -222,10 +177,7 @@
       padding: 4px 8px;
       transition: color var(--transition);
     }
-
-    .theme-toggle:hover {
-      color: var(--primary-light);
-    }
+    .theme-toggle:hover { color: var(--primary-light); }
 
     .hamburger {
       display: none;
@@ -236,7 +188,6 @@
       gap: 5px;
       padding: 8px;
     }
-
     .hamburger__line {
       width: 24px;
       height: 2px;
@@ -244,31 +195,23 @@
       border-radius: 2px;
       transition: var(--transition);
     }
-
     .hamburger[aria-expanded="true"] .hamburger__line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
-
-    .hamburger[aria-expanded="true"] .hamburger__line:nth-child(2) {
-      opacity: 0;
-    }
-
+    .hamburger[aria-expanded="true"] .hamburger__line:nth-child(2) { opacity: 0; }
     .hamburger[aria-expanded="true"] .hamburger__line:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
     }
 
-    /* ============================================
-       هیرو – اسکرول محور با اسنپ
-    ============================================ */
-    .hero {
+    /* ===== هیرو با افکت زوم اسکرول ===== */
+    .hero-wrapper {
       height: 100vh;
       overflow-y: scroll;
       scroll-snap-type: y mandatory;
-      background: var(--bg);
       position: relative;
     }
 
-    .hero__slide {
+    .hero-slide {
       height: 100vh;
       width: 100%;
       scroll-snap-align: start;
@@ -279,29 +222,28 @@
       justify-content: center;
     }
 
-    .hero__slide .slide__img-wrap {
+    .hero-slide .slide-bg {
       position: absolute;
       inset: 0;
       overflow: hidden;
     }
 
-    .hero__slide .slide__img {
+    .hero-slide .slide-bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       filter: brightness(0.6) contrast(1.05) saturate(1.1);
       transform: scale(1.15);
-      transition: transform 0.1s linear;
       will-change: transform;
     }
 
-    .hero__slide .slide__scrim {
+    .hero-slide .slide-scrim {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, var(--bg), rgba(11, 10, 8, 0.2) 40%, rgba(11, 10, 8, 0.5));
+      background: linear-gradient(to top, var(--bg), rgba(11,10,8,0.2) 40%, rgba(11,10,8,0.5));
     }
 
-    .hero__slide .slide__content {
+    .hero-slide .slide-content {
       position: relative;
       z-index: 2;
       width: 100%;
@@ -310,7 +252,7 @@
       margin: 0 auto;
     }
 
-    .hero__slide .slide__tag {
+    .hero-slide .slide-tag {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.25em;
@@ -320,34 +262,30 @@
       align-items: center;
       gap: 0.75rem;
     }
-
-    .hero__slide .slide__tag::before {
+    .hero-slide .slide-tag::before {
       content: '';
       width: 2.5rem;
       height: 1px;
       background: var(--primary);
     }
 
-    .hero__slide .slide__title {
+    .hero-slide .slide-title {
       font-size: clamp(2.8rem, 8vw, 5.5rem);
       font-weight: 900;
       line-height: 1.1;
       color: #fff;
       margin-top: 1rem;
     }
+    [data-theme="light"] .hero-slide .slide-title { color: var(--fg); }
 
-    [data-theme="light"] .hero__slide .slide__title {
-      color: var(--fg);
-    }
-
-    .hero__slide .slide__sub {
+    .hero-slide .slide-sub {
       max-width: 28rem;
       margin-top: 1.5rem;
       font-size: 1.05rem;
       color: var(--muted);
     }
 
-    .hero__slide .slide__btn {
+    .hero-slide .slide-btn {
       display: inline-block;
       margin-top: 2rem;
       padding: 12px 36px;
@@ -358,16 +296,15 @@
       text-decoration: none;
       transition: all var(--transition);
     }
-
-    .hero__slide .slide__btn:hover {
+    .hero-slide .slide-btn:hover {
       background: var(--primary);
       color: #000;
       transform: translateY(-2px);
       box-shadow: 0 15px 30px rgba(201, 168, 124, 0.25);
     }
 
-    /* نقاط ناوبری (سمت چپ) */
-    .hero__dots {
+    /* نقاط ناوبری */
+    .hero-dots {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
@@ -377,8 +314,7 @@
       flex-direction: column;
       gap: 1rem;
     }
-
-    .hero__dots button {
+    .hero-dots button {
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -387,14 +323,12 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-
-    .hero__dots button.active {
+    .hero-dots button.active {
       background: var(--primary);
       transform: scale(1.3);
     }
 
-    /* راهنما */
-    .hero__hint {
+    .hero-hint {
       position: fixed;
       bottom: 2.5rem;
       left: 50%;
@@ -411,24 +345,10 @@
       transition: opacity 0.5s;
       z-index: 30;
     }
+    .hero-hint .arrow { animation: bob 1.2s infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-    .hero__hint .arrow {
-      animation: bob 1.2s infinite;
-    }
-
-    @keyframes bob {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(6px);
-      }
-    }
-
-    /* ============================================
-       بخش‌های بعدی با انیمیشن
-    ============================================ */
+    /* ===== بخش‌ها ===== */
     .section {
       padding: 100px 0;
       border-top: 1px solid var(--glass-border);
@@ -436,12 +356,7 @@
       transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .section.visible { opacity: 1; transform: translateY(0); }
     .section__title {
       font-size: 2.5rem;
       font-weight: 700;
@@ -449,7 +364,6 @@
       position: relative;
       margin-bottom: 1.5rem;
     }
-
     .section__title::after {
       content: '';
       position: absolute;
@@ -460,26 +374,21 @@
       background: linear-gradient(90deg, var(--primary), var(--primary-light));
       border-radius: 2px;
     }
-
     .section__sub {
       color: var(--muted);
       max-width: 600px;
       margin-top: 0.5rem;
     }
 
-    /* ===== درباره ما ===== */
+    /* درباره ما */
     .about__text {
       max-width: 900px;
       line-height: 2.2;
       color: var(--muted);
       font-size: 1.1rem;
     }
-    .about__text p {
-      margin-bottom: 20px;
-    }
-    .about__text strong {
-      color: var(--primary-light);
-    }
+    .about__text p { margin-bottom: 20px; }
+    .about__text strong { color: var(--primary-light); }
     .about__highlight {
       margin-top: 32px;
       background: var(--glass-bg);
@@ -492,19 +401,15 @@
       gap: 16px;
       color: var(--muted);
     }
-    .about__highlight i {
-      font-size: 1.6rem;
-      color: var(--primary);
-    }
+    .about__highlight i { font-size: 1.6rem; color: var(--primary); }
 
-    /* ===== پروژه‌ها ===== */
+    /* پروژه‌ها */
     .projects__grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 32px;
       margin-top: 48px;
     }
-
     .project-card {
       background: var(--glass-bg);
       backdrop-filter: blur(8px);
@@ -515,10 +420,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
-    .project-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .project-card.visible { opacity: 1; transform: translateY(0); }
     .project-card:hover {
       transform: translateY(-10px);
       border-color: var(--primary);
@@ -535,9 +437,7 @@
       object-fit: cover;
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.3, 1);
     }
-    .project-card:hover .project-card__img {
-      transform: scale(1.1);
-    }
+    .project-card:hover .project-card__img { transform: scale(1.1); }
     .project-card__overlay {
       position: absolute;
       inset: 0;
@@ -549,9 +449,7 @@
       align-items: center;
       justify-content: center;
     }
-    .project-card:hover .project-card__overlay {
-      opacity: 1;
-    }
+    .project-card:hover .project-card__overlay { opacity: 1; }
     .project-card__overlay span {
       color: #fff;
       font-size: 1.1rem;
@@ -562,9 +460,7 @@
       background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(4px);
     }
-    .project-card__info {
-      padding: 24px;
-    }
+    .project-card__info { padding: 24px; }
     .project-card__tag {
       display: inline-block;
       background: rgba(201, 168, 124, 0.12);
@@ -600,16 +496,14 @@
       transform: translateX(-4px);
     }
 
-    /* ===== تماس ===== */
+    /* تماس */
     .contact__wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 48px;
       margin-top: 40px;
     }
-    .contact__info {
-      flex: 1 1 40%;
-    }
+    .contact__info { flex: 1 1 40%; }
     .contact__item {
       display: flex;
       align-items: center;
@@ -628,14 +522,8 @@
       font-size: 1.4rem;
       flex-shrink: 0;
     }
-    .contact__item a {
-      color: var(--fg);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    .contact__item a:hover {
-      color: var(--primary-light);
-    }
+    .contact__item a { color: var(--fg); text-decoration: none; transition: color var(--transition); }
+    .contact__item a:hover { color: var(--primary-light); }
     .contact__form {
       flex: 1 1 50%;
       background: var(--glass-bg);
@@ -689,13 +577,9 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(201, 168, 124, 0.25);
     }
-    .form-status {
-      margin-top: 16px;
-      font-weight: 600;
-      color: var(--primary-light);
-    }
+    .form-status { margin-top: 16px; font-weight: 600; color: var(--primary-light); }
 
-    /* ===== دکمه‌های شناور ===== */
+    /* دکمه‌های شناور */
     .floating {
       position: fixed;
       bottom: 100px;
@@ -724,20 +608,12 @@
       transform: scale(1.1) translateY(-4px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     }
-    .floating__btn--whatsapp {
-      background: #25d366;
-    }
-    .floating__btn--whatsapp:hover {
-      background: #20b85a;
-    }
-    .floating__btn--instagram {
-      background: #e1306c;
-    }
-    .floating__btn--instagram:hover {
-      background: #c72a5f;
-    }
+    .floating__btn--whatsapp { background: #25d366; }
+    .floating__btn--whatsapp:hover { background: #20b85a; }
+    .floating__btn--instagram { background: #e1306c; }
+    .floating__btn--instagram:hover { background: #c72a5f; }
 
-    /* ===== بازگشت به بالا ===== */
+    /* بازگشت به بالا */
     .back-top {
       position: fixed;
       bottom: 32px;
@@ -758,25 +634,17 @@
       visibility: hidden;
       text-decoration: none;
     }
-    .back-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    .back-top:hover {
-      transform: translateY(-4px);
-      background: var(--primary-light);
-    }
+    .back-top.show { opacity: 1; visibility: visible; }
+    .back-top:hover { transform: translateY(-4px); background: var(--primary-light); }
 
-    /* ===== فوتر ===== */
+    /* فوتر */
     .footer {
       background: rgba(11, 10, 8, 0.6);
       padding: 48px 0;
       text-align: center;
       border-top: 1px solid var(--glass-border);
     }
-    [data-theme="light"] .footer {
-      background: rgba(245, 243, 240, 0.6);
-    }
+    [data-theme="light"] .footer { background: rgba(245, 243, 240, 0.6); }
     .footer__links {
       display: flex;
       justify-content: center;
@@ -789,22 +657,12 @@
       text-decoration: none;
       transition: color var(--transition);
     }
-    .footer__links a:hover {
-      color: var(--primary-light);
-    }
-    .footer__copy {
-      font-size: 0.9rem;
-      color: var(--muted);
-      opacity: 0.6;
-    }
+    .footer__links a:hover { color: var(--primary-light); }
+    .footer__copy { font-size: 0.9rem; color: var(--muted); opacity: 0.6; }
 
-    /* ============================================
-       ریسپانسیو
-    ============================================ */
+    /* ===== ریسپانسیو ===== */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
+      .hamburger { display: flex; }
       .nav__list {
         display: none;
         flex-direction: column;
@@ -818,90 +676,47 @@
         gap: 20px;
         border-bottom: 1px solid var(--glass-border);
       }
-      [data-theme="light"] .nav__list {
-        background: var(--bg-light);
-      }
-      .nav__list.is-open {
-        display: flex;
-      }
-      .nav__list li {
-        text-align: center;
-      }
-      .section {
-        padding: 60px 0;
-      }
-      .section__title {
-        font-size: 2rem;
-      }
-      .projects__grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .contact__wrapper {
-        flex-direction: column;
-      }
-      .floating {
-        left: 16px;
-        bottom: 80px;
-      }
-      .back-top {
-        left: 16px;
-        bottom: 20px;
-      }
-      .hero__dots {
-        left: 1rem;
-        gap: 0.75rem;
-      }
-      .hero__dots button {
-        width: 8px;
-        height: 8px;
-      }
-      .hero__hint {
-        bottom: 1.5rem;
-      }
+      [data-theme="light"] .nav__list { background: var(--bg-light); }
+      .nav__list.is-open { display: flex; }
+      .nav__list li { text-align: center; }
+      .section { padding: 60px 0; }
+      .section__title { font-size: 2rem; }
+      .projects__grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact__wrapper { flex-direction: column; }
+      .floating { left: 16px; bottom: 80px; }
+      .back-top { left: 16px; bottom: 20px; }
+      .hero-dots { left: 1rem; gap: 0.75rem; }
+      .hero-dots button { width: 8px; height: 8px; }
+      .hero-hint { bottom: 1.5rem; }
     }
-
     @media (max-width: 480px) {
-      .logo {
-        font-size: 1.2rem;
-      }
-      .hero__slide .slide__title {
-        font-size: 2rem;
-      }
-      .floating__btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1.3rem;
-        border-radius: 12px;
-      }
-      .back-top {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-      }
+      .logo { font-size: 1.2rem; }
+      .hero-slide .slide-title { font-size: 2rem; }
+      .floating__btn { width: 44px; height: 44px; font-size: 1.3rem; border-radius: 12px; }
+      .back-top { width: 40px; height: 40px; font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== نوار پیشرفت اسکرول ===== -->
-  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <!-- ===== نوار پیشرفت ===== -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar"></div>
 
   <!-- ===== هدر ===== -->
   <header class="header" id="header" role="banner">
     <div class="container header__inner">
-      <a href="#hero" class="logo" aria-label="ناژو طراحی داخلی">ناژو <span>•</span> طراحی داخلی</a>
+      <a href="#hero" class="logo">ناژو <span>•</span> طراحی داخلی</a>
       <div style="display:flex; align-items:center; gap:12px;">
-        <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم تیره/روشن">
+        <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
           <i class="fa-solid fa-moon" id="themeIcon"></i>
         </button>
-        <button class="hamburger" id="hamburgerBtn" aria-label="باز و بسته کردن منو" aria-expanded="false">
+        <button class="hamburger" id="hamburgerBtn" aria-label="منو" aria-expanded="false">
           <span class="hamburger__line"></span>
           <span class="hamburger__line"></span>
           <span class="hamburger__line"></span>
         </button>
       </div>
-      <nav class="nav" id="navMenu" aria-label="منوی اصلی">
+      <nav class="nav" id="navMenu">
         <ul class="nav__list">
           <li><a href="#hero">خانه</a></li>
           <li><a href="#about">درباره ما</a></li>
@@ -912,96 +727,83 @@
     </div>
   </header>
 
-  <!-- ===== هیرو – اسکرول محور ===== -->
-  <section class="hero" id="hero" aria-label="اسلایدهای معرفی استودیو ناژو">
-
+  <!-- ===== هیرو ===== -->
+  <section class="hero-wrapper" id="hero">
     <!-- اسلاید ۱ -->
-    <div class="hero__slide" data-index="0">
-      <div class="slide__img-wrap">
-        <img class="slide__img" src="images/1-large.jpg" alt="طراحی داخلی ناژو – آشپزخانه لوکس" loading="eager" />
+    <div class="hero-slide" data-index="0">
+      <div class="slide-bg">
+        <img src="images/1-large.jpg" alt="طراحی داخلی ناژو" loading="eager" />
       </div>
-      <div class="slide__scrim"></div>
-      <div class="slide__content">
-        <div class="slide__inner">
-          <div class="slide__tag">طراحی لوکس و اصیل</div>
-          <h1 class="slide__title">استودیو طراحی ناژو</h1>
-          <p class="slide__sub">آمیزه‌ای از مهارت، هنر و متریال‌های درجه‌یک برای خلق فضایی بی‌نقص در خانه شما.</p>
-          <a href="#projects" class="slide__btn">مشاهده پروژه‌ها</a>
-        </div>
+      <div class="slide-scrim"></div>
+      <div class="slide-content">
+        <div class="slide-tag">طراحی لوکس و اصیل</div>
+        <h1 class="slide-title">استودیو طراحی ناژو</h1>
+        <p class="slide-sub">آمیزه‌ای از مهارت، هنر و متریال‌های درجه‌یک برای خلق فضایی بی‌نقص.</p>
+        <a href="#projects" class="slide-btn">مشاهده پروژه‌ها</a>
       </div>
     </div>
 
     <!-- اسلاید ۲ -->
-    <div class="hero__slide" data-index="1">
-      <div class="slide__img-wrap">
-        <img class="slide__img" src="images/2-large.jpg" alt="طراحی کابینت مدرن – استودیو ناژو" loading="lazy" />
+    <div class="hero-slide" data-index="1">
+      <div class="slide-bg">
+        <img src="images/2-large.jpg" alt="طراحی کابینت مدرن" loading="lazy" />
       </div>
-      <div class="slide__scrim"></div>
-      <div class="slide__content">
-        <div class="slide__inner">
-          <div class="slide__tag">هنر اجرا با چوب و MDF</div>
-          <h2 class="slide__title">طراحی تخصصی کابینت</h2>
-          <p class="slide__sub">سبک‌های مینیمال، کلاسیک و مدرن متناسب با معماری ویلاهای لوکس رامسر.</p>
-          <a href="#contact" class="slide__btn">مشاوره رایگان</a>
-        </div>
+      <div class="slide-scrim"></div>
+      <div class="slide-content">
+        <div class="slide-tag">هنر اجرا با چوب و MDF</div>
+        <h2 class="slide-title">طراحی تخصصی کابینت</h2>
+        <p class="slide-sub">سبک‌های مینیمال، کلاسیک و مدرن متناسب با معماری ویلاهای لوکس رامسر.</p>
+        <a href="#contact" class="slide-btn">مشاوره رایگان</a>
       </div>
     </div>
 
     <!-- اسلاید ۳ -->
-    <div class="hero__slide" data-index="2">
-      <div class="slide__img-wrap">
-        <img class="slide__img" src="images/3-large.jpg" alt="طراحی سالن پذیرایی – استودیو ناژو" loading="lazy" />
+    <div class="hero-slide" data-index="2">
+      <div class="slide-bg">
+        <img src="images/3-large.jpg" alt="طراحی سالن پذیرایی" loading="lazy" />
       </div>
-      <div class="slide__scrim"></div>
-      <div class="slide__content">
-        <div class="slide__inner">
-          <div class="slide__tag">فضایی برای خاطرات</div>
-          <h2 class="slide__title">سالن پذیرایی رویایی</h2>
-          <p class="slide__sub">ترکیب رنگ‌های گرم، نورپردازی هوشمند و مبلمان منحصربه‌فرد برای پذیرایی از مهمانان.</p>
-          <a href="#projects" class="slide__btn">نمونه‌کارها</a>
-        </div>
+      <div class="slide-scrim"></div>
+      <div class="slide-content">
+        <div class="slide-tag">فضایی برای خاطرات</div>
+        <h2 class="slide-title">سالن پذیرایی رویایی</h2>
+        <p class="slide-sub">ترکیب رنگ‌های گرم، نورپردازی هوشمند و مبلمان منحصربه‌فرد.</p>
+        <a href="#projects" class="slide-btn">نمونه‌کارها</a>
       </div>
     </div>
 
     <!-- اسلاید ۴ -->
-    <div class="hero__slide" data-index="3">
-      <div class="slide__img-wrap">
-        <img class="slide__img" src="images/4-large.jpg" alt="طراحی اتاق خواب مدرن – استودیو ناژو" loading="lazy" />
+    <div class="hero-slide" data-index="3">
+      <div class="slide-bg">
+        <img src="images/4-large.jpg" alt="طراحی اتاق خواب مدرن" loading="lazy" />
       </div>
-      <div class="slide__scrim"></div>
-      <div class="slide__content">
-        <div class="slide__inner">
-          <div class="slide__tag">آرامش و سادگی</div>
-          <h2 class="slide__title">اتاق خواب مدرن</h2>
-          <p class="slide__sub">طراحی مینیمال با هدبورد چوبی، نورپردازی مخفی و پارکت چوبی برای آرامش بی‌نظیر.</p>
-          <a href="#contact" class="slide__btn">درخواست طراحی</a>
-        </div>
+      <div class="slide-scrim"></div>
+      <div class="slide-content">
+        <div class="slide-tag">آرامش و سادگی</div>
+        <h2 class="slide-title">اتاق خواب مدرن</h2>
+        <p class="slide-sub">طراحی مینیمال با هدبورد چوبی، نورپردازی مخفی و پارکت چوبی.</p>
+        <a href="#contact" class="slide-btn">درخواست طراحی</a>
       </div>
     </div>
 
-    <!-- نقاط ناوبری -->
-    <div class="hero__dots" id="heroDots" role="tablist"></div>
+    <!-- نقاط -->
+    <div class="hero-dots" id="heroDots" role="tablist"></div>
 
     <!-- راهنما -->
-    <div class="hero__hint" id="heroHint" aria-hidden="true">
+    <div class="hero-hint" id="heroHint" aria-hidden="true">
       <span>اسکرول کنید</span>
       <span class="arrow">↓</span>
     </div>
   </section>
 
   <!-- ===== درباره ما ===== -->
-  <section class="section" id="about" aria-labelledby="about-title">
+  <section class="section" id="about">
     <div class="container">
-      <h2 class="section__title" id="about-title">درباره ما</h2>
+      <h2 class="section__title">درباره ما</h2>
       <div class="about__text">
-        <p>
-          <strong>استودیو طراحی داخلی ناژو</strong> به مدیریت <strong>ایمان حلاجیان</strong>، با سال‌ها تجربه در زمینه <strong>دکوراسیون داخلی</strong> و طراحی فضاهای مسکونی و تجاری، فعالیت خود را متمرکز بر <strong>رامسر و حومه</strong> (تنکابن، چابکسر و شهرهای اطراف) کرده است.
-        </p>
-        <p>
-          تخصص ما بر پایه تلفیق مهندسی معماری و متریال‌های اصیل استوار است. ما بر این باوریم که هر خانه داستانی برای گفتن دارد و وظیفه ما در ناژو، تصویرسازی این داستان در قالب طراحی‌های بی‌نقص و اجرای ماندگار است.
-        </p>
+        <p><strong>استودیو طراحی داخلی ناژو</strong> به مدیریت <strong>ایمان حلاجیان</strong>، با سال‌ها تجربه در زمینه <strong>دکوراسیون داخلی</strong> و طراحی فضاهای مسکونی و تجاری، فعالیت خود را متمرکز بر <strong>رامسر و حومه</strong> (تنکابن، چابکسر و شهرهای اطراف) کرده است.</p>
+        <p>تخصص ما بر پایه تلفیق مهندسی معماری و متریال‌های اصیل استوار است. ما بر این باوریم که هر خانه داستانی برای گفتن دارد و وظیفه ما در ناژو، تصویرسازی این داستان در قالب طراحی‌های بی‌نقص و اجرای ماندگار است.</p>
         <div class="about__highlight">
-          <i class="fa-solid fa-gem" aria-hidden="true"></i>
+          <i class="fa-solid fa-gem"></i>
           <span>استفاده از متریال با کیفیت عالی، اجرای دقیق با خطای صفر و گارانتی اصالت پروژه‌ها از اصول تخطی‌ناپذیر ماست.</span>
         </div>
       </div>
@@ -1009,92 +811,86 @@
   </section>
 
   <!-- ===== پروژه‌ها ===== -->
-  <section class="section" id="projects" aria-labelledby="projects-title">
+  <section class="section" id="projects">
     <div class="container">
-      <h2 class="section__title" id="projects-title">پروژه‌های اجرا شده</h2>
+      <h2 class="section__title">پروژه‌های اجرا شده</h2>
       <p class="section__sub">نمونه‌هایی از دکوراسیون داخلی با چوب و ام‌دی‌اف – هاور کنید تا زوم را ببینید.</p>
       <div class="projects__grid">
-        <!-- ۱ -->
         <article class="project-card">
           <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/1.jpg" alt="آشپزخانه کلاسیک – استودیو ناژو" loading="lazy" />
+            <img class="project-card__img" src="images/1.jpg" alt="آشپزخانه کلاسیک" loading="lazy" />
             <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
           </div>
           <div class="project-card__info">
             <span class="project-card__tag">چوب و ام‌دی‌اف</span>
             <h3 class="project-card__title">آشپزخانه کلاسیک</h3>
             <p class="project-card__desc">تلفیق چوب گردو و ام‌دی‌اف ممبران با جزیره مرکزی سنگ تراورتن، فضایی گرم و مجلل.</p>
-            <a href="https://mahdiramsar.github.io/iman-halajian/article/1.html" target="_blank" class="project-card__link">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+            <a href="article/1.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
           </div>
         </article>
 
-        <!-- ۲ -->
         <article class="project-card">
           <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/2.jpg" alt="اتاق خواب مدرن – استودیو ناژو" loading="lazy" />
+            <img class="project-card__img" src="images/2.jpg" alt="اتاق خواب مدرن" loading="lazy" />
             <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
           </div>
           <div class="project-card__info">
             <span class="project-card__tag">مینیمال</span>
             <h3 class="project-card__title">اتاق خواب مدرن</h3>
             <p class="project-card__desc">هدبورد چوبی با نورپردازی مخفی، کمدهای جگ‌لسی براق و پارکت روشن، فضایی آرامش‌بخش.</p>
-            <a href="https://mahdiramsar.github.io/iman-halajian/article/2.html" target="_blank" class="project-card__link">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+            <a href="article/2.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
           </div>
         </article>
 
-        <!-- ۳ -->
         <article class="project-card">
           <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/3.jpg" alt="سالن پذیرایی کلاسیک – استودیو ناژو" loading="lazy" />
+            <img class="project-card__img" src="images/3.jpg" alt="سالن پذیرایی کلاسیک" loading="lazy" />
             <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
           </div>
           <div class="project-card__info">
             <span class="project-card__tag">کلاسیک</span>
             <h3 class="project-card__title">سالن پذیرایی کلاسیک</h3>
             <p class="project-card__desc">گچ‌بری‌های دست‌ساز، شومینه با آجر نمایان و لوستر کریستالی، شکوهی جاودانه.</p>
-            <a href="https://mahdiramsar.github.io/iman-halajian/article/3.html" target="_blank" class="project-card__link">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+            <a href="article/3.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
           </div>
         </article>
 
-        <!-- ۴ -->
         <article class="project-card">
           <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/4.jpg" alt="آشپزخانه مدرن – استودیو ناژو" loading="lazy" />
+            <img class="project-card__img" src="images/4.jpg" alt="آشپزخانه مدرن" loading="lazy" />
             <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
           </div>
           <div class="project-card__info">
             <span class="project-card__tag">هایگلاس</span>
             <h3 class="project-card__title">آشپزخانه مدرن</h3>
             <p class="project-card__desc">کابینت‌های هایگلاس سفید با جزیره کوارتز و پشت‌کار شیشه‌ای با نورپردازی هوشمند.</p>
-            <a href="https://mahdiramsar.github.io/iman-halajian/article/4.html" target="_blank" class="project-card__link">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+            <a href="article/4.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
           </div>
         </article>
 
-        <!-- ۵ -->
         <article class="project-card">
           <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/5.jpg" alt="اتاق خواب نئوکلاسیک – استودیو ناژو" loading="lazy" />
+            <img class="project-card__img" src="images/5.jpg" alt="اتاق خواب نئوکلاسیک" loading="lazy" />
             <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
           </div>
           <div class="project-card__info">
             <span class="project-card__tag">نئوکلاسیک</span>
             <h3 class="project-card__title">اتاق خواب نئوکلاسیک</h3>
             <p class="project-card__desc">پنل‌های چوبی عمودی با نور مخفی، کمدهای برنجی و پارکت گرم، تلفیق اصالت و مدرنیته.</p>
-            <a href="https://mahdiramsar.github.io/iman-halajian/article/5.html" target="_blank" class="project-card__link">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+            <a href="article/5.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
           </div>
         </article>
 
-        <!-- ۶ -->
         <article class="project-card">
           <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/6.jpg" alt="سالن تلویزیون و پذیرایی – استودیو ناژو" loading="lazy" />
+            <img class="project-card__img" src="images/6.jpg" alt="سالن تلویزیون و پذیرایی" loading="lazy" />
             <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
           </div>
           <div class="project-card__info">
             <span class="project-card__tag">مدرن</span>
             <h3 class="project-card__title">سالن تلویزیون و پذیرایی</h3>
             <p class="project-card__desc">دیوار چوبی با پنل‌های عمودی، مبلمان ماژولار و قفسه‌های دیواری ام‌دی‌اف، فضایی گرم برای دورهمی.</p>
-            <a href="https://mahdiramsar.github.io/iman-halajian/article/6.html" target="_blank" class="project-card__link">ادامه مطلب <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+            <a href="article/6.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
           </div>
         </article>
       </div>
@@ -1102,27 +898,27 @@
   </section>
 
   <!-- ===== تماس ===== -->
-  <section class="section" id="contact" aria-labelledby="contact-title">
+  <section class="section" id="contact">
     <div class="container">
-      <h2 class="section__title" id="contact-title">ارتباط با ما</h2>
+      <h2 class="section__title">ارتباط با ما</h2>
       <div class="contact__wrapper">
         <div class="contact__info">
           <div class="contact__item">
-            <div class="contact__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
+            <div class="contact__icon"><i class="fa-solid fa-phone"></i></div>
             <div>
               <strong>تلفن تماس:</strong><br>
               <a href="tel:+989113548593" dir="ltr">+98 911 354 8593</a>
             </div>
           </div>
           <div class="contact__item">
-            <div class="contact__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+            <div class="contact__icon"><i class="fa-solid fa-location-dot"></i></div>
             <div>
               <strong>محدوده فعالیت:</strong><br>
               <span>رامسر، تنکابن، چابکسر و حومه</span>
             </div>
           </div>
           <div class="contact__item">
-            <div class="contact__icon"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+            <div class="contact__icon"><i class="fa-solid fa-user-tie"></i></div>
             <div>
               <strong>مدیر و طراح:</strong><br>
               <span>ایمان حلاجیان</span>
@@ -1132,13 +928,13 @@
 
         <form class="contact__form" id="contactForm" action="https://formspree.io/f/yourFormID" method="POST" novalidate>
           <label for="formName">نام شما</label>
-          <input type="text" id="formName" name="name" placeholder="نام و نام خانوادگی" required aria-required="true" />
+          <input type="text" id="formName" name="name" placeholder="نام و نام خانوادگی" required />
 
           <label for="formEmail">ایمیل</label>
-          <input type="email" id="formEmail" name="email" placeholder="example@domain.com" required aria-required="true" />
+          <input type="email" id="formEmail" name="email" placeholder="example@domain.com" required />
 
           <label for="formMessage">پیام</label>
-          <textarea id="formMessage" name="message" rows="4" placeholder="توضیح درخواست شما..." required aria-required="true"></textarea>
+          <textarea id="formMessage" name="message" rows="4" placeholder="توضیح درخواست شما..." required></textarea>
 
           <button type="submit">ارسال پیام</button>
           <div class="form-status" id="formStatus"></div>
@@ -1148,7 +944,7 @@
   </section>
 
   <!-- ===== فوتر ===== -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <div class="container">
       <div class="footer__links">
         <a href="#hero">خانه</a>
@@ -1162,17 +958,17 @@
 
   <!-- ===== دکمه‌های شناور ===== -->
   <div class="floating">
-    <a href="https://wa.me/989113548593" target="_blank" rel="noopener noreferrer" class="floating__btn floating__btn--whatsapp" aria-label="ارسال پیام در واتساپ">
-      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <a href="https://wa.me/989113548593" target="_blank" rel="noopener noreferrer" class="floating__btn floating__btn--whatsapp" aria-label="واتساپ">
+      <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <a href="https://instagram.com/decorator.halajian" target="_blank" rel="noopener noreferrer" class="floating__btn floating__btn--instagram" aria-label="صفحه اینستاگرام ناژو">
-      <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+    <a href="https://instagram.com/decorator.halajian" target="_blank" rel="noopener noreferrer" class="floating__btn floating__btn--instagram" aria-label="اینستاگرام">
+      <i class="fa-brands fa-instagram"></i>
     </a>
   </div>
 
   <!-- ===== بازگشت به بالا ===== -->
-  <a href="#hero" class="back-top" id="backTop" aria-label="بازگشت به بالای صفحه">
-    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  <a href="#hero" class="back-top" id="backTop" aria-label="بازگشت به بالا">
+    <i class="fa-solid fa-arrow-up"></i>
   </a>
 
   <!-- ============================================
@@ -1182,14 +978,13 @@
     (function() {
       'use strict';
 
-      // ---------- نوار پیشرفت اسکرول ----------
+      // ---------- نوار پیشرفت ----------
       const progressBar = document.getElementById('scrollProgress');
       window.addEventListener('scroll', function() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
         progressBar.style.width = progress + '%';
-        progressBar.setAttribute('aria-valuenow', Math.round(progress));
       });
 
       // ---------- هدر ----------
@@ -1230,8 +1025,8 @@
         });
       });
 
-      // ---------- هیرو اسکرول محور + زوم ----------
-      const slides = document.querySelectorAll('.hero__slide');
+      // ---------- هیرو - تشخیص اسلاید فعال و زوم ----------
+      const slides = document.querySelectorAll('.hero-slide');
       const dotsContainer = document.getElementById('heroDots');
       let currentIndex = 0;
 
@@ -1242,7 +1037,7 @@
         dot.setAttribute('aria-label', 'اسلاید ' + (i + 1));
         if (i === 0) dot.classList.add('active');
         dot.addEventListener('click', function() {
-          const target = document.querySelector('.hero__slide[data-index="' + i + '"]');
+          const target = document.querySelector('.hero-slide[data-index="' + i + '"]');
           if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
         dotsContainer.appendChild(dot);
@@ -1264,57 +1059,52 @@
         });
       }, {
         threshold: 0.6,
-        root: document.querySelector('.hero')
+        root: document.querySelector('.hero-wrapper')
       });
 
       slides.forEach(function(s) {
         heroObserver.observe(s);
       });
 
-      // افکت زوم اسکرول با Intersection Observer
+      // ---------- افکت زوم اسکرول ----------
       function updateZoomForSlide(slide) {
-        const img = slide.querySelector('.slide__img');
+        const img = slide.querySelector('.slide-bg img');
         if (!img) return;
         const rect = slide.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
+        // میزان دیده شدن اسلاید در ویوپورت
         const visibleRatio = 1 - Math.abs(rect.top) / viewportHeight;
         const progress = Math.min(Math.max(visibleRatio, 0), 1);
+        // زوم: از 1.15 تا 1.5
         const scale = 1.15 + (1 - progress) * 0.35;
         img.style.transform = 'scale(' + scale + ')';
       }
 
-      const zoomObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            updateZoomForSlide(entry.target);
-          }
-        });
-      }, {
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-        root: document.querySelector('.hero')
-      });
-
-      slides.forEach(function(s) {
-        zoomObserver.observe(s);
-      });
-
       // به‌روزرسانی زوم هنگام اسکرول
-      const hero = document.querySelector('.hero');
-      hero.addEventListener('scroll', function() {
+      const heroWrapper = document.querySelector('.hero-wrapper');
+      heroWrapper.addEventListener('scroll', function() {
         slides.forEach(function(s) {
           const rect = s.getBoundingClientRect();
-          const parentRect = hero.getBoundingClientRect();
+          const parentRect = heroWrapper.getBoundingClientRect();
+          // فقط اسلایدهایی که در ویوپورت هستند
           if (rect.top < parentRect.bottom && rect.bottom > parentRect.top) {
             updateZoomForSlide(s);
           }
         });
       });
 
+      // به‌روزرسانی اولیه
+      setTimeout(function() {
+        slides.forEach(function(s) {
+          updateZoomForSlide(s);
+        });
+      }, 100);
+
       // مخفی کردن راهنما
       const hint = document.getElementById('heroHint');
-      hero.addEventListener('scroll', function() {
-        const scrollTop = hero.scrollTop;
-        if (scrollTop > hero.clientHeight * 0.5) {
+      heroWrapper.addEventListener('scroll', function() {
+        const scrollTop = heroWrapper.scrollTop;
+        if (scrollTop > heroWrapper.clientHeight * 0.5) {
           hint.style.opacity = '0';
           hint.style.pointerEvents = 'none';
         } else {
@@ -1323,7 +1113,7 @@
         }
       });
 
-      // ---------- انیمیشن اسکرول بخش‌ها ----------
+      // ---------- انیمیشن اسکرول ----------
       const sections = document.querySelectorAll('.section');
       const cards = document.querySelectorAll('.project-card');
 
@@ -1367,27 +1157,6 @@
         setTimeout(function() {
           status.textContent = '';
         }, 6000);
-      });
-
-      // ---------- لینک‌های # ----------
-      document.querySelectorAll('a[href="#"]').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-        });
-      });
-
-      // ---------- دکمه‌های اسلایدها ----------
-      document.querySelectorAll('.slide__btn').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth' });
-            }
-          }
-        });
       });
 
     })();
