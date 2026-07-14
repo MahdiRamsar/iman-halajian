@@ -22,7 +22,7 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <!-- ===== داده‌های ساختاریافته (Schema) تکمیل‌شده ===== -->
+  <!-- ===== داده‌های ساختاریافته (Schema) ===== -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -95,6 +95,7 @@
     }
 
     @layer theme {
+      /* ===== همیشه دارک (پیش‌فرض) ===== */
       :root {
         --bg:#0b0a08;
         --fg:#f2ebe1;
@@ -108,6 +109,8 @@
         --glass-border:rgba(201,168,124,0.12);
         --header-bg:rgba(11,10,8,0.7);
       }
+      
+      /* ===== تم روشن (فقط زمانی که کاربر دستی انتخاب کند) ===== */
       [data-theme="light"] {
         --bg:#f5f3f0;
         --fg:#1a1714;
@@ -117,9 +120,9 @@
         --shadow:0 30px 60px rgba(0,0,0,0.1);
         --header-bg:rgba(245,243,240,0.7);
       }
-      @media (prefers-color-scheme: light) {
-        :root:not([data-theme]) { --bg:#f5f3f0; --fg:#1a1714; --muted:#5a5550; --glass-bg:rgba(255,255,255,0.6); --glass-border:rgba(0,0,0,0.08); --shadow:0 30px 60px rgba(0,0,0,0.1); --header-bg:rgba(245,243,240,0.7); }
-      }
+      
+      /* ===== غیرفعال کردن تشخیص خودکار تم سیستم ===== */
+      /* دیگر از prefers-color-scheme استفاده نمی‌شود */
     }
 
     @layer layout {
@@ -687,22 +690,21 @@
         });
       },
 
+      // ===== تم (همیشه دارک، مگر کاربر دستی عوض کند) =====
       setupTheme() {
         const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = saved || (prefersDark ? 'dark' : 'light');
+        // اگر کاربر قبلاً تمی را ذخیره کرده، از همان استفاده کن، در غیر این صورت دارک
+        const theme = saved || 'dark';
         this.setTheme(theme);
 
         this.themeToggle.addEventListener('click', () => {
           const current = document.documentElement.getAttribute('data-theme');
-          this.setTheme(current === 'dark' ? 'light' : 'dark');
+          const newTheme = current === 'dark' ? 'light' : 'dark';
+          this.setTheme(newTheme);
         });
 
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-          if (!localStorage.getItem('theme')) {
-            this.setTheme(e.matches ? 'dark' : 'light');
-          }
-        });
+        // ===== غیرفعال کردن تشخیص خودکار تم سیستم =====
+        // دیگر به prefers-color-scheme گوش نمی‌دهیم
       },
 
       setTheme(theme) {
