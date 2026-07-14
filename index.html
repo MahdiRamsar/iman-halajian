@@ -226,7 +226,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.45) contrast(1.05) saturate(1.1);
+      filter: brightness(0.65) contrast(1.05) saturate(1.1);  /* ← تغییر: روشن‌تر */
       user-select: none;
       -webkit-user-drag: none;
     }
@@ -528,11 +528,11 @@
     }
     .contact__item a:hover { color: var(--primary-light); }
 
-    /* ===== دکمه‌های شناور ===== */
+    /* ===== دکمه‌های شناور (چپ) ===== */
     .floating-buttons {
       position: fixed;
       bottom: 100px;
-      right: 20px;
+      left: 20px;           /* ← تغییر: چپ */
       z-index: 999;
       display: flex;
       flex-direction: column;
@@ -590,7 +590,7 @@
       font-family: 'Vazirmatn', sans-serif;
     }
 
-    /* ===== دکمه بازگشت به بالا ===== */
+    /* ===== دکمه بازگشت به بالا (چپ) ===== */
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -642,16 +642,44 @@
       .contact__wrapper { flex-direction: column; }
       .about__content { font-size: 0.95rem; }
       .zoom-dots { left: 0.6rem; }
-      .floating-buttons { right: 12px; bottom: 80px; }
-      .floating-btn { width: 48px; height: 48px; font-size: 1.4rem; }
+      
+      /* دکمه‌های شناور در موبایل */
+      .floating-buttons {
+        left: 12px;          /* ← تغییر: چپ */
+        bottom: 80px;
+      }
+      .floating-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+      }
+      .back-to-top {
+        left: 12px;          /* برای هماهنگی با دکمه‌های شناور */
+        bottom: 30px;
+      }
     }
 
     @media (max-width: 480px) {
       .logo { font-size: 1.2rem; }
       .scene__sub { font-size: 0.9rem; }
       .scene__btn { padding: 10px 24px; font-size: 0.9rem; }
-      .floating-btn { width: 42px; height: 42px; font-size: 1.2rem; }
-      .floating-buttons { right: 10px; bottom: 70px; gap: 10px; }
+      .floating-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+      }
+      .floating-buttons {
+        left: 10px;          /* ← تغییر: چپ */
+        bottom: 70px;
+        gap: 10px;
+      }
+      .back-to-top {
+        left: 10px;
+        bottom: 30px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
@@ -853,7 +881,7 @@
   <span aria-hidden="true">↑</span>
 </a>
 
-<!-- ===== دکمه‌های شناور ===== -->
+<!-- ===== دکمه‌های شناور (چپ) ===== -->
 <div class="floating-buttons">
   <a href="https://wa.me/989113548593?text=سلام%20من%20از%20سایت%20ناژو%20پیام%20میدم" 
      target="_blank" 
@@ -876,33 +904,30 @@
   (function () {
     'use strict';
 
-    // =====================================================
-    // 🔥 تغییر مهم: استفاده از عکس‌های محلی (همون ۶ تا پروژه)
-    // =====================================================
     const SCENES = [
       {
-        img: 'images/1.jpg',        // عکس پروژه شماره ۱
+        img: 'images/1.jpg',
         focal: '50% 42%',
         tag: 'ناژو',
         title: 'طراحی داخلی\nبا اصالت',
         sub: 'استودیو ناژو به مدیریت ایمان حلاجیان، متخصص در دکوراسیون داخلی با چوب و ام‌دی‌اف در رامسر و حومه.',
       },
       {
-        img: 'images/3.jpg',        // عکس پروژه شماره ۳ (سالن پذیرایی کلاسیک)
+        img: 'images/3.jpg',
         focal: '50% 55%',
         tag: 'کلاسیک',
         title: 'گرمای چوب\nو اصالت',
         sub: 'طراحی آشپزخانه و اتاق خواب با چوب طبیعی و ام‌دی‌اف، فضایی گرم و ماندگار.',
       },
       {
-        img: 'images/4.jpg',        // عکس پروژه شماره ۴ (آشپزخانه مدرن)
+        img: 'images/4.jpg',
         focal: '48% 50%',
         tag: 'مدرن',
         title: 'مینیمال\nو کارآمد',
         sub: 'دکوراسیون مدرن با خطوط ساده، کابینت‌های هایگلاس و نورپردازی هوشمند.',
       },
       {
-        img: 'images/2.jpg',        // عکس پروژه شماره ۲ (اتاق خواب مدرن)
+        img: 'images/2.jpg',
         focal: '50% 46%',
         tag: 'حوزه فعالیت',
         title: 'متمرکز بر\nرامسر و حومه',
@@ -920,7 +945,6 @@
 
     section.style.height = n * 120 + 'vh';
 
-    // ===== ساخت صحنه‌ها =====
     const sceneEls = SCENES.map((s, j) => {
       const el = document.createElement('div');
       el.className = 'scene';
@@ -943,7 +967,6 @@
       return el;
     });
 
-    // ===== نقاط ناوبری =====
     const dotEls = SCENES.map((s, i) => {
       const b = document.createElement('button');
       b.className = 'zoom-dot';
@@ -958,7 +981,6 @@
       return b;
     });
 
-    // ===== منطق زوم =====
     let zoom = 0,
       ticking = false;
 
@@ -1012,7 +1034,6 @@
     window.addEventListener('resize', update);
     update();
 
-    // ===== منوی همبرگر =====
     const hamburger = document.getElementById('hamburgerBtn');
     const navMenu = document.getElementById('navMenu');
     hamburger.addEventListener('click', function () {
@@ -1027,7 +1048,6 @@
       });
     });
 
-    // ===== دکمه بازگشت به بالا =====
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', function () {
       backBtn.classList.toggle('show', window.scrollY > 400);
