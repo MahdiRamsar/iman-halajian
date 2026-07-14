@@ -68,7 +68,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <!-- ===== CSP (سیاست امنیتی محتوا) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.googleapis.com; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com; connect-src 'self' https://formspree.io https://maps.googleapis.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.googleapis.com; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com; connect-src 'self' https://formspree.io https://maps.googleapis.com; frame-src https://www.google.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -259,11 +259,10 @@
       .form-status { margin-top:16px; font-weight:600; color:var(--primary-light); }
       .form-status.error { color:#e74c3c; }
       
-      /* نقشه */
+      /* نقشه (رفع مشکل) */
       .contact__map { flex:1 1 100%; margin-top:32px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); }
       .contact__map iframe { width:100%; height:300px; border:0; display:block; }
       
-      /* دکمه اشتراک‌گذاری */
       .share-btn { display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:10px 24px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:40px; color:var(--muted); font-family:inherit; font-size:0.9rem; cursor:pointer; transition:all var(--transition); }
       .share-btn:hover { background:var(--primary); color:#000; border-color:var(--primary); }
       .share-btn:focus-visible { outline:2px solid var(--primary); outline-offset:4px; }
@@ -288,7 +287,6 @@
       .footer__links a:hover { color:var(--primary-light); }
       .footer__copy { font-size:0.9rem; color:var(--muted); opacity:0.6; }
       
-      /* Preload hint (برای لینک‌ها) */
       .preload-hint { display:none; }
       
       @media (max-width:768px) {
@@ -465,7 +463,6 @@
               <span>ایمان حلاجیان</span>
             </div>
           </div>
-          <!-- ===== دکمه اشتراک‌گذاری ===== -->
           <button class="share-btn" id="shareBtn" aria-label="اشتراک‌گذاری صفحه">
             <i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری
           </button>
@@ -487,10 +484,10 @@
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
         
-        <!-- ===== نقشه تعاملی ===== -->
+        <!-- ===== نقشه گوگل (رفع شده) ===== -->
         <div class="contact__map">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25911.682764240865!2d50.777456!3d36.897123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8a8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sRamsar%2C%20Mazandaran%20Province%2C%20Iran!5e0!3m2!1sen!2sus!4v1700000000000" 
+            src="https://www.google.com/maps/embed/v1/place?q=Ramsar,+Mazandaran+Province,+Iran&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen
@@ -709,7 +706,6 @@
         this.dotsContainer = document.getElementById('heroDots');
         this.hint = document.getElementById('heroHint');
         this.shareBtn = document.getElementById('shareBtn');
-        // فیلدهای فرم برای اعتبارسنجی
         this.formName = document.getElementById('formName');
         this.formEmail = document.getElementById('formEmail');
         this.formMessage = document.getElementById('formMessage');
@@ -747,7 +743,6 @@
         });
       },
 
-      // ===== Lazy Load با Intersection Observer =====
       setupLazyImages() {
         const images = document.querySelectorAll('.project-card__img');
         const observer = new IntersectionObserver((entries) => {
@@ -766,7 +761,6 @@
         images.forEach(img => observer.observe(img));
       },
 
-      // ===== Theme (همیشه دارک، مگر کاربر دستی عوض کند) =====
       setupTheme() {
         const saved = localStorage.getItem('theme');
         const theme = saved || 'dark';
@@ -924,14 +918,11 @@
         });
       },
 
-      // ===== اعتبارسنجی فرم با جزئیات بیشتر =====
       setupContactForm() {
-        // اعتبارسنجی لحظه‌ای (blur)
         this.formName.addEventListener('blur', () => this.validateField('name'));
         this.formEmail.addEventListener('blur', () => this.validateField('email'));
         this.formMessage.addEventListener('blur', () => this.validateField('message'));
 
-        // اعتبارسنجی هنگام تایپ (برای پاک کردن خطا)
         this.formName.addEventListener('input', () => this.clearFieldError('name'));
         this.formEmail.addEventListener('input', () => this.clearFieldError('email'));
         this.formMessage.addEventListener('input', () => this.clearFieldError('message'));
@@ -939,7 +930,6 @@
         this.form.addEventListener('submit', async (e) => {
           e.preventDefault();
           
-          // اعتبارسنجی همه فیلدها
           const isNameValid = this.validateField('name');
           const isEmailValid = this.validateField('email');
           const isMessageValid = this.validateField('message');
@@ -972,7 +962,6 @@
               this.formStatus.textContent = '✅ پیام شما با موفقیت ارسال شد! به زودی تماس می‌گیریم.';
               this.formStatus.className = 'form-status';
               this.form.reset();
-              // پاک کردن کلاس‌های خطا
               document.querySelectorAll('.contact__form input, .contact__form textarea').forEach(el => {
                 el.classList.remove('error');
               });
@@ -1060,7 +1049,6 @@
         }
       },
 
-      // ===== Service Worker =====
       setupServiceWorker() {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/sw.js')
@@ -1069,7 +1057,6 @@
         }
       },
 
-      // ===== دکمه اشتراک‌گذاری (Web Share API) =====
       setupShareButton() {
         if (this.shareBtn) {
           this.shareBtn.addEventListener('click', async () => {
@@ -1081,7 +1068,6 @@
                   url: window.location.href
                 });
               } else {
-                // Fallback: کپی لینک در کلیپ‌بورد
                 await navigator.clipboard.writeText(window.location.href);
                 this.shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> لینک کپی شد!';
                 setTimeout(() => {
@@ -1089,14 +1075,12 @@
                 }, 3000);
               }
             } catch (err) {
-              // کاربر لغو کرده یا خطا
               console.log('Share cancelled or error:', err);
             }
           });
         }
       },
 
-      // ===== پیش‌بارگذاری لینک‌ها با Intersection Observer =====
       setupLinkPreload() {
         const links = document.querySelectorAll('a[href]');
         const observer = new IntersectionObserver((entries) => {
@@ -1104,7 +1088,6 @@
             if (entry.isIntersecting) {
               const link = entry.target;
               const href = link.getAttribute('href');
-              // فقط لینک‌های داخلی و non-empty
               if (href && !href.startsWith('http') && href !== '#') {
                 const preloadLink = document.createElement('link');
                 preloadLink.rel = 'prefetch';
