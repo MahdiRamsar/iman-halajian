@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   
+  <!-- ===== سئو ===== -->
   <title>استودیو طراحی داخلی ناژو | ایمان حلاجیان | رامسر</title>
   <meta name="description" content="استودیو طراحی داخلی ناژو به مدیریت ایمان حلاجیان، متخصص در دکوراسیون داخلی با چوب و ام‌دی‌اف در رامسر، تنکابن و چابکسر." />
   <meta name="keywords" content="طراحی داخلی, دکوراسیون, ناژو, ایمان حلاجیان, رامسر, چوب, ام دی اف, کابینت" />
@@ -21,6 +22,7 @@
   <meta property="og:locale" content="fa_IR" />
   <meta name="twitter:card" content="summary_large_image" />
   
+  <!-- ===== Schema کامل ===== -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,6 +30,7 @@
       "name": "استودیو طراحی داخلی ناژو",
       "founder": { "@type": "Person", "name": "ایمان حلاجیان" },
       "telephone": "+989113548593",
+      "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "رامسر",
@@ -35,7 +38,8 @@
         "addressCountry": "IR"
       },
       "areaServed": "رامسر و حومه",
-      "url": "https://najou-studio.ir/"
+      "url": "https://najou-studio.ir/",
+      "openingHours": "Sa-Th 09:00-20:00"
     }
   </script>
   
@@ -49,7 +53,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   
   <style>
-    /* ===== متغیرهای تم ===== */
+    /* ============================================
+       متغیرهای تم
+    ============================================ */
     :root {
       --bg: #0b0a08;
       --fg: #f2ebe1;
@@ -58,7 +64,7 @@
       --primary-light: #e4d4b0;
       --radius: 20px;
       --shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      --transition: 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+      --transition: 0.5s cubic-bezier(0.25, 1, 0.3, 1);
       --glass-bg: rgba(26, 23, 20, 0.5);
       --glass-border: rgba(201, 168, 124, 0.12);
       --header-bg: rgba(11, 10, 8, 0.7);
@@ -203,7 +209,9 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
 
-    /* ===== هیرو با افکت زوم اسکرول ===== */
+    /* ============================================
+       هیرو با افکت زوم اسکرول (دست نخورده)
+    ============================================ */
     .hero-wrapper {
       height: 100vh;
       overflow-y: scroll;
@@ -348,7 +356,9 @@
     .hero-hint .arrow { animation: bob 1.2s infinite; }
     @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-    /* ===== بخش‌ها ===== */
+    /* ============================================
+       بخش‌های اصلی
+    ============================================ */
     .section {
       padding: 100px 0;
       border-top: 1px solid var(--glass-border);
@@ -419,6 +429,7 @@
       transition: all var(--transition);
       opacity: 0;
       transform: translateY(30px);
+      cursor: pointer;
     }
     .project-card.visible { opacity: 1; transform: translateY(0); }
     .project-card:hover {
@@ -480,6 +491,10 @@
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.8;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .project-card__link {
       display: inline-flex;
@@ -490,13 +505,120 @@
       font-weight: 700;
       text-decoration: none;
       transition: all var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: inherit;
+      font-family: inherit;
     }
     .project-card__link:hover {
       color: var(--primary-light);
       transform: translateX(-4px);
     }
 
-    /* تماس */
+    /* ============================================
+       مودال مقالات (جدید)
+    ============================================ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-overlay.open .modal-box {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .modal-box {
+      background: var(--bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      transform: scale(0.95) translateY(20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    }
+    [data-theme="light"] .modal-box {
+      background: var(--bg-light);
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 0;
+      float: left;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0 8px;
+      transition: color var(--transition);
+      z-index: 2;
+    }
+    .modal-close:hover { color: var(--primary-light); }
+
+    .modal-box h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: var(--fg);
+    }
+    .modal-box .modal-tag {
+      display: inline-block;
+      background: rgba(201, 168, 124, 0.12);
+      color: var(--primary);
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 16px;
+    }
+    .modal-box .modal-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--glass-border);
+    }
+    .modal-box .modal-body {
+      color: var(--muted);
+      line-height: 2;
+      font-size: 1.05rem;
+    }
+    .modal-box .modal-body p { margin-bottom: 16px; }
+    .modal-box .modal-body strong { color: var(--primary-light); }
+    .modal-box .modal-body ul {
+      padding-right: 20px;
+      margin: 16px 0;
+    }
+    .modal-box .modal-body ul li { margin-bottom: 6px; }
+
+    /* اسکرولبار مودال */
+    .modal-box::-webkit-scrollbar { width: 6px; }
+    .modal-box::-webkit-scrollbar-track { background: var(--glass-bg); border-radius: 3px; }
+    .modal-box::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* ===== تماس ===== */
     .contact__wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -579,7 +701,7 @@
     }
     .form-status { margin-top: 16px; font-weight: 600; color: var(--primary-light); }
 
-    /* دکمه‌های شناور */
+    /* ===== دکمه‌های شناور ===== */
     .floating {
       position: fixed;
       bottom: 100px;
@@ -613,7 +735,7 @@
     .floating__btn--instagram { background: #e1306c; }
     .floating__btn--instagram:hover { background: #c72a5f; }
 
-    /* بازگشت به بالا */
+    /* ===== بازگشت به بالا ===== */
     .back-top {
       position: fixed;
       bottom: 32px;
@@ -637,7 +759,7 @@
     .back-top.show { opacity: 1; visibility: visible; }
     .back-top:hover { transform: translateY(-4px); background: var(--primary-light); }
 
-    /* فوتر */
+    /* ===== فوتر ===== */
     .footer {
       background: rgba(11, 10, 8, 0.6);
       padding: 48px 0;
@@ -660,7 +782,9 @@
     .footer__links a:hover { color: var(--primary-light); }
     .footer__copy { font-size: 0.9rem; color: var(--muted); opacity: 0.6; }
 
-    /* ===== ریسپانسیو ===== */
+    /* ============================================
+       ریسپانسیو
+    ============================================ */
     @media (max-width: 768px) {
       .hamburger { display: flex; }
       .nav__list {
@@ -688,6 +812,9 @@
       .hero-dots { left: 1rem; gap: 0.75rem; }
       .hero-dots button { width: 8px; height: 8px; }
       .hero-hint { bottom: 1.5rem; }
+      .modal-box { padding: 24px; margin: 10px; }
+      .modal-box .modal-img { height: 200px; }
+      .modal-box h2 { font-size: 1.5rem; }
     }
     @media (max-width: 480px) {
       .logo { font-size: 1.2rem; }
@@ -729,11 +856,8 @@
 
   <!-- ===== هیرو ===== -->
   <section class="hero-wrapper" id="hero">
-    <!-- اسلاید ۱ -->
     <div class="hero-slide" data-index="0">
-      <div class="slide-bg">
-        <img src="images/1-large.jpg" alt="طراحی داخلی ناژو" loading="eager" />
-      </div>
+      <div class="slide-bg"><img src="images/1-large.jpg" alt="طراحی داخلی ناژو" loading="eager" /></div>
       <div class="slide-scrim"></div>
       <div class="slide-content">
         <div class="slide-tag">طراحی لوکس و اصیل</div>
@@ -742,12 +866,8 @@
         <a href="#projects" class="slide-btn">مشاهده پروژه‌ها</a>
       </div>
     </div>
-
-    <!-- اسلاید ۲ -->
     <div class="hero-slide" data-index="1">
-      <div class="slide-bg">
-        <img src="images/2-large.jpg" alt="طراحی کابینت مدرن" loading="lazy" />
-      </div>
+      <div class="slide-bg"><img src="images/2-large.jpg" alt="طراحی کابینت مدرن" loading="lazy" /></div>
       <div class="slide-scrim"></div>
       <div class="slide-content">
         <div class="slide-tag">هنر اجرا با چوب و MDF</div>
@@ -756,12 +876,8 @@
         <a href="#contact" class="slide-btn">مشاوره رایگان</a>
       </div>
     </div>
-
-    <!-- اسلاید ۳ -->
     <div class="hero-slide" data-index="2">
-      <div class="slide-bg">
-        <img src="images/3-large.jpg" alt="طراحی سالن پذیرایی" loading="lazy" />
-      </div>
+      <div class="slide-bg"><img src="images/3-large.jpg" alt="طراحی سالن پذیرایی" loading="lazy" /></div>
       <div class="slide-scrim"></div>
       <div class="slide-content">
         <div class="slide-tag">فضایی برای خاطرات</div>
@@ -770,12 +886,8 @@
         <a href="#projects" class="slide-btn">نمونه‌کارها</a>
       </div>
     </div>
-
-    <!-- اسلاید ۴ -->
     <div class="hero-slide" data-index="3">
-      <div class="slide-bg">
-        <img src="images/4-large.jpg" alt="طراحی اتاق خواب مدرن" loading="lazy" />
-      </div>
+      <div class="slide-bg"><img src="images/4-large.jpg" alt="طراحی اتاق خواب مدرن" loading="lazy" /></div>
       <div class="slide-scrim"></div>
       <div class="slide-content">
         <div class="slide-tag">آرامش و سادگی</div>
@@ -784,11 +896,7 @@
         <a href="#contact" class="slide-btn">درخواست طراحی</a>
       </div>
     </div>
-
-    <!-- نقاط -->
     <div class="hero-dots" id="heroDots" role="tablist"></div>
-
-    <!-- راهنما -->
     <div class="hero-hint" id="heroHint" aria-hidden="true">
       <span>اسکرول کنید</span>
       <span class="arrow">↓</span>
@@ -815,84 +923,8 @@
     <div class="container">
       <h2 class="section__title">پروژه‌های اجرا شده</h2>
       <p class="section__sub">نمونه‌هایی از دکوراسیون داخلی با چوب و ام‌دی‌اف – هاور کنید تا زوم را ببینید.</p>
-      <div class="projects__grid">
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/1.jpg" alt="آشپزخانه کلاسیک" loading="lazy" />
-            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__tag">چوب و ام‌دی‌اف</span>
-            <h3 class="project-card__title">آشپزخانه کلاسیک</h3>
-            <p class="project-card__desc">تلفیق چوب گردو و ام‌دی‌اف ممبران با جزیره مرکزی سنگ تراورتن، فضایی گرم و مجلل.</p>
-            <a href="article/1.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/2.jpg" alt="اتاق خواب مدرن" loading="lazy" />
-            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__tag">مینیمال</span>
-            <h3 class="project-card__title">اتاق خواب مدرن</h3>
-            <p class="project-card__desc">هدبورد چوبی با نورپردازی مخفی، کمدهای جگ‌لسی براق و پارکت روشن، فضایی آرامش‌بخش.</p>
-            <a href="article/2.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/3.jpg" alt="سالن پذیرایی کلاسیک" loading="lazy" />
-            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__tag">کلاسیک</span>
-            <h3 class="project-card__title">سالن پذیرایی کلاسیک</h3>
-            <p class="project-card__desc">گچ‌بری‌های دست‌ساز، شومینه با آجر نمایان و لوستر کریستالی، شکوهی جاودانه.</p>
-            <a href="article/3.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/4.jpg" alt="آشپزخانه مدرن" loading="lazy" />
-            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__tag">هایگلاس</span>
-            <h3 class="project-card__title">آشپزخانه مدرن</h3>
-            <p class="project-card__desc">کابینت‌های هایگلاس سفید با جزیره کوارتز و پشت‌کار شیشه‌ای با نورپردازی هوشمند.</p>
-            <a href="article/4.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/5.jpg" alt="اتاق خواب نئوکلاسیک" loading="lazy" />
-            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__tag">نئوکلاسیک</span>
-            <h3 class="project-card__title">اتاق خواب نئوکلاسیک</h3>
-            <p class="project-card__desc">پنل‌های چوبی عمودی با نور مخفی، کمدهای برنجی و پارکت گرم، تلفیق اصالت و مدرنیته.</p>
-            <a href="article/5.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img class="project-card__img" src="images/6.jpg" alt="سالن تلویزیون و پذیرایی" loading="lazy" />
-            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__tag">مدرن</span>
-            <h3 class="project-card__title">سالن تلویزیون و پذیرایی</h3>
-            <p class="project-card__desc">دیوار چوبی با پنل‌های عمودی، مبلمان ماژولار و قفسه‌های دیواری ام‌دی‌اف، فضایی گرم برای دورهمی.</p>
-            <a href="article/6.html" class="project-card__link" target="_self">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
-          </div>
-        </article>
+      <div class="projects__grid" id="projectsGrid">
+        <!-- پروژه‌ها توسط جاوااسکریپت ساخته می‌شوند -->
       </div>
     </div>
   </section>
@@ -925,17 +957,13 @@
             </div>
           </div>
         </div>
-
         <form class="contact__form" id="contactForm" action="https://formspree.io/f/yourFormID" method="POST" novalidate>
           <label for="formName">نام شما</label>
           <input type="text" id="formName" name="name" placeholder="نام و نام خانوادگی" required />
-
           <label for="formEmail">ایمیل</label>
           <input type="email" id="formEmail" name="email" placeholder="example@domain.com" required />
-
           <label for="formMessage">پیام</label>
           <textarea id="formMessage" name="message" rows="4" placeholder="توضیح درخواست شما..." required></textarea>
-
           <button type="submit">ارسال پیام</button>
           <div class="form-status" id="formStatus"></div>
         </form>
@@ -971,14 +999,208 @@
     <i class="fa-solid fa-arrow-up"></i>
   </a>
 
+  <!-- ===== مودال مقالات ===== -->
+  <div class="modal-overlay" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="بستن مودال">&times;</button>
+      <img class="modal-img" id="modalImg" src="" alt="" />
+      <span class="modal-tag" id="modalTag"></span>
+      <h2 id="modalTitle"></h2>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
   <!-- ============================================
-  اسکریپت
+  اسکریپت کامل
   ============================================ -->
   <script>
     (function() {
       'use strict';
 
-      // ---------- نوار پیشرفت ----------
+      // ============================================
+      // دیتاهای پروژه‌ها (با توضیحات کامل)
+      // ============================================
+      const projectsData = [{
+        id: 1,
+        title: 'آشپزخانه کلاسیک',
+        tag: 'چوب و ام‌دی‌اف',
+        desc: 'تلفیق چوب گردو و ام‌دی‌اف ممبران با جزیره مرکزی سنگ تراورتن، فضایی گرم و مجلل.',
+        img: 'images/1.jpg',
+        fullDesc: `
+          <p>این آشپزخانه با الهام از سبک کلاسیک اروپایی و تلفیق آن با هنر اصیل ایرانی طراحی شده است. استفاده از <strong>چوب طبیعی گردو</strong> در کنار <strong>ام‌دی‌اف با روکش ممبران</strong>، فضایی گرم، صمیمی و در عین حال مجلل را به ارمغان آورده است.</p>
+          <p><strong>متریال‌های به‌کاررفته:</strong></p>
+          <ul>
+            <li>چوب گردوی روسی برای کابینت‌ها و جزیره مرکزی</li>
+            <li>ام‌دی‌اف ممبران با روکش براق و مقاوم در برابر رطوبت</li>
+            <li>سنگ تراورتن برای رویه‌ی جزیره و کانترها</li>
+            <li>پارکت چوبی طرح هریگبون برای کف‌پوش</li>
+            <li>یراق‌آلات برنجی کهنه‌کار برای دستگیره‌ها</li>
+          </ul>
+          <p>نورپردازی مخفی زیر کابینت‌های بالایی، علاوه بر افزایش زیبایی، کارایی فضا را برای آشپزی نیز دوچندان کرده است. جزیره مرکزی به‌عنوان نقطه‌ی کانونی، فضایی برای صبحانه‌های سریع یا دورهمی‌های دوستانه فراهم کرده است.</p>
+        `
+      }, {
+        id: 2,
+        title: 'اتاق خواب مدرن',
+        tag: 'مینیمال',
+        desc: 'هدبورد چوبی با نورپردازی مخفی، کمدهای جگ‌لسی براق و پارکت روشن، فضایی آرامش‌بخش.',
+        img: 'images/2.jpg',
+        fullDesc: `
+          <p>اتاق خواب مدرن ناژو، پاسخی است به نیاز انسان امروز به <strong>سادگی، آرامش و دوری از هیاهو</strong>. این فضا با بهره‌گیری از اصول مینیمالیسم طراحی شده؛ جایی که «کمتر، واقعاً بیشتر است».</p>
+          <p><strong>متریال‌های به‌کاررفته:</strong></p>
+          <ul>
+            <li>چوب طبیعی با طرح عمودی برای هدبورد و دیوار پشت تخت</li>
+            <li>ام‌دی‌اف هایگلاس براق برای کمدهای دیواری</li>
+            <li>پارکت چوبی رنگ روشن برای کف‌پوش</li>
+            <li>نورپردازی مخفی LED در پشت هدبورد</li>
+          </ul>
+          <p>هدبورد چوبی با طرح عمودی، دیوار پشت تخت را به نقطه‌ی کانونی فضا تبدیل کرده و با نورپردازی مخفی LED، حس گرما و صمیمیت را دوچندان می‌کند. کمدهای جگ‌لسی با ظاهر مینیمال، فضای ذخیره‌سازی گسترده‌ای را بدون اشغال فضای بصری فراهم کرده‌اند.</p>
+        `
+      }, {
+        id: 3,
+        title: 'سالن پذیرایی کلاسیک',
+        tag: 'کلاسیک',
+        desc: 'گچ‌بری‌های دست‌ساز، شومینه با آجر نمایان و لوستر کریستالی، شکوهی جاودانه.',
+        img: 'images/3.jpg',
+        fullDesc: `
+          <p>سالن پذیرایی کلاسیک ناژو، نمادی از <strong>شکوه، اصالت و هنر ماندگار</strong> است. تلفیق المان‌های کلاسیک نظیر گچ‌بری‌های ظریف، شومینه و لوسترهای کریستالی با متریال‌های مدرن، فضایی مجلل و دلنشین خلق کرده است.</p>
+          <p><strong>متریال‌های به‌کاررفته:</strong></p>
+          <ul>
+            <li>گچ‌بری‌های دست‌ساز روی دیوارها و سقف</li>
+            <li>ام‌دی‌اف با روکش چوبی برای دیوارپوش‌ها</li>
+            <li>پارکت چوبی طرح هریگبون با رنگ تیره</li>
+            <li>لوستر کریستالی و دیوارکوب‌های برنجی</li>
+            <li>مبلمان مخمل‌پوش با رنگ‌های گرم</li>
+          </ul>
+          <p>شومینه‌ی گچی با آجرهای نمایان، نقطه‌ی کانونی سالن است که حس گرما و صمیمیت را به فضا هدیه می‌دهد. پارکت چوبی با طرح هریگبون و رنگ تیره، جلوهای اشرافی و ماندگار به این فضای پذیرایی بخشیده است.</p>
+        `
+      }, {
+        id: 4,
+        title: 'آشپزخانه مدرن',
+        tag: 'هایگلاس',
+        desc: 'کابینت‌های هایگلاس سفید با جزیره کوارتز و پشت‌کار شیشه‌ای با نورپردازی هوشمند.',
+        img: 'images/4.jpg',
+        fullDesc: `
+          <p>آشپزخانه مدرن ناژو، نمونهای برجسته از <strong>طراحی مینیمال</strong> و <strong>کارآمد</strong> است که در آن زیبایی و عملکرد دست در دست هم داده‌اند.</p>
+          <p><strong>متریال‌های به‌کاررفته:</strong></p>
+          <ul>
+            <li>ام‌دی‌اف هایگلاس سفید برای کابینت‌ها با دستگیره‌های پنهان</li>
+            <li>سنگ کوارتز برای رویه‌ی جزیره و کانترها</li>
+            <li>شیشه‌ی سندبلاست برای پشت‌کار آشپزخانه با نورپردازی داخلی</li>
+            <li>سرامیک ساب‌دار برای کف‌پوش</li>
+          </ul>
+          <p>کابینت‌های هایگلاس سفید با دستگیره‌های پنهان، ظاهری کاملاً مینیمال و یکدست به فضا بخشیده‌اند. جزیره مرکزی بزرگ با رویه سنگ کوارتز، نه تنها فضای کاری مضاعفی فراهم کرده، بلکه با نورپردازی آویزهای خطی بالای آن، به نقطه کانونی آشپزخانه تبدیل شده است.</p>
+        `
+      }, {
+        id: 5,
+        title: 'اتاق خواب نئوکلاسیک',
+        tag: 'نئوکلاسیک',
+        desc: 'پنل‌های چوبی عمودی با نور مخفی، کمدهای برنجی و پارکت گرم، تلفیق اصالت و مدرنیته.',
+        img: 'images/5.jpg',
+        fullDesc: `
+          <p>اتاق خواب نئوکلاسیک ناژو، پلی است میان <strong>شکوه و اصالت کلاسیک</strong> با <strong>سادگی و کارآمدی مدرن</strong>. ترکیب پنل‌های دیواری چوبی با پارچه‌های مخمل و رنگ‌های خنثی، فضایی لوکس و آرام خلق کرده است.</p>
+          <p><strong>متریال‌های به‌کاررفته:</strong></p>
+          <ul>
+            <li>پنل‌های دیواری چوبی با طرح عمودی</li>
+            <li>ام‌دی‌اف با روکش چوبی برای کمدهای دیواری</li>
+            <li>پارکت چوبی رنگ گرم</li>
+            <li>پارچه‌های مخمل برای روتختی و پرده‌ها</li>
+            <li>نورپردازی مخفی LED در پشت پنل‌های چوبی</li>
+          </ul>
+          <p>پنل‌های چوبی عمودی با نورپردازی مخفی، جلوهای مدرن به المان‌های کلاسیک بخشیده‌اند. دستگیره‌های برنجی کهنه‌کار روی کمدهای ام‌دی‌اف، حس اصالت را منتقل می‌کنند. نتیجه، اتاق خوابی است که هم زیبا است و هم کارآمد.</p>
+        `
+      }, {
+        id: 6,
+        title: 'سالن تلویزیون و پذیرایی',
+        tag: 'مدرن',
+        desc: 'دیوار چوبی با پنل‌های عمودی، مبلمان ماژولار و قفسه‌های دیواری ام‌دی‌اف، فضایی گرم برای دورهمی.',
+        img: 'images/6.jpg',
+        fullDesc: `
+          <p>سالن تلویزیون و پذیرایی ناژو، نمونهای از <strong>طراحی مدرن و کاربرپسند</strong> است که با تأکید بر گرما، صمیمیت و کارایی شکل گرفته است.</p>
+          <p><strong>متریال‌های به‌کاررفته:</strong></p>
+          <ul>
+            <li>چوب طبیعی برای دیوار تلویزیون با پنل‌های عمودی</li>
+            <li>ام‌دی‌اف برای قفسه‌های دیواری</li>
+            <li>پارکت مهندسی‌شده رنگ روشن برای کف‌پوش</li>
+            <li>مبلمان ماژولار با روکش پارچه‌ای</li>
+            <li>نورپردازی مخفی LED در پشت دیوار تلویزیون</li>
+          </ul>
+          <p>دیوار تلویزیون با پنل‌های چوبی عمودی و نورپردازی مخفی، نقطه کانونی سالن است. مبلمان ماژولار با روکش پارچه‌ای نرم، امکان چیدمان‌های مختلف را برای هر نوع مهمانی فراهم می‌کند. قفسه‌های دیواری ام‌دی‌اف، فضایی برای نمایش اشیاء تزئینی و کتاب‌ها ایجاد کرده‌اند.</p>
+        `
+      }];
+
+      // ============================================
+      // ساخت کارت‌های پروژه
+      // ============================================
+      const grid = document.getElementById('projectsGrid');
+
+      projectsData.forEach(function(p) {
+        const card = document.createElement('article');
+        card.className = 'project-card';
+        card.innerHTML = `
+          <div class="project-card__img-wrap">
+            <img class="project-card__img" src="${p.img}" alt="${p.title}" loading="lazy" />
+            <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
+          </div>
+          <div class="project-card__info">
+            <span class="project-card__tag">${p.tag}</span>
+            <h3 class="project-card__title">${p.title}</h3>
+            <p class="project-card__desc">${p.desc}</p>
+            <button class="project-card__link" data-id="${p.id}">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // ============================================
+      // مودال مقالات
+      // ============================================
+      const modal = document.getElementById('articleModal');
+      const modalClose = document.getElementById('modalClose');
+      const modalImg = document.getElementById('modalImg');
+      const modalTag = document.getElementById('modalTag');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+
+      function openModal(id) {
+        const project = projectsData.find(function(p) { return p.id === id; });
+        if (!project) return;
+
+        modalImg.src = project.img;
+        modalImg.alt = project.title;
+        modalTag.textContent = project.tag;
+        modalTitle.textContent = project.title;
+        modalBody.innerHTML = project.fullDesc;
+
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // باز کردن مودال با کلیک روی دکمه
+      document.querySelectorAll('.project-card__link').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const id = parseInt(this.getAttribute('data-id'));
+          openModal(id);
+        });
+      });
+
+      // بستن مودال
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // ============================================
+      // نوار پیشرفت
+      // ============================================
       const progressBar = document.getElementById('scrollProgress');
       window.addEventListener('scroll', function() {
         const scrollTop = window.scrollY;
@@ -987,13 +1209,17 @@
         progressBar.style.width = progress + '%';
       });
 
-      // ---------- هدر ----------
+      // ============================================
+      // هدر
+      // ============================================
       const header = document.getElementById('header');
       window.addEventListener('scroll', function() {
         header.classList.toggle('scrolled', window.scrollY > 80);
       });
 
-      // ---------- تم ----------
+      // ============================================
+      // تم
+      // ============================================
       const themeToggle = document.getElementById('themeToggle');
       const themeIcon = document.getElementById('themeIcon');
 
@@ -1009,7 +1235,9 @@
         setTheme(current === 'dark' ? 'light' : 'dark');
       });
 
-      // ---------- منو ----------
+      // ============================================
+      // منو
+      // ============================================
       const hamburger = document.getElementById('hamburgerBtn');
       const navMenu = document.getElementById('navMenu');
 
@@ -1025,10 +1253,11 @@
         });
       });
 
-      // ---------- هیرو - تشخیص اسلاید فعال و زوم ----------
+      // ============================================
+      // هیرو - تشخیص اسلاید فعال و زوم
+      // ============================================
       const slides = document.querySelectorAll('.hero-slide');
       const dotsContainer = document.getElementById('heroDots');
-      let currentIndex = 0;
 
       // ساخت دات‌ها
       slides.forEach(function(_, i) {
@@ -1050,7 +1279,6 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             const index = parseInt(entry.target.getAttribute('data-index'));
-            currentIndex = index;
             dots.forEach(function(d, i) {
               d.classList.toggle('active', i === index);
               d.setAttribute('aria-selected', i === index ? 'true' : 'false');
@@ -1066,34 +1294,31 @@
         heroObserver.observe(s);
       });
 
-      // ---------- افکت زوم اسکرول ----------
+      // ============================================
+      // افکت زوم اسکرول
+      // ============================================
       function updateZoomForSlide(slide) {
         const img = slide.querySelector('.slide-bg img');
         if (!img) return;
         const rect = slide.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-        // میزان دیده شدن اسلاید در ویوپورت
         const visibleRatio = 1 - Math.abs(rect.top) / viewportHeight;
         const progress = Math.min(Math.max(visibleRatio, 0), 1);
-        // زوم: از 1.15 تا 1.5
         const scale = 1.15 + (1 - progress) * 0.35;
         img.style.transform = 'scale(' + scale + ')';
       }
 
-      // به‌روزرسانی زوم هنگام اسکرول
       const heroWrapper = document.querySelector('.hero-wrapper');
       heroWrapper.addEventListener('scroll', function() {
         slides.forEach(function(s) {
           const rect = s.getBoundingClientRect();
           const parentRect = heroWrapper.getBoundingClientRect();
-          // فقط اسلایدهایی که در ویوپورت هستند
           if (rect.top < parentRect.bottom && rect.bottom > parentRect.top) {
             updateZoomForSlide(s);
           }
         });
       });
 
-      // به‌روزرسانی اولیه
       setTimeout(function() {
         slides.forEach(function(s) {
           updateZoomForSlide(s);
@@ -1113,7 +1338,9 @@
         }
       });
 
-      // ---------- انیمیشن اسکرول ----------
+      // ============================================
+      // انیمیشن اسکرول
+      // ============================================
       const sections = document.querySelectorAll('.section');
       const cards = document.querySelectorAll('.project-card');
 
@@ -1135,7 +1362,9 @@
         observer.observe(c);
       });
 
-      // ---------- بازگشت به بالا ----------
+      // ============================================
+      // بازگشت به بالا
+      // ============================================
       const backBtn = document.getElementById('backTop');
       window.addEventListener('scroll', function() {
         backBtn.classList.toggle('show', window.scrollY > 400);
@@ -1146,13 +1375,16 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // ---------- فرم ----------
+      // ============================================
+      // فرم تماس
+      // ============================================
       const form = document.getElementById('contactForm');
       const status = document.getElementById('formStatus');
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         status.textContent = '✅ پیام شما با موفقیت ارسال شد! به زودی تماس می‌گیریم.';
+        status.style.color = 'var(--primary-light)';
         this.reset();
         setTimeout(function() {
           status.textContent = '';
