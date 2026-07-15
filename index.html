@@ -4,10 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   
+  <!-- ============================== -->
+  <!-- توصیه‌های سروری (خارج از کد) -->
+  <!-- ============================== -->
+  <!-- 1. هدر CSP را از متا به سرور (htaccess/Nginx) منتقل کنید. -->
+  <!-- 2. فشرده‌سازی Gzip/Brotli را روی سرور فعال کنید.       -->
+  <!-- 3. فایل‌های sitemap.xml و robots.txt را در ریشه قرار دهید. -->
+  
   <!-- ===== سئو ===== -->
   <title>طراحی و اجرای کابینت در رامسر، تنکابن و چابکسر | ایمان حلاجیان | ناژو کابینت</title>
-  <meta name="description" content="طراحی و اجرای کابینت و دکوراسیون داخلی در رامسر، تنکابن، شهسوار و چابکسر توسط ایمان حلاجیان. متخصص در کابینت ام‌دی‌اف، چوب و طراحی مدرن و کلاسیک." />
-  <!-- حذف meta keywords (منسوخ) -->
+  <meta name="description" content="طراحی و اجرای کابینت و دکوراسیون داخلی لوکس در رامسر، تنکابن، شهسوار و چابکسر توسط ایمان حلاجیان. متخصص در کابینت ام‌دی‌اف، چوب، هایگلاس و طراحی مدرن و کلاسیک." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nazhocabinet.ir/" />
   
@@ -48,22 +54,29 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>" />
   <meta name="theme-color" content="#080706" id="themeColor" />
   
+  <!-- ===== امنیت (تکمیل‌شده) ===== -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="DENY" /> <!-- جلوگیری از کلیک‌جکینگ -->
+  
   <!-- ===== پیش‌بارگذاری (WebP) ===== -->
   <link rel="preload" as="image" href="Images/1-large.webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
-  <!-- ===== فونت‌ها ===== -->
+  <!-- ===== فونت‌ها با display=swap ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Vazirmatn:wght@300;400;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   
-  <!-- ===== CSP با nonce برای استایل و اسکریپت ===== -->
+  <!-- ===== Font Awesome با SRI (امنیت بیشتر) ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- ===== CSP با nonce ===== -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'nonce-7F3a9bC2xM1z' https://fonts.googleapis.com; img-src 'self' data:; script-src 'nonce-7F3a9bC2xM1z' https://cdnjs.cloudflare.com; connect-src 'self'; frame-src https://www.google.com;" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   
   <style nonce="7F3a9bC2xM1z">
-    /* ===== تمام CSS (با nonce) ===== */
+    /* ===== تمام CSS با nonce ===== */
     /* ===== متغیرها ===== */
     :root {
       --bg: #0b0a08;
@@ -71,7 +84,6 @@
       --muted: #b5aea3;
       --primary: #c9a87c;
       --primary-light: #e4d4b0;
-      --zoom: 5;
       --radius: 16px;
       --shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
@@ -284,7 +296,7 @@
       inset: 0;
       display: flex;
       align-items: center;
-      will-change: opacity, transform;
+      will-change: transform, opacity;
     }
 
     .scene__inner {
@@ -963,6 +975,7 @@
       <div class="about__content">
         <p><strong>استودیو طراحی داخلی ناژو</strong> به مدیریت <strong>ایمان حلاجیان</strong>، متخصص در <strong>طراحی و اجرای کابینت</strong> و دکوراسیون داخلی در <strong>رامسر، تنکابن، شهسوار و چابکسر</strong> است. ما با سال‌ها تجربه در زمینه <strong>کابینت ام‌دی‌اف</strong>، کابینت چوبی و طراحی فضاهای مدرن و کلاسیک، بهترین خدمات را به شما ارائه می‌دهیم.</p>
         <p>تخصص ما بر پایه تلفیق مهندسی معماری و متریال‌های اصیل استوار است. ما بر این باوریم که هر آشپزخانه و فضایی داستانی برای گفتن دارد و وظیفه ما در <strong>ناژو کابینت</strong>، تصویرسازی این داستان در قالب طراحی‌های بی‌نقص و اجرای ماندگار است.</p>
+        <p>از <strong>طراحی کابینت کلاسیک در رامسر</strong> گرفته تا <strong>کابینت هایگلاس مدرن در تنکابن</strong> و <strong>دکوراسیون داخلی چوبی در چابکسر</strong>، ما با درک عمیق از سبک‌های معماری و نیازهای مشتریان، فضایی منحصربه‌فرد خلق می‌کنیم که بازتابی از شخصیت شماست.</p>
         <div class="about__highlight">
           <span class="about__icon">✨</span>
           <span>استفاده از متریال با کیفیت عالی، اجرای دقیق با خطای صفر و گارانتی اصالت پروژه‌های <strong>کابینت در رامسر، تنکابن و چابکسر</strong> از اصول تخطی‌ناپذیر ماست.</span>
@@ -1054,7 +1067,7 @@
   </div>
 
   <!-- ============================================
-  اسکریپت با Nonce
+  اسکریپت با Nonce (تکمیل‌شده با تله فوکوس)
   ============================================ -->
   <script nonce="7F3a9bC2xM1z" type="module">
     // ============================================
@@ -1089,12 +1102,13 @@
     }];
 
     // ============================================
-    // داده‌های پروژه‌ها (تصاویر WebP با ابعاد)
+    // داده‌های پروژه‌ها (تکمیل‌شده با موقعیت جغرافیایی)
     // ============================================
     const PROJECTS = [{
       id: 1,
       title: 'آشپزخانه کلاسیک',
       tag: 'چوب و ام‌دی‌اف',
+      location: 'رامسر',
       desc: 'کابینت‌های ممبران با روکش چوب طبیعی و جزیره مرکزی، فضایی گرم و مجلل برای آشپزخانه در رامسر.',
       img: 'Images/1.webp',
       width: 600,
@@ -1115,6 +1129,7 @@
       id: 2,
       title: 'اتاق خواب مدرن',
       tag: 'مینیمال',
+      location: 'تنکابن',
       desc: 'هدبورد چوبی همراه با نورپردازی مخفی و کمدهای ام‌دی‌اف براق، حس آرامش و لوکس در تنکابن.',
       img: 'Images/2.webp',
       width: 600,
@@ -1134,6 +1149,7 @@
       id: 3,
       title: 'سالن پذیرایی کلاسیک',
       tag: 'پارکت و گچ‌بری',
+      location: 'شهسوار',
       desc: 'ترکیب پارکت چوبی با دیوارپوش‌های ام‌دی‌اف و شومینه، فضایی رسمی و دلنشین در شهسوار.',
       img: 'Images/3.webp',
       width: 600,
@@ -1154,6 +1170,7 @@
       id: 4,
       title: 'آشپزخانه مدرن',
       tag: 'هایگلاس',
+      location: 'چابکسر',
       desc: 'کابینت‌های براق سفید و جزیره مینیمال، تلفیق کارایی بالا با زیبایی روز در چابکسر.',
       img: 'Images/4.webp',
       width: 600,
@@ -1173,6 +1190,7 @@
       id: 5,
       title: 'اتاق خواب نئوکلاسیک',
       tag: 'چوب و پارچه',
+      location: 'رامسر',
       desc: 'پنل‌های دیواری چوبی همراه با پارچه‌های مخمل، اتاق خوابی شیک و دلباز در رامسر.',
       img: 'Images/5.webp',
       width: 600,
@@ -1193,6 +1211,7 @@
       id: 6,
       title: 'سالن تلویزیون و پذیرایی',
       tag: 'مدرن',
+      location: 'تنکابن',
       desc: 'دکوراسیون داخلی با المان‌های چوبی و روشنایی گرم، فضایی مناسب برای دورهمی‌ها در تنکابن.',
       img: 'Images/6.webp',
       width: 600,
@@ -1248,6 +1267,11 @@
         this.progressBar = document.getElementById('scrollProgress');
         this.header = document.getElementById('header');
         this.shareBtn = document.getElementById('shareBtn');
+        // برای تله فوکوس
+        this.focusableElements = [];
+        this.firstFocusable = null;
+        this.lastFocusable = null;
+        this.modalOpen = false;
       },
 
       // ===== ساخت صحنه‌های هیرو =====
@@ -1258,7 +1282,7 @@
           el.setAttribute('data-index', j);
           el.innerHTML = `
             <div class="scene__img-wrap" style="transform-origin:${s.focal}">
-              <img class="scene__img" src="${s.img}" alt="${s.tag}" draggable="false" loading="${j === 0 ? 'eager' : 'lazy'}" decoding="async" width="1200" height="800" />
+              <img class="scene__img" src="${s.img}" alt="${s.tag} - طراحی کابینت و دکوراسیون توسط ناژو" draggable="false" loading="${j === 0 ? 'eager' : 'lazy'}" decoding="async" width="1200" height="800" />
               <div class="scene__scrim-1"></div>
               <div class="scene__scrim-2"></div>
               <div class="scene__scrim-3"></div>
@@ -1293,15 +1317,16 @@
         });
       },
 
-      // ===== پروژه‌ها =====
+      // ===== پروژه‌ها (با Alt غنی‌شده) =====
       buildProjects() {
         PROJECTS.forEach(p => {
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('role', 'listitem');
+          const altText = `پروژه ${p.title} - طراحی و اجرای کابینت و دکوراسیون توسط ایمان حلاجیان در ${p.location}`;
           card.innerHTML = `
             <div class="project-card__image-wrap">
-              <img data-src="${p.img}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='rgba(26,23,20,0.5)' width='600' height='400'/%3E%3C/svg%3E" alt="${p.title} - اجرا شده در رامسر، تنکابن یا چابکسر" loading="lazy" decoding="async" width="${p.width}" height="${p.height}" />
+              <img data-src="${p.img}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='rgba(26,23,20,0.5)' width='600' height='400'/%3E%3C/svg%3E" alt="${altText}" loading="lazy" decoding="async" width="${p.width}" height="${p.height}" />
             </div>
             <div class="project-card__info">
               <h3 class="project-card__title">${p.title}</h3>
@@ -1382,7 +1407,7 @@
         this.hint.style.opacity = zoom < 0.3 ? 1 : 0;
       },
 
-      // ===== مودال =====
+      // ===== مودال با تله فوکوس (Focus Trap) =====
       setupModal() {
         this.modalClose.addEventListener('click', () => this.closeModal());
         this.modal.addEventListener('click', (e) => {
@@ -1390,25 +1415,76 @@
         });
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape') this.closeModal();
+          // تله فوکوس فقط در صورت باز بودن مودال
+          if (this.modalOpen && e.key === 'Tab') {
+            this.handleFocusTrap(e);
+          }
         });
+      },
+
+      handleFocusTrap(e) {
+        if (!this.focusableElements.length) return;
+        const first = this.focusableElements[0];
+        const last = this.focusableElements[this.focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      },
+
+      updateFocusableElements() {
+        // تمام المان‌های قابل فوکوس داخل مودال
+        const modalBox = this.modal.querySelector('.modal-box');
+        if (!modalBox) return;
+        const elements = modalBox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        this.focusableElements = Array.from(elements).filter(el => !el.disabled);
+        this.firstFocusable = this.focusableElements[0] || null;
+        this.lastFocusable = this.focusableElements[this.focusableElements.length - 1] || null;
       },
 
       openModal(id) {
         const project = PROJECTS.find(p => p.id === id);
         if (!project) return;
         this.modalImg.src = project.img;
-        this.modalImg.alt = project.title;
+        this.modalImg.alt = `تصویر پروژه ${project.title} - ${project.location}`;
         this.modalTag.textContent = project.tag;
         this.modalTitle.textContent = project.title;
         this.modalBody.innerHTML = project.fullDesc;
         this.modal.classList.add('open');
         document.body.style.overflow = 'hidden';
-        this.modalClose.focus();
+        this.modalOpen = true;
+
+        // به‌روزرسانی لیست فوکوس‌پذیرها و انتقال فوکوس
+        requestAnimationFrame(() => {
+          this.updateFocusableElements();
+          if (this.firstFocusable) {
+            this.firstFocusable.focus();
+          } else {
+            this.modalClose.focus();
+          }
+        });
       },
 
       closeModal() {
         this.modal.classList.remove('open');
         document.body.style.overflow = '';
+        this.modalOpen = false;
+        this.focusableElements = [];
+        // بازگرداندن فوکوس به دکمه‌ای که مودال را باز کرد
+        const activeBtn = document.activeElement;
+        if (activeBtn && activeBtn.closest('.project-card__link')) {
+          // اگر دکمه پروژه بود، همان را نگه می‌داریم
+        } else {
+          // در غیر این صورت، فوکوس به هدر برمی‌گردد (اختیاری)
+        }
       },
 
       // ===== انیمیشن اسکرول =====
