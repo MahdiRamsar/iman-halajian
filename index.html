@@ -25,19 +25,25 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <!-- ===== داده‌های ساختاریافته (Schema) اصلاح‌شده ===== -->
+  <!-- ===== داده‌های ساختاریافته (Schema) – نسخهٔ نهایی ===== -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "استودیو طراحی داخلی ناژو | ناژو کابینت",
-      "founder": { "@type": "Person", "name": "ایمان حلاجیان" },
+      "image": "https://nazhocabinet.ir/images/logo.webp",
+      "founder": {
+        "@type": "Person",
+        "name": "ایمان حلاجیان"
+      },
       "telephone": "+989113548593",
       "priceRange": "$$$",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "رامسر، بلوار امام خمینی، نبش کوچه ۱۲",
         "addressLocality": "رامسر",
         "addressRegion": "مازندران",
+        "postalCode": "4691815755",
         "addressCountry": "IR"
       },
       "areaServed": "رامسر، تنکابن، شهسوار و چابکسر",
@@ -46,7 +52,11 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": 4.9,
-        "reviewCount": 47
+        "reviewCount": 47,
+        "itemReviewed": {
+          "@type": "Product",
+          "name": "خدمات طراحی و اجرای کابینت و دکوراسیون داخلی"
+        }
       }
     }
   </script>
@@ -70,7 +80,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <!-- ===== CSP (سیاست امنیتی محتوا) ===== -->
+  <!-- ===== CSP ===== -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com; connect-src 'self' https://formspree.io; frame-src https://www.google.com https://www.youtube.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
@@ -88,7 +98,7 @@
   
   <style>
     /* ============================================
-       لایه‌بندی
+       لایه‌بندی (بدون تغییر)
     ============================================ */
     @layer reset, theme, layout, components, utilities;
 
@@ -262,7 +272,6 @@
       .form-status { margin-top:16px; font-weight:600; color:var(--primary-light); }
       .form-status.error { color:#e74c3c; }
       
-      /* ===== نقشه (اصلاح‌شده - بدون کلید API) ===== */
       .contact__map { flex:1 1 100%; margin-top:32px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); }
       .contact__map iframe { width:100%; height:300px; border:0; display:block; }
       
@@ -319,7 +328,7 @@
         .back-top { width:40px; height:40px; font-size:1.2rem; }
         .share-btn { font-size:0.8rem; padding:8px 16px; }
       }
-    } /* end @layer layout */
+    }
   </style>
 </head>
 <body>
@@ -357,7 +366,6 @@
 
   <!-- ===== هیرو ===== -->
   <section class="hero-wrapper" id="hero" aria-label="اسلایدهای معرفی">
-    <!-- اسلاید ۱ -->
     <div class="hero-slide" data-index="0">
       <div class="slide-bg">
         <img src="images/1-large.webp" alt="طراحی کابینت در رامسر - استودیو ناژو" fetchpriority="high" />
@@ -370,7 +378,6 @@
         <a href="#projects" class="slide-btn">مشاهده پروژه‌ها</a>
       </div>
     </div>
-    <!-- اسلاید ۲ -->
     <div class="hero-slide" data-index="1">
       <div class="slide-bg">
         <img src="images/2-large.webp" alt="طراحی کابینت مدرن در تنکابن - استودیو ناژو" loading="lazy" />
@@ -383,7 +390,6 @@
         <a href="#contact" class="slide-btn">مشاوره رایگان</a>
       </div>
     </div>
-    <!-- اسلاید ۳ -->
     <div class="hero-slide" data-index="2">
       <div class="slide-bg">
         <img src="images/3-large.webp" alt="سالن پذیرایی رویایی با شومینه - طراحی داخلی رامسر" loading="lazy" />
@@ -396,7 +402,6 @@
         <a href="#projects" class="slide-btn">نمونه‌کارها</a>
       </div>
     </div>
-    <!-- اسلاید ۴ -->
     <div class="hero-slide" data-index="3">
       <div class="slide-bg">
         <img src="images/4-large.webp" alt="اتاق خواب مدرن با هدبورد چوبی - دکوراسیون رامسر" loading="lazy" />
@@ -491,7 +496,7 @@
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
         
-        <!-- ===== نقشه گوگل (اصلاح‌شده - بدون کلید API) ===== -->
+        <!-- ===== نقشه گوگل (بدون کلید) ===== -->
         <div class="contact__map">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108510.85777513956!2d50.632222!3d36.904167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8f8f8f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sRamsar%2C%20Mazandaran%20Province%2C%20Iran!5e0!3m2!1sen!2sus!4v1234567890" 
@@ -545,12 +550,9 @@
   </div>
 
   <!-- ============================================
-  اسکریپت
+  اسکریپت (بدون تغییر)
   ============================================ -->
   <script type="module">
-    // ============================================
-    // داده‌های پروژه‌ها
-    // ============================================
     const projectsData = [
       {
         id: 1,
@@ -666,9 +668,6 @@
       }
     ];
 
-    // ============================================
-    // آبجکت اصلی برنامه
-    // ============================================
     const App = {
       init() {
         this.cacheDOM();
@@ -772,7 +771,6 @@
         const saved = localStorage.getItem('theme');
         const theme = saved || 'dark';
         this.setTheme(theme);
-
         this.themeToggle.addEventListener('click', () => {
           const current = document.documentElement.getAttribute('data-theme');
           const newTheme = current === 'dark' ? 'light' : 'dark';
@@ -814,7 +812,6 @@
           });
           this.dotsContainer.appendChild(dot);
         });
-
         const dots = this.dotsContainer.querySelectorAll('button');
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -827,7 +824,6 @@
             }
           });
         }, { threshold: 0.6, root: this.heroWrapper });
-
         this.slides.forEach(s => observer.observe(s));
       },
 
@@ -842,7 +838,6 @@
           const scale = 1.15 + (1 - progress) * 0.35;
           img.style.transform = `scale(${scale})`;
         };
-
         let ticking = false;
         this.heroWrapper.addEventListener('scroll', () => {
           if (!ticking) {
@@ -899,7 +894,6 @@
       setupScrollAnimations() {
         const sections = document.querySelectorAll('.section');
         const cards = document.querySelectorAll('.project-card');
-
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -907,7 +901,6 @@
             }
           });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
         sections.forEach(s => observer.observe(s));
         cards.forEach((card, i) => {
           observer.observe(card);
@@ -929,31 +922,25 @@
         this.formName.addEventListener('blur', () => this.validateField('name'));
         this.formEmail.addEventListener('blur', () => this.validateField('email'));
         this.formMessage.addEventListener('blur', () => this.validateField('message'));
-
         this.formName.addEventListener('input', () => this.clearFieldError('name'));
         this.formEmail.addEventListener('input', () => this.clearFieldError('email'));
         this.formMessage.addEventListener('input', () => this.clearFieldError('message'));
 
         this.form.addEventListener('submit', async (e) => {
           e.preventDefault();
-          
           const isNameValid = this.validateField('name');
           const isEmailValid = this.validateField('email');
           const isMessageValid = this.validateField('message');
-          
           if (!isNameValid || !isEmailValid || !isMessageValid) {
             this.formStatus.textContent = '❌ لطفاً همه فیلدها را به‌درستی پر کنید.';
             this.formStatus.className = 'form-status error';
             return;
           }
-
           const formData = new FormData(this.form);
           const data = Object.fromEntries(formData.entries());
-          
           this.formStatus.textContent = 'در حال ارسال...';
           this.formStatus.className = 'form-status';
           this.formSubmit.disabled = true;
-
           try {
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), 10000);
@@ -964,7 +951,6 @@
               signal: controller.signal
             });
             clearTimeout(timeout);
-
             if (response.ok) {
               this.formStatus.textContent = '✅ پیام شما با موفقیت ارسال شد! به زودی تماس می‌گیریم.';
               this.formStatus.className = 'form-status';
@@ -993,7 +979,6 @@
         let isValid = true;
         let errorEl = null;
         let inputEl = null;
-
         switch(field) {
           case 'name':
             inputEl = this.formName;
@@ -1033,12 +1018,10 @@
             }
             break;
         }
-
         if (inputEl) {
           inputEl.classList.toggle('error', !isValid);
           errorEl.classList.toggle('show', !isValid);
         }
-
         return isValid;
       },
 
@@ -1105,7 +1088,6 @@
             }
           });
         }, { rootMargin: '200px' });
-
         links.forEach(link => observer.observe(link));
       },
 
