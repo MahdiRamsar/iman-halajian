@@ -7,7 +7,7 @@
   <!-- ===== گوگل سرچ کنسول وریفای ===== -->
   <meta name="google-site-verification" content="4oF8QIdPTE_KD0OgBsdnFlP_RC0pniaVG6LALHbsQ_E" />
   
-  <!-- ===== سئو پیشرفته (بهینه شده برای کابینت در رامسر، تنکابن، شهسوار و چابکسر) ===== -->
+  <!-- ===== سئو پیشرفته ===== -->
   <title>طراحی و اجرای کابینت در رامسر، تنکابن و چابکسر | ایمان حلاجیان | ناژو کابینت</title>
   <meta name="description" content="طراحی و اجرای کابینت و دکوراسیون داخلی در رامسر، تنکابن، شهسوار و چابکسر توسط ایمان حلاجیان. متخصص در کابینت ام‌دی‌اف، چوب و طراحی مدرن و کلاسیک." />
   <meta name="keywords" content="کابینت در رامسر, کابینت در تنکابن, کابینت در شهسوار, کابینت در چابکسر, طراحی داخلی رامسر, ایمان حلاجیان, دکوراسیون رامسر, ناژو کابینت, کابینت ام دی اف" />
@@ -25,7 +25,7 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <!-- ===== داده‌های ساختاریافته (Schema) به‌روز شده ===== -->
+  <!-- ===== داده‌های ساختاریافته (Schema) ===== -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,7 +71,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <!-- ===== CSP (سیاست امنیتی محتوا) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.googleapis.com; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com; connect-src 'self' https://formspree.io https://maps.googleapis.com; frame-src https://www.google.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com; connect-src 'self' https://formspree.io; frame-src https://www.google.com https://www.youtube.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -88,7 +88,7 @@
   
   <style>
     /* ============================================
-       لایه‌بندی با @layer
+       لایه‌بندی (همان کد قبلی)
     ============================================ */
     @layer reset, theme, layout, components, utilities;
 
@@ -262,7 +262,7 @@
       .form-status { margin-top:16px; font-weight:600; color:var(--primary-light); }
       .form-status.error { color:#e74c3c; }
       
-      /* نقشه (رفع مشکل) */
+      /* ===== نقشه (اصلاح‌شده) ===== */
       .contact__map { flex:1 1 100%; margin-top:32px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); }
       .contact__map iframe { width:100%; height:300px; border:0; display:block; }
       
@@ -491,10 +491,10 @@
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
         
-        <!-- ===== نقشه گوگل ===== -->
+        <!-- ===== نقشه گوگل (اصلاح‌شده - بدون کلید API) ===== -->
         <div class="contact__map">
           <iframe 
-            src="https://www.google.com/maps/embed/v1/place?q=Ramsar,+Mazandaran+Province,+Iran&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108510.85777513956!2d50.632222!3d36.904167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8f8f8f8f8f8f8f%3A0x8f8f8f8f8f8f8f8f!2sRamsar%2C%20Mazandaran%20Province%2C%20Iran!5e0!3m2!1sen!2sus!4v1234567890" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen
@@ -545,7 +545,7 @@
   </div>
 
   <!-- ============================================
-  اسکریپت (نسخه ۶ با بهبودهای منتخب)
+  اسکریپت (همان کد قبلی با یک بهبود برای SW)
   ============================================ -->
   <script type="module">
     // ============================================
@@ -667,7 +667,7 @@
     ];
 
     // ============================================
-    // آبجکت اصلی برنامه (نسخه ۶)
+    // آبجکت اصلی برنامه
     // ============================================
     const App = {
       init() {
@@ -1060,7 +1060,7 @@
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/sw.js')
             .then(() => console.log('SW registered'))
-            .catch(() => console.log('SW registration failed'));
+            .catch(() => console.log('SW registration failed (sw.js may not exist)'));
         }
       },
 
