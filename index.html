@@ -295,6 +295,25 @@
       .footer__links a:hover { color:var(--primary-light); }
       .footer__copy { font-size:0.9rem; color:var(--muted); opacity:0.6; }
       
+      /* ----- اضافه شده برای اسم طراح ----- */
+      .footer__designer {
+        margin-top: 12px;
+        font-size: 0.85rem;
+        color: var(--muted);
+        opacity: 0.6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        direction: ltr;
+      }
+      .footer__designer span {
+        direction: rtl;
+      }
+      .footer__designer strong {
+        color: var(--primary);
+      }
+      
       .preload-hint { display:none; }
       
       @media (max-width:768px) {
@@ -323,6 +342,7 @@
         .floating__btn { width:44px; height:44px; font-size:1.3rem; border-radius:12px; }
         .back-top { width:40px; height:40px; font-size:1.2rem; }
         .share-btn { font-size:0.8rem; padding:8px 16px; }
+        .footer__designer { font-size:0.75rem; flex-wrap:wrap; }
       }
     }
   </style>
@@ -516,6 +536,12 @@
         <a href="#contact">ارتباط با ما</a>
       </div>
       <p class="footer__copy">© ۲۰۲۶ تمامی حقوق برای استودیو طراحی داخلی ناژو (کابینت در رامسر، تنکابن و چابکسر) محفوظ است.</p>
+      
+      <!-- ===== اسم طراح (اضافه شده) ===== -->
+      <div class="footer__designer">
+        <i class="fa-solid fa-code" style="font-size:0.9rem;"></i>
+        <span>طراحی و توسعه وب‌سایت: <strong>مهدی رحیمیان</strong></span>
+      </div>
     </div>
   </footer>
 
