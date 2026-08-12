@@ -119,7 +119,7 @@
   
   <style>
     /* ============================================
-       لایه‌بندی (بهینه‌شده)
+       لایه‌بندی (همانند نسخه قبل)
     ============================================ */
     @layer reset, theme, layout, components, utilities;
 
@@ -280,9 +280,8 @@
       .contact__item a { color:var(--fg); text-decoration:none; transition:color var(--transition); }
       .contact__item a:hover { color:var(--primary-light); }
       
-      /* فرم اصلاح شده با Netlify Forms */
+      /* فرم با Netlify Forms */
       .contact__form { flex:1 1 50%; background:var(--glass-bg); backdrop-filter:blur(8px); padding:32px; border-radius:var(--radius); border:1px solid var(--glass-border); }
-      .contact__form[data-netlify="true"] { /* استایل خاص Netlify */ }
       .contact__form label { display:block; margin-top:16px; margin-bottom:4px; font-weight:600; color:var(--muted); }
       .contact__form input, .contact__form textarea { width:100%; padding:12px 16px; border-radius:12px; border:1px solid var(--glass-border); background:rgba(11,10,8,0.4); color:var(--fg); font-family:inherit; font-size:1rem; transition:border-color var(--transition), box-shadow var(--transition); }
       .contact__form input:focus, .contact__form textarea:focus { outline:2px solid var(--primary); border-color:transparent; box-shadow:0 0 0 4px rgba(201,168,124,0.15); }
@@ -631,19 +630,55 @@
   </div>
 
   <!-- ============================================
-  اسکریپت اصلی – بهینه‌شده با سئوی پویا، srcset، مسیریابی و ...
+  اسکریپت اصلی – بهینه‌شده (همانند فایل script.js با بهبودها)
   ============================================ -->
-  <script type="module">
-    // ===== داده‌های پروژه‌ها =====
-    const projectsData = [
+  <script>
+    // ============================================
+    // داده‌ها
+    // ============================================
+
+    // صحنه‌های هیرو با افکت زوم
+    const SCENES = [
+      {
+        img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&fm=webp&q=80',
+        focal: '50% 42%',
+        tag: 'ناژو',
+        title: 'طراحی داخلی\nبا اصالت',
+        sub: 'استودیو ناژو به مدیریت ایمان حلاجیان، متخصص در دکوراسیون داخلی با چوب و ام‌دی‌اف در رامسر و حومه.',
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&fm=webp&q=80',
+        focal: '50% 55%',
+        tag: 'کلاسیک',
+        title: 'گرمای چوب\nو اصالت',
+        sub: 'طراحی آشپزخانه و اتاق خواب با چوب طبیعی و ام‌دی‌اف، فضایی گرم و ماندگار.',
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=1200&fm=webp&q=80',
+        focal: '48% 50%',
+        tag: 'مدرن',
+        title: 'مینیمال\nو کارآمد',
+        sub: 'دکوراسیون مدرن با خطوط ساده، کابینت‌های هایگلاس و نورپردازی هوشمند.',
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&fm=webp&q=80',
+        focal: '50% 46%',
+        tag: 'حوزه فعالیت',
+        title: 'متمرکز بر\nرامسر و حومه',
+        sub: 'ارائه خدمات طراحی داخلی در رامسر، تنکابن، چابکسر و مناطق اطراف.',
+      },
+    ];
+
+    // پروژه‌ها (با slug برای سئوی پویا)
+    const PROJECTS = [
       {
         id: 1,
         title: 'آشپزخانه کلاسیک',
         slug: 'ashpazkhaneh-klasik',
         tag: 'چوب و ام‌دی‌اف',
-        desc: 'تلفیق چوب گردو و ام‌دی‌اف ممبران با جزیره مرکزی سنگ تراورتن، فضایی گرم و مجلل برای کابینت در رامسر.',
-        img: 'images/1.webp',
-        imgLarge: 'images/1-large.webp',
+        desc: 'کابینت‌های ممبران با روکش چوب طبیعی و جزیره مرکزی، فضایی گرم و مجلل برای آشپزخانه.',
+        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&fm=webp&q=80',
+        imgLarge: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&fm=webp&q=80',
         fullDesc: `
           <p>این آشپزخانه با الهام از سبک کلاسیک اروپایی و تلفیق آن با هنر اصیل ایرانی طراحی شده است. استفاده از <strong>چوب طبیعی گردو</strong> در کنار <strong>ام‌دی‌اف با روکش ممبران</strong>، فضایی گرم، صمیمی و در عین حال مجلل را به ارمغان آورده است.</p>
           <p><strong>متریال‌های به‌کاررفته:</strong></p>
@@ -654,17 +689,17 @@
             <li>پارکت چوبی طرح هریگبون برای کف‌پوش</li>
             <li>یراق‌آلات برنجی کهنه‌کار برای دستگیره‌ها</li>
           </ul>
-          <p>نورپردازی مخفی زیر کابینت‌های بالایی، علاوه بر افزایش زیبایی، کارایی فضا را برای آشپزی نیز دوچندان کرده است. جزیره مرکزی به‌عنوان نقطه‌ی کانونی، فضایی برای صبحانه‌های سریع یا دورهمی‌های دوستانه فراهم کرده است.</p>
-        `
+          <p>نورپردازی مخفی زیر کابینت‌های بالایی، علاوه بر افزایش زیبایی، کارایی فضا را برای آشپزی نیز دوچندان کرده است.</p>
+        `,
       },
       {
         id: 2,
         title: 'اتاق خواب مدرن',
         slug: 'otagh-khab-modern',
         tag: 'مینیمال',
-        desc: 'هدبورد چوبی با نورپردازی مخفی، کمدهای جگ‌لسی براق و پارکت روشن، فضایی آرامش‌بخش در رامسر.',
-        img: 'images/2.webp',
-        imgLarge: 'images/2-large.webp',
+        desc: 'هدبورد چوبی همراه با نورپردازی مخفی و کمدهای ام‌دی‌اف براق، حس آرامش و لوکس.',
+        img: 'https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=600&fm=webp&q=80',
+        imgLarge: 'https://images.unsplash.com/photo-1616046229478-5d7e9c1f9b5a?w=1200&fm=webp&q=80',
         fullDesc: `
           <p>اتاق خواب مدرن ناژو، پاسخی است به نیاز انسان امروز به <strong>سادگی، آرامش و دوری از هیاهو</strong>. این فضا با بهره‌گیری از اصول مینیمالیسم طراحی شده؛ جایی که «کمتر، واقعاً بیشتر است».</p>
           <p><strong>متریال‌های به‌کاررفته:</strong></p>
@@ -674,17 +709,17 @@
             <li>پارکت چوبی رنگ روشن برای کف‌پوش</li>
             <li>نورپردازی مخفی LED در پشت هدبورد</li>
           </ul>
-          <p>هدبورد چوبی با طرح عمودی، دیوار پشت تخت را به نقطه‌ی کانونی فضا تبدیل کرده و با نورپردازی مخفی LED، حس گرما و صمیمیت را دوچندان می‌کند. کمدهای جگ‌لسی با ظاهر مینیمال، فضای ذخیره‌سازی گسترده‌ای را بدون اشغال فضای بصری فراهم کرده‌اند.</p>
-        `
+          <p>هدبورد چوبی با طرح عمودی، دیوار پشت تخت را به نقطه‌ی کانونی فضا تبدیل کرده و با نورپردازی مخفی LED، حس گرما و صمیمیت را دوچندان می‌کند.</p>
+        `,
       },
       {
         id: 3,
         title: 'سالن پذیرایی کلاسیک',
         slug: 'salan-paziraei-klasik',
-        tag: 'کلاسیک',
-        desc: 'گچ‌بری‌های دست‌ساز، شومینه با آجر نمایان و لوستر کریستالی، شکوهی جاودانه در تنکابن.',
-        img: 'images/3.webp',
-        imgLarge: 'images/3-large.webp',
+        tag: 'پارکت و گچ‌بری',
+        desc: 'ترکیب پارکت چوبی با دیوارپوش‌های ام‌دی‌اف و شومینه، فضایی رسمی و دلنشین.',
+        img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=600&fm=webp&q=80',
+        imgLarge: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=1200&fm=webp&q=80',
         fullDesc: `
           <p>سالن پذیرایی کلاسیک ناژو، نمادی از <strong>شکوه، اصالت و هنر ماندگار</strong> است. تلفیق المان‌های کلاسیک نظیر گچ‌بری‌های ظریف، شومینه و لوسترهای کریستالی با متریال‌های مدرن، فضایی مجلل و دلنشین خلق کرده است.</p>
           <p><strong>متریال‌های به‌کاررفته:</strong></p>
@@ -695,17 +730,17 @@
             <li>لوستر کریستالی و دیوارکوب‌های برنجی</li>
             <li>مبلمان مخمل‌پوش با رنگ‌های گرم</li>
           </ul>
-          <p>شومینه‌ی گچی با آجرهای نمایان، نقطه‌ی کانونی سالن است که حس گرما و صمیمیت را به فضا هدیه می‌دهد. پارکت چوبی با طرح هریگبون و رنگ تیره، جلوهای اشرافی و ماندگار به این فضای پذیرایی بخشیده است.</p>
-        `
+          <p>شومینه‌ی گچی با آجرهای نمایان، نقطه‌ی کانونی سالن است که حس گرما و صمیمیت را به فضا هدیه می‌دهد.</p>
+        `,
       },
       {
         id: 4,
         title: 'آشپزخانه مدرن',
         slug: 'ashpazkhaneh-modern',
         tag: 'هایگلاس',
-        desc: 'کابینت‌های هایگلاس سفید با جزیره کوارتز و پشت‌کار شیشه‌ای با نورپردازی هوشمند برای کابینت در چابکسر.',
-        img: 'images/4.webp',
-        imgLarge: 'images/4-large.webp',
+        desc: 'کابینت‌های براق سفید و جزیره مینیمال، تلفیق کارایی بالا با زیبایی روز.',
+        img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&fm=webp&q=80',
+        imgLarge: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&fm=webp&q=80',
         fullDesc: `
           <p>آشپزخانه مدرن ناژو، نمونهای برجسته از <strong>طراحی مینیمال</strong> و <strong>کارآمد</strong> است که در آن زیبایی و عملکرد دست در دست هم داده‌اند.</p>
           <p><strong>متریال‌های به‌کاررفته:</strong></p>
@@ -715,17 +750,17 @@
             <li>شیشه‌ی سندبلاست برای پشت‌کار آشپزخانه با نورپردازی داخلی</li>
             <li>سرامیک ساب‌دار برای کف‌پوش</li>
           </ul>
-          <p>کابینت‌های هایگلاس سفید با دستگیره‌های پنهان، ظاهری کاملاً مینیمال و یکدست به فضا بخشیده‌اند. جزیره مرکزی بزرگ با رویه سنگ کوارتز، نه تنها فضای کاری مضاعفی فراهم کرده، بلکه با نورپردازی آویزهای خطی بالای آن، به نقطه کانونی آشپزخانه تبدیل شده است.</p>
-        `
+          <p>کابینت‌های هایگلاس سفید با دستگیره‌های پنهان، ظاهری کاملاً مینیمال و یکدست به فضا بخشیده‌اند.</p>
+        `,
       },
       {
         id: 5,
         title: 'اتاق خواب نئوکلاسیک',
         slug: 'otagh-khab-neoklasik',
-        tag: 'نئوکلاسیک',
-        desc: 'پنل‌های چوبی عمودی با نور مخفی، کمدهای برنجی و پارکت گرم، تلفیق اصالت و مدرنیته در رامسر.',
-        img: 'images/5.webp',
-        imgLarge: 'images/5-large.webp',
+        tag: 'چوب و پارچه',
+        desc: 'پنل‌های دیواری چوبی همراه با پارچه‌های مخمل، اتاق خوابی شیک و دلباز.',
+        img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&fm=webp&q=80',
+        imgLarge: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&fm=webp&q=80',
         fullDesc: `
           <p>اتاق خواب نئوکلاسیک ناژو، پلی است میان <strong>شکوه و اصالت کلاسیک</strong> با <strong>سادگی و کارآمدی مدرن</strong>. ترکیب پنل‌های دیواری چوبی با پارچه‌های مخمل و رنگ‌های خنثی، فضایی لوکس و آرام خلق کرده است.</p>
           <p><strong>متریال‌های به‌کاررفته:</strong></p>
@@ -736,17 +771,17 @@
             <li>پارچه‌های مخمل برای روتختی و پرده‌ها</li>
             <li>نورپردازی مخفی LED در پشت پنل‌های چوبی</li>
           </ul>
-          <p>پنل‌های چوبی عمودی با نورپردازی مخفی، جلوهای مدرن به المان‌های کلاسیک بخشیده‌اند. دستگیره‌های برنجی کهنه‌کار روی کمدهای ام‌دی‌اف، حس اصالت را منتقل می‌کنند. نتیجه، اتاق خوابی است که هم زیبا است و هم کارآمد.</p>
-        `
+          <p>پنل‌های چوبی عمودی با نورپردازی مخفی، جلوهای مدرن به المان‌های کلاسیک بخشیده‌اند.</p>
+        `,
       },
       {
         id: 6,
         title: 'سالن تلویزیون و پذیرایی',
         slug: 'salan-televizion',
         tag: 'مدرن',
-        desc: 'دیوار چوبی با پنل‌های عمودی، مبلمان ماژولار و قفسه‌های دیواری ام‌دی‌اف، فضایی گرم برای دورهمی در شهسوار.',
-        img: 'images/6.webp',
-        imgLarge: 'images/6-large.webp',
+        desc: 'دکوراسیون داخلی با المان‌های چوبی و روشنایی گرم، فضایی مناسب برای دورهمی‌ها.',
+        img: 'https://images.unsplash.com/photo-1618219740975-d0e7e1db4e3d?w=600&fm=webp&q=80',
+        imgLarge: 'https://images.unsplash.com/photo-1618219740975-d0e7e1db4e3d?w=1200&fm=webp&q=80',
         fullDesc: `
           <p>سالن تلویزیون و پذیرایی ناژو، نمونهای از <strong>طراحی مدرن و کاربرپسند</strong> است که با تأکید بر گرما، صمیمیت و کارایی شکل گرفته است.</p>
           <p><strong>متریال‌های به‌کاررفته:</strong></p>
@@ -757,19 +792,21 @@
             <li>مبلمان ماژولار با روکش پارچه‌ای</li>
             <li>نورپردازی مخفی LED در پشت دیوار تلویزیون</li>
           </ul>
-          <p>دیوار تلویزیون با پنل‌های چوبی عمودی و نورپردازی مخفی، نقطه کانونی سالن است. مبلمان ماژولار با روکش پارچه‌ای نرم، امکان چیدمان‌های مختلف را برای هر نوع مهمانی فراهم می‌کند. قفسه‌های دیواری ام‌دی‌اف، فضایی برای نمایش اشیاء تزئینی و کتاب‌ها ایجاد کرده‌اند.</p>
-        `
-      }
+          <p>دیوار تلویزیون با پنل‌های چوبی عمودی و نورپردازی مخفی، نقطه کانونی سالن است.</p>
+        `,
+      },
     ];
 
-    // ===== آبجکت اصلی برنامه =====
+    // ============================================
+    // آبجکت اصلی برنامه
+    // ============================================
     const App = {
       init() {
         this.cacheDOM();
+        this.buildScenes();
         this.buildProjects();
         this.setupTheme();
         this.setupMenu();
-        this.setupHeroDots();
         this.setupHeroZoom();
         this.setupModal();
         this.setupScrollAnimations();
@@ -778,14 +815,18 @@
         this.setupServiceWorker();
         this.setupScrollProgress();
         this.setupHeaderShadow();
-        this.setupHeroHint();
-        this.setupShareButton();
-        this.setupRouter();
         this.setupLazyImages();
+        this.setupShareButton();
+        this.setupLinkPreload();
+        this.setupZoomDots();
+        this.setupRouter(); // <-- سئوی پویا
         this.handleInitialRoute();
       },
 
       cacheDOM() {
+        this.stage = document.getElementById('zoomStage');
+        this.dotsBox = document.getElementById('zoomDots');
+        this.hint = document.getElementById('zoomHint');
         this.grid = document.getElementById('projectsGrid');
         this.modal = document.getElementById('articleModal');
         this.modalClose = document.getElementById('modalClose');
@@ -803,10 +844,6 @@
         this.form = document.getElementById('contactForm');
         this.formStatus = document.getElementById('formStatus');
         this.formSubmit = document.getElementById('formSubmit');
-        this.heroWrapper = document.querySelector('.hero-wrapper');
-        this.slides = document.querySelectorAll('.hero-slide');
-        this.dotsContainer = document.getElementById('heroDots');
-        this.hint = document.getElementById('heroHint');
         this.shareBtn = document.getElementById('shareBtn');
         this.formName = document.getElementById('formName');
         this.formEmail = document.getElementById('formEmail');
@@ -814,7 +851,7 @@
         this.nameError = document.getElementById('formNameError');
         this.emailError = document.getElementById('formEmailError');
         this.messageError = document.getElementById('formMessageError');
-        // عناصر داینامیک سئو
+        // عناصر سئو
         this.dynamicTitle = document.getElementById('dynamicTitle');
         this.dynamicDescription = document.getElementById('dynamicDescription');
         this.dynamicCanonical = document.getElementById('dynamicCanonical');
@@ -822,26 +859,69 @@
         this.ogDesc = document.getElementById('ogDesc');
       },
 
-      // ===== ساخت کارت‌های پروژه با srcset =====
+      // ===== ساخت صحنه‌های هیرو =====
+      buildScenes() {
+        this.sceneEls = SCENES.map((s, j) => {
+          const el = document.createElement('div');
+          el.className = 'scene';
+          el.setAttribute('data-index', j);
+          el.innerHTML = `
+            <div class="scene__img-wrap" style="transform-origin:${s.focal}">
+              <img class="scene__img" src="${s.img}" alt="${s.tag}" draggable="false" loading="${j === 0 ? 'eager' : 'lazy'}" decoding="async" />
+              <div class="scene__scrim-1"></div>
+              <div class="scene__scrim-2"></div>
+              <div class="scene__scrim-3"></div>
+            </div>
+            <div class="scene__content">
+              <div class="scene__inner">
+                <div class="scene__tagline"><span class="scene__line"></span><span class="scene__tag">${s.tag}</span></div>
+                <h1 class="scene__title">${s.title}</h1>
+                <p class="scene__sub">${s.sub}</p>
+                ${j === 0 ? `<a href="#projects" class="scene__btn">مشاهده پروژه‌ها ←</a>` : ''}
+              </div>
+            </div>
+          `;
+          this.stage.appendChild(el);
+          return el;
+        });
+
+        // نقاط ناوبری
+        this.dotEls = SCENES.map((s, i) => {
+          const b = document.createElement('button');
+          b.className = 'zoom-dot';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', s.tag);
+          b.addEventListener('click', () => {
+            const section = document.querySelector('.zoom-section');
+            const scrollable = section.offsetHeight - window.innerHeight;
+            const top = section.offsetTop + (i / (SCENES.length - 1)) * scrollable;
+            window.scrollTo({ top, behavior: 'smooth' });
+          });
+          this.dotsBox.appendChild(b);
+          return b;
+        });
+      },
+
+      // ===== پروژه‌ها با srcset =====
       buildProjects() {
-        projectsData.forEach(p => {
-          const card = document.createElement('article');
+        PROJECTS.forEach(p => {
+          const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('role', 'listitem');
           const srcset = `${p.img} 600w, ${p.imgLarge} 1200w`;
           card.innerHTML = `
-            <div class="project-card__img-wrap">
-              <img class="project-card__img" 
-                   src="${p.img}" 
+            <div class="project-card__image-wrap">
+              <img data-src="${p.img}" 
                    srcset="${srcset}" 
                    sizes="(max-width: 768px) 100vw, 50vw"
-                   alt="${p.title} - کابینت در رامسر" 
-                   loading="lazy" />
-              <div class="project-card__overlay"><span>مشاهده پروژه</span></div>
+                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect fill='rgba(26,23,20,0.5)' width='100%25' height='100%25'/%3E%3C/svg%3E" 
+                   alt="${p.title}" 
+                   loading="lazy" 
+                   decoding="async" />
             </div>
             <div class="project-card__info">
-              <span class="project-card__tag">${p.tag}</span>
               <h3 class="project-card__title">${p.title}</h3>
+              <span class="project-card__tag">${p.tag}</span>
               <p class="project-card__desc">${p.desc}</p>
               <button class="project-card__link" data-id="${p.id}" data-slug="${p.slug}">ادامه مطلب <i class="fas fa-arrow-left"></i></button>
             </div>
@@ -861,7 +941,7 @@
         });
       },
 
-      // ===== روت‌یاب (مسیریابی) =====
+      // ===== روت‌یاب (مسیریابی) برای سئوی پویا =====
       setupRouter() {
         window.addEventListener('popstate', (e) => {
           if (e.state && e.state.id) {
@@ -878,7 +958,7 @@
         const path = window.location.pathname;
         if (path !== '/' && path !== '') {
           const slug = path.replace(/^\//, '').replace(/\/$/, '');
-          const project = projectsData.find(p => p.slug === slug);
+          const project = PROJECTS.find(p => p.slug === slug);
           if (project) {
             setTimeout(() => {
               this.openModal(project.id);
@@ -888,9 +968,9 @@
         }
       },
 
-      // ===== به‌روزرسانی سئو =====
+      // ===== به‌روزرسانی سئو برای پروژه =====
       updateSEOForProject(id) {
-        const project = projectsData.find(p => p.id === id);
+        const project = PROJECTS.find(p => p.id === id);
         if (!project) return;
         const title = `${project.title} | ناژو کابینت | طراحی و اجرا در رامسر، تنکابن و چابکسر`;
         const desc = `${project.desc} – پروژه‌ای از استودیو ناژو به مدیریت ایمان حلاجیان در منطقه رامسر.`;
@@ -913,11 +993,100 @@
         document.title = defaultTitle;
       },
 
-      // ===== تم (دارک/لایت) =====
+      // ===== منطق زوم هیرو =====
+      setupHeroZoom() {
+        const ZOOM = 5;
+        const n = SCENES.length;
+        const section = document.querySelector('.zoom-section');
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+        let zoom = 0,
+          ticking = false;
+
+        section.style.height = n * 120 + 'vh';
+
+        const update = () => {
+          ticking = false;
+          const rect = section.getBoundingClientRect();
+          const scrollable = rect.height - window.innerHeight;
+          if (scrollable <= 0) return;
+          const progress = clamp(-rect.top / scrollable, 0, 1);
+          zoom = progress * (n - 1);
+          this.renderZoom(zoom, n);
+        };
+
+        const onScroll = () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+          }
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      },
+
+      renderZoom(zoom, n) {
+        const activeIndex = Math.round(Math.min(Math.max(zoom, 0), n - 1));
+
+        this.sceneEls.forEach((el, j) => {
+          const rel = zoom - j;
+          const visible = rel > -1.05 && rel < 1.05;
+          el.style.display = visible ? 'block' : 'none';
+          if (!visible) return;
+
+          const scale = Math.pow(5, rel);
+          let opacity =
+            rel >= 0
+              ? 1 - Math.min(Math.max((rel - 0.55) / 0.45, 0), 1)
+              : Math.min(Math.max((rel + 0.6) / 0.6, 0), 1);
+
+          el.style.opacity = opacity;
+          el.style.zIndex = rel >= 0 ? 20 - Math.round(rel * 2) : 10 + Math.round(rel * 2);
+          const wrap = el.querySelector('.scene__img-wrap');
+          wrap.style.transform = `scale(${scale})`;
+          wrap.style.willChange = 'transform';
+
+          const textOpacity = Math.min(Math.max(1 - Math.abs(rel) / 0.5, 0), 1);
+          const content = el.querySelector('.scene__content');
+          content.style.opacity = textOpacity;
+          content.style.transform = `translateY(${(1 - textOpacity) * 24}px)`;
+          content.style.willChange = 'opacity, transform';
+        });
+
+        this.dotEls.forEach((d, i) => d.classList.toggle('is-active', i === activeIndex));
+        this.hint.style.opacity = zoom < 0.3 ? 1 : 0;
+      },
+
+      setupZoomDots() {
+        // dots already created in buildScenes
+      },
+
+      // ===== Lazy Load تصاویر =====
+      setupLazyImages() {
+        const images = document.querySelectorAll('.project-card__image-wrap img');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.dataset.src;
+              if (src && img.src.includes('data:image')) {
+                img.src = src;
+                img.removeAttribute('data-src');
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, { rootMargin: '100px' });
+        images.forEach(img => observer.observe(img));
+      },
+
+      // ===== Theme =====
       setupTheme() {
         const saved = localStorage.getItem('theme');
         const theme = saved || 'dark';
         this.setTheme(theme);
+
         this.themeToggle.addEventListener('click', () => {
           const current = document.documentElement.getAttribute('data-theme');
           const newTheme = current === 'dark' ? 'light' : 'dark';
@@ -948,67 +1117,6 @@
         });
       },
 
-      // ===== هیرو دات‌ها =====
-      setupHeroDots() {
-        this.slides.forEach((_, i) => {
-          const dot = document.createElement('button');
-          dot.setAttribute('role', 'tab');
-          dot.setAttribute('aria-label', `اسلاید ${i + 1}`);
-          if (i === 0) dot.classList.add('active');
-          dot.addEventListener('click', () => {
-            const target = this.heroWrapper.querySelector(`.hero-slide[data-index="${i}"]`);
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-          });
-          this.dotsContainer.appendChild(dot);
-        });
-        const dots = this.dotsContainer.querySelectorAll('button');
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const idx = parseInt(entry.target.dataset.index);
-              dots.forEach((d, i) => {
-                d.classList.toggle('active', i === idx);
-                d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
-              });
-            }
-          });
-        }, { threshold: 0.6, root: this.heroWrapper });
-        this.slides.forEach(s => observer.observe(s));
-      },
-
-      // ===== زوم هیرو =====
-      setupHeroZoom() {
-        const updateZoom = (slide) => {
-          const img = slide.querySelector('.slide-bg img');
-          if (!img) return;
-          const rect = slide.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-          const visibleRatio = 1 - Math.abs(rect.top) / viewportHeight;
-          const progress = Math.min(Math.max(visibleRatio, 0), 1);
-          const scale = 1.15 + (1 - progress) * 0.35;
-          img.style.transform = `scale(${scale})`;
-        };
-        let ticking = false;
-        this.heroWrapper.addEventListener('scroll', () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              this.slides.forEach(s => {
-                const rect = s.getBoundingClientRect();
-                const parentRect = this.heroWrapper.getBoundingClientRect();
-                if (rect.top < parentRect.bottom && rect.bottom > parentRect.top) {
-                  updateZoom(s);
-                }
-              });
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
-        setTimeout(() => {
-          this.slides.forEach(s => updateZoom(s));
-        }, 100);
-      },
-
       // ===== مودال =====
       setupModal() {
         this.modalClose.addEventListener('click', () => this.closeModal());
@@ -1021,10 +1129,10 @@
       },
 
       openModal(id) {
-        const project = projectsData.find(p => p.id === id);
+        const project = PROJECTS.find(p => p.id === id);
         if (!project) return;
         this.modalImg.src = project.imgLarge || project.img;
-        this.modalImg.alt = project.title + ' - ناژو کابینت';
+        this.modalImg.alt = project.title;
         this.modalTag.textContent = project.tag;
         this.modalTitle.textContent = project.title;
         this.modalBody.innerHTML = project.fullDesc;
@@ -1040,6 +1148,7 @@
         document.body.style.overflow = '';
         document.querySelector('header').removeAttribute('inert');
         document.querySelector('footer').removeAttribute('inert');
+        // اگر مودال بسته شد و URL پروژه بود، به خانه برگرد
         if (window.location.pathname !== '/') {
           history.pushState(null, '', '/');
           this.resetSEO();
@@ -1050,6 +1159,7 @@
       setupScrollAnimations() {
         const sections = document.querySelectorAll('.section');
         const cards = document.querySelectorAll('.project-card');
+
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1057,6 +1167,7 @@
             }
           });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
         sections.forEach(s => observer.observe(s));
         cards.forEach((card, i) => {
           observer.observe(card);
@@ -1064,7 +1175,7 @@
         });
       },
 
-      // ===== دکمه بازگشت =====
+      // ===== بازگشت به بالا =====
       setupBackToTop() {
         window.addEventListener('scroll', () => {
           this.backTop.classList.toggle('show', window.scrollY > 400);
@@ -1075,25 +1186,29 @@
         });
       },
 
-      // ===== فرم تماس با Netlify =====
+      // ===== فرم با Netlify Forms =====
       setupContactForm() {
         this.formName.addEventListener('blur', () => this.validateField('name'));
         this.formEmail.addEventListener('blur', () => this.validateField('email'));
         this.formMessage.addEventListener('blur', () => this.validateField('message'));
+
         this.formName.addEventListener('input', () => this.clearFieldError('name'));
         this.formEmail.addEventListener('input', () => this.clearFieldError('email'));
         this.formMessage.addEventListener('input', () => this.clearFieldError('message'));
 
         this.form.addEventListener('submit', async (e) => {
           e.preventDefault();
+
           const isNameValid = this.validateField('name');
           const isEmailValid = this.validateField('email');
           const isMessageValid = this.validateField('message');
+
           if (!isNameValid || !isEmailValid || !isMessageValid) {
             this.formStatus.textContent = '❌ لطفاً همه فیلدها را به‌درستی پر کنید.';
             this.formStatus.className = 'form-status error';
             return;
           }
+
           this.formStatus.textContent = 'در حال ارسال...';
           this.formStatus.className = 'form-status';
           this.formSubmit.disabled = true;
@@ -1105,6 +1220,7 @@
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: new URLSearchParams(formData).toString()
             });
+
             if (response.ok) {
               this.formStatus.textContent = '✅ پیام شما با موفقیت ارسال شد! به زودی تماس می‌گیریم.';
               this.formStatus.className = 'form-status';
@@ -1133,7 +1249,8 @@
         let isValid = true;
         let errorEl = null;
         let inputEl = null;
-        switch(field) {
+
+        switch (field) {
           case 'name':
             inputEl = this.formName;
             errorEl = this.nameError;
@@ -1172,10 +1289,12 @@
             }
             break;
         }
+
         if (inputEl) {
           inputEl.classList.toggle('error', !isValid);
           errorEl.classList.toggle('show', !isValid);
         }
+
         return isValid;
       },
 
@@ -1193,7 +1312,7 @@
         }
       },
 
-      // ===== سرویس‌ورکر =====
+      // ===== Service Worker =====
       setupServiceWorker() {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/sw.js')
@@ -1202,7 +1321,53 @@
         }
       },
 
-      // ===== اسکرول بار =====
+      // ===== اشتراک‌گذاری =====
+      setupShareButton() {
+        if (this.shareBtn) {
+          this.shareBtn.addEventListener('click', async () => {
+            try {
+              if (navigator.share) {
+                await navigator.share({
+                  title: 'استودیو طراحی داخلی ناژو | ایمان حلاجیان',
+                  text: 'طراحی داخلی لوکس با چوب و ام‌دی‌اف در رامسر و حومه.',
+                  url: window.location.href
+                });
+              } else {
+                await navigator.clipboard.writeText(window.location.href);
+                this.shareBtn.innerHTML = '<i class="fas fa-check"></i> لینک کپی شد!';
+                setTimeout(() => {
+                  this.shareBtn.innerHTML = '<i class="fas fa-share-nodes"></i> اشتراک‌گذاری';
+                }, 3000);
+              }
+            } catch (err) {
+              console.log('Share cancelled:', err);
+            }
+          });
+        }
+      },
+
+      // ===== پیش‌بارگذاری لینک‌ها =====
+      setupLinkPreload() {
+        const links = document.querySelectorAll('a[href]');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const link = entry.target;
+              const href = link.getAttribute('href');
+              if (href && !href.startsWith('http') && href !== '#') {
+                const preloadLink = document.createElement('link');
+                preloadLink.rel = 'prefetch';
+                preloadLink.href = href;
+                document.head.appendChild(preloadLink);
+              }
+              observer.unobserve(link);
+            }
+          });
+        }, { rootMargin: '200px' });
+        links.forEach(link => observer.observe(link));
+      },
+
+      // ===== نوار پیشرفت =====
       setupScrollProgress() {
         window.addEventListener('scroll', () => {
           const scrollTop = window.scrollY;
@@ -1217,68 +1382,10 @@
         window.addEventListener('scroll', () => {
           this.header.classList.toggle('scrolled', window.scrollY > 80);
         });
-      },
-
-      // ===== راهنمای هیرو =====
-      setupHeroHint() {
-        this.heroWrapper.addEventListener('scroll', () => {
-          const scrollTop = this.heroWrapper.scrollTop;
-          this.hint.style.opacity = scrollTop > this.heroWrapper.clientHeight * 0.5 ? '0' : '1';
-          if (scrollTop > this.heroWrapper.clientHeight * 0.5) {
-            this.hint.style.pointerEvents = 'none';
-          } else {
-            this.hint.style.pointerEvents = 'auto';
-          }
-        });
-      },
-
-      // ===== اشتراک‌گذاری =====
-      setupShareButton() {
-        if (this.shareBtn) {
-          this.shareBtn.addEventListener('click', async () => {
-            try {
-              if (navigator.share) {
-                await navigator.share({
-                  title: 'ناژو کابینت | طراحی و اجرای کابینت در رامسر، تنکابن و چابکسر',
-                  text: 'طراحی و اجرای کابینت و دکوراسیون داخلی در رامسر، تنکابن و چابکسر توسط ایمان حلاجیان.',
-                  url: window.location.href
-                });
-              } else {
-                await navigator.clipboard.writeText(window.location.href);
-                this.shareBtn.innerHTML = '<i class="fas fa-check"></i> لینک کپی شد!';
-                setTimeout(() => {
-                  this.shareBtn.innerHTML = '<i class="fas fa-share-nodes"></i> اشتراک‌گذاری';
-                }, 3000);
-              }
-            } catch (err) {
-              console.log('Share cancelled or error:', err);
-            }
-          });
-        }
-      },
-
-      // ===== بارگذاری تنبل تصاویر =====
-      setupLazyImages() {
-        const images = document.querySelectorAll('.project-card__img');
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              const src = img.getAttribute('src');
-              if (src && src.includes('data:image')) {
-                const dataSrc = img.dataset.src;
-                if (dataSrc) {
-                  img.src = dataSrc;
-                }
-              }
-              observer.unobserve(img);
-            }
-          });
-        }, { rootMargin: '100px' });
-        images.forEach(img => observer.observe(img));
       }
     };
 
+    // ===== راه‌اندازی =====
     document.addEventListener('DOMContentLoaded', () => App.init());
   </script>
 </body>
