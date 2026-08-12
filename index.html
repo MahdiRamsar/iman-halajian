@@ -67,8 +67,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <!-- ===== CSP (سیاست امنیتی محتوا) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.googleapis.com; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com https://static.cloudflareinsights.com; worker-src 'self'; connect-src 'self' https://formspree.io https://maps.googleapis.com https://*.google-analytics.com; frame-src 'self' https://www.google.com;" />
+  <!-- ============================================================ -->
+  <!-- ===== CSP اصلاح‌شده (اضافه شدن statsfa) ===== -->
+  <!-- ============================================================ -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    style-src 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' data: https://maps.googleapis.com;
+    script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com https://static.cloudflareinsights.com https://statsfa.com;
+    worker-src 'self';
+    connect-src 'self' https://formspree.io https://maps.googleapis.com https://*.google-analytics.com https://statsfa.com;
+    frame-src 'self' https://www.google.com;
+  " />
+  
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -1146,8 +1158,10 @@
 
     document.addEventListener('DOMContentLoaded', () => App.init());
   </script>
-  <!-- Statsfa Website Analytics Start -->
-<script data-host="https://statsfa.com" data-dnt="false" src="https://statsfa.com/js/script.js" id="ZwSg9rf6GA" async defer></script>
-<!-- Statsfa Website Analytics End -->
+  
+  <!-- ============================================================ -->
+  <!-- ===== Statsfa Analytics (فقط یک بار در انتهای body) ===== -->
+  <!-- ============================================================ -->
+  <script data-host="https://statsfa.com" data-dnt="false" src="https://statsfa.com/js/script.js" id="ZwSg9rf6GA" async defer></script>
 </body>
 </html>
