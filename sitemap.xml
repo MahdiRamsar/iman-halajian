@@ -2,55 +2,60 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
+  <!-- ===== صفحه اصلی ===== -->
   <url>
     <loc>https://nazhocabinet.ir/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/1-large.webp</image:loc></image:image>
+    <image:image><image:loc>https://nazhocabinet.ir/images/2-large.webp</image:loc></image:image>
+    <image:image><image:loc>https://nazhocabinet.ir/images/3-large.webp</image:loc></image:image>
+    <image:image><image:loc>https://nazhocabinet.ir/images/4-large.webp</image:loc></image:image>
+  </url>
 
-    <!-- ===== تصاویر بزرگ (برای هیرو) ===== -->
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/1-large.jpg</image:loc>
-      <image:title>طراحی کابینت - استودیو ناژو</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/2-large.jpg</image:loc>
-      <image:title>کابینت کلاسیک - ناژو</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/3-large.jpg</image:loc>
-      <image:title>سالن پذیرایی - ناژو</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/4-large.jpg</image:loc>
-      <image:title>اتاق خواب مدرن - ناژو</image:title>
-    </image:image>
-
-    <!-- ===== تصاویر پروژه‌ها (سایز معمولی) ===== -->
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/1.jpg</image:loc>
-      <image:title>پروژه آشپزخانه کلاسیک - رامسر</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/2.jpg</image:loc>
-      <image:title>پروژه اتاق خواب مدرن - تنکابن</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/3.jpg</image:loc>
-      <image:title>پروژه سالن پذیرایی کلاسیک - شهسوار</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/4.jpg</image:loc>
-      <image:title>پروژه آشپزخانه مدرن - چابکسر</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/5.jpg</image:loc>
-      <image:title>پروژه اتاق خواب نئوکلاسیک - رامسر</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nazhocabinet.ir/images/6.jpg</image:loc>
-      <image:title>پروژه سالن تلویزیون - تنکابن</image:title>
-    </image:image>
+  <!-- ===== پروژه‌ها ===== -->
+  <url>
+    <loc>https://nazhocabinet.ir/ashpazkhaneh-klasik</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/1-large.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nazhocabinet.ir/otagh-khab-modern</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/2-large.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nazhocabinet.ir/salan-paziraei-klasik</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/3-large.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nazhocabinet.ir/ashpazkhaneh-modern</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/4-large.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nazhocabinet.ir/otagh-khab-neoklasik</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/5-large.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://nazhocabinet.ir/salan-televizion</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://nazhocabinet.ir/images/6-large.webp</image:loc></image:image>
   </url>
 
 </urlset>
