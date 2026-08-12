@@ -67,7 +67,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <!-- ===== CSP (سیاست امنیتی محتوا) - به‌روز شده ===== -->
+  <!-- ===== CSP (سیاست امنیتی محتوا) ===== -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://maps.googleapis.com; script-src 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://maps.googleapis.com https://static.cloudflareinsights.com; worker-src 'self'; connect-src 'self' https://formspree.io https://maps.googleapis.com https://*.google-analytics.com; frame-src 'self' https://www.google.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
@@ -207,7 +207,7 @@
       .project-card__img-wrap { position:relative; overflow:hidden; height:260px; flex-shrink:0; }
       .project-card__img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.25,1,0.3,1); will-change:transform; }
       .project-card:hover .project-card__img { transform:scale(1.1); }
-      .project-card__overlay { position:absolute; inset:0; background:rgba(11,10,8,0.4); backdrop-filter:blur(4px); opacity:0; transition:opacity var(--transition); display:flex; align-items:center; justify-content:center; }
+      .project-card__overlay { position:absolute; inset:0; background:rgba(11,10,8,0.4); backdrop-filter:blur(4px); opacity:0; transition:opacity var(--transition); display:flex; align-items:center; justify-content:center; pointer-events:none; }
       .project-card:hover .project-card__overlay { opacity:1; }
       .project-card__overlay span { color:#fff; font-size:1.1rem; font-weight:700; padding:8px 24px; border:2px solid var(--primary); border-radius:40px; background:rgba(0,0,0,0.3); backdrop-filter:blur(4px); }
       .project-card__info { padding:24px; flex:1; display:flex; flex-direction:column; }
@@ -259,11 +259,9 @@
       .form-status { margin-top:16px; font-weight:600; color:var(--primary-light); }
       .form-status.error { color:#e74c3c; }
       
-      /* نقشه */
       .contact__map { flex:1 1 100%; margin-top:32px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--glass-border); }
       .contact__map iframe { width:100%; height:300px; border:0; display:block; }
       
-      /* دکمه اشتراک‌گذاری */
       .share-btn { display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:10px 24px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:40px; color:var(--muted); font-family:inherit; font-size:0.9rem; cursor:pointer; transition:all var(--transition); }
       .share-btn:hover { background:var(--primary); color:#000; border-color:var(--primary); }
       .share-btn:focus-visible { outline:2px solid var(--primary); outline-offset:4px; }
@@ -288,7 +286,6 @@
       .footer__links a:hover { color:var(--primary-light); }
       .footer__copy { font-size:0.9rem; color:var(--muted); opacity:0.6; }
       
-      /* Preload hint (برای لینک‌ها) */
       .preload-hint { display:none; }
       
       @media (max-width:768px) {
@@ -432,7 +429,7 @@
   <!-- ===== پروژه‌ها ===== -->
   <section class="section" id="projects" aria-labelledby="projects-title">
     <div class="container">
-      <h2 class="section__title" id="projects-title">نمونه پروژه‌های قابل اجرا </h2>
+      <h2 class="section__title" id="projects-title">نمونه پروژه‌های قابل اجرا</h2>
       <p class="section__sub">نمونه‌هایی از دکوراسیون داخلی با چوب و ام‌دی‌اف – هاور کنید تا زوم را ببینید.</p>
       <div class="projects__grid" id="projectsGrid" role="list"></div>
     </div>
@@ -465,7 +462,6 @@
               <span>ایمان حلاجیان</span>
             </div>
           </div>
-          <!-- ===== دکمه اشتراک‌گذاری ===== -->
           <button class="share-btn" id="shareBtn" aria-label="اشتراک‌گذاری صفحه">
             <i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری
           </button>
@@ -487,7 +483,6 @@
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
         
-        <!-- ===== نقشه تعاملی ===== -->
         <div class="contact__map">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25911.682764240865!2d50.777456!3d36.897123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8a8b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sRamsar%2C%20Mazandaran%20Province%2C%20Iran!5e0!3m2!1sen!2sus!4v1700000000000" 
@@ -541,7 +536,7 @@
   </div>
 
   <!-- ============================================
-  اسکریپت (نسخه ۶ با بهبودهای منتخب)
+  اسکریپت
   ============================================ -->
   <script type="module">
     // ============================================
@@ -663,7 +658,7 @@
     ];
 
     // ============================================
-    // آبجکت اصلی برنامه (نسخه ۶)
+    // آبجکت اصلی برنامه
     // ============================================
     const App = {
       init() {
@@ -709,7 +704,6 @@
         this.dotsContainer = document.getElementById('heroDots');
         this.hint = document.getElementById('heroHint');
         this.shareBtn = document.getElementById('shareBtn');
-        // فیلدهای فرم برای اعتبارسنجی
         this.formName = document.getElementById('formName');
         this.formEmail = document.getElementById('formEmail');
         this.formMessage = document.getElementById('formMessage');
@@ -723,6 +717,8 @@
           const card = document.createElement('article');
           card.className = 'project-card';
           card.setAttribute('role', 'listitem');
+          card.dataset.id = p.id; // ذخیره شناسه در کارت
+
           card.innerHTML = `
             <div class="project-card__img-wrap">
               <img class="project-card__img" data-src="${p.img}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect fill='rgba(26,23,20,0.5)' width='100%25' height='100%25'/%3E%3C/svg%3E" alt="${p.title}" loading="lazy" />
@@ -735,19 +731,28 @@
               <button class="project-card__link" data-id="${p.id}">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></button>
             </div>
           `;
+
+          // کلیک روی کل کارت (به جز دکمه)
+          card.addEventListener('click', (e) => {
+            if (e.target.closest('.project-card__link')) return;
+            const id = parseInt(card.dataset.id);
+            this.openModal(id);
+          });
+
           this.grid.appendChild(card);
         });
 
+        // شنونده‌های دکمه
         this.grid.querySelectorAll('.project-card__link').forEach(btn => {
           btn.addEventListener('click', (e) => {
-            e.preventDefault();
+            e.stopPropagation(); // جلوگیری از انتشار به کارت
             const id = parseInt(btn.dataset.id);
             this.openModal(id);
           });
         });
       },
 
-      // ===== Lazy Load با Intersection Observer =====
+      // ===== Lazy Load =====
       setupLazyImages() {
         const images = document.querySelectorAll('.project-card__img');
         const observer = new IntersectionObserver((entries) => {
@@ -766,7 +771,7 @@
         images.forEach(img => observer.observe(img));
       },
 
-      // ===== Theme (همیشه دارک، مگر کاربر دستی عوض کند) =====
+      // ===== Theme =====
       setupTheme() {
         const saved = localStorage.getItem('theme');
         const theme = saved || 'dark';
@@ -924,14 +929,11 @@
         });
       },
 
-      // ===== اعتبارسنجی فرم با جزئیات بیشتر =====
       setupContactForm() {
-        // اعتبارسنجی لحظه‌ای (blur)
         this.formName.addEventListener('blur', () => this.validateField('name'));
         this.formEmail.addEventListener('blur', () => this.validateField('email'));
         this.formMessage.addEventListener('blur', () => this.validateField('message'));
 
-        // اعتبارسنجی هنگام تایپ (برای پاک کردن خطا)
         this.formName.addEventListener('input', () => this.clearFieldError('name'));
         this.formEmail.addEventListener('input', () => this.clearFieldError('email'));
         this.formMessage.addEventListener('input', () => this.clearFieldError('message'));
@@ -939,7 +941,6 @@
         this.form.addEventListener('submit', async (e) => {
           e.preventDefault();
           
-          // اعتبارسنجی همه فیلدها
           const isNameValid = this.validateField('name');
           const isEmailValid = this.validateField('email');
           const isMessageValid = this.validateField('message');
@@ -972,7 +973,6 @@
               this.formStatus.textContent = '✅ پیام شما با موفقیت ارسال شد! به زودی تماس می‌گیریم.';
               this.formStatus.className = 'form-status';
               this.form.reset();
-              // پاک کردن کلاس‌های خطا
               document.querySelectorAll('.contact__form input, .contact__form textarea').forEach(el => {
                 el.classList.remove('error');
               });
@@ -1060,7 +1060,6 @@
         }
       },
 
-      // ===== Service Worker =====
       setupServiceWorker() {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/sw.js')
@@ -1069,7 +1068,6 @@
         }
       },
 
-      // ===== دکمه اشتراک‌گذاری (Web Share API) =====
       setupShareButton() {
         if (this.shareBtn) {
           this.shareBtn.addEventListener('click', async () => {
@@ -1081,7 +1079,6 @@
                   url: window.location.href
                 });
               } else {
-                // Fallback: کپی لینک در کلیپ‌بورد
                 await navigator.clipboard.writeText(window.location.href);
                 this.shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> لینک کپی شد!';
                 setTimeout(() => {
@@ -1089,14 +1086,12 @@
                 }, 3000);
               }
             } catch (err) {
-              // کاربر لغو کرده یا خطا
               console.log('Share cancelled or error:', err);
             }
           });
         }
       },
 
-      // ===== پیش‌بارگذاری لینک‌ها با Intersection Observer =====
       setupLinkPreload() {
         const links = document.querySelectorAll('a[href]');
         const observer = new IntersectionObserver((entries) => {
@@ -1104,7 +1099,6 @@
             if (entry.isIntersecting) {
               const link = entry.target;
               const href = link.getAttribute('href');
-              // فقط لینک‌های داخلی و non-empty
               if (href && !href.startsWith('http') && href !== '#') {
                 const preloadLink = document.createElement('link');
                 preloadLink.rel = 'prefetch';
